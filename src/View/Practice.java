@@ -5,30 +5,11 @@ import Controller.Util;
 import Controller.WindosCreate;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import java.awt.Insets;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.xml.parsers.ParserConfigurationException;
-import org.jdom2.JDOMException;
-import org.xml.sax.SAXException;
+
 
 
 
@@ -145,9 +126,9 @@ public class Practice extends javax.swing.JFrame implements ActionListener{
 
         switch(ae.getActionCommand()){
             case Util.CERO_TAG:
-            Child.Modulo(MateriasPath.CERO_XML_PATH,PN_Botones);break;
+            Child.Modulo(MateriasPath.CERO_XML_PATH);break;
             case Util.NUMEROS_TAG:
-            Child.Modulo(MateriasPath.NUMEROS_XML_PATH,PN_Botones);break;   
+            Child.Modulo(MateriasPath.NUMEROS_XML_PATH);break;   
         }
         Child.setVisible(true);
         this.setVisible(false);

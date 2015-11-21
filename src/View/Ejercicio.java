@@ -6,54 +6,18 @@
 
 package View;
 
-import Controller.MateriasPath;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import Controller.WindosCreate;
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-
 /**
  *
  * @author Manuel
  */
-public class Modulos extends javax.swing.JFrame {
+public class Ejercicio extends javax.swing.JFrame {
 
-       JPanel PN_Botones=new JPanel(new GridLayout(3, 3, 0, 10));
-       JScrollPane SP_Materias;
-       String rutaModulo;
-       
-       public Modulos() {
+    /**
+     * Creates new form Ejercicio
+     */
+    public Ejercicio() {
         initComponents();
-        this.setLayout(new BorderLayout(10,20));
-        }
-       public void Modulo(String ruta){
-           rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
-           WindosCreate wc=new WindosCreate(ruta);
-           wc.WindowsHijo(this);
-           PN_Botones=wc.mostrarBot(ruta, PN_Botones);
-           PN_Botones.setBorder(BorderFactory.createEmptyBorder(10, 20, 10,20));//(arriba,izquierda,abajo,derecha) Margenes del JPanel
-
-           SP_Materias = new JScrollPane(PN_Botones);
-           this.add(SP_Materias, BorderLayout.CENTER);          
-           // this.add(PN_Botones, BorderLayout.CENTER);
-       }
-       public void actionPerformed(ActionEvent ae) 
-       {
-       System.out.println("Entro al action Modulos");
-        }
- 
-
- 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +47,6 @@ public class Modulos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -98,24 +61,23 @@ public class Modulos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Modulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Modulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Modulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Modulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ejercicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modulos().setVisible(true);
+                new Ejercicio().setVisible(true);
             }
         });
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

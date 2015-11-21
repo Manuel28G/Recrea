@@ -52,6 +52,8 @@ public class Util {
     //TAG generales para el area de práctica
     public static final String CONOCIENDO_TAG= "Conociendo";
     public static final String EJERCICIO_TAG= "Ejercicio";
+    public static final String CONOCIENDOLOS_TAG= "Conociendolos";
+    public static final String EJERCICIOS_TAG= "Ejercicios";
 
     //Errores
     public static final String ERROR_XML_EMPTY_FILE = "Error loading XML file - The file is empty";
