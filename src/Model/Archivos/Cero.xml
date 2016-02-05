@@ -6,11 +6,11 @@ and open the template in the editor.
 -->
 
 <Cero>
-    <Conociendolos nivel="1" imagen="Cero.png" xml="Cero.xml"> Conociendo al cero
-        <Contenido Tipo="Boton">2+2=4</Contenido><!--seleccionar la opcion(boton) correcta-->
-        <Contenido Tipo="VF">2+4=6</Contenido> <!--Verdadero o Falso-->
+    <Conociendolos nivel="1" imagen="Cero.png" xml="Cero.xml">Conociendolos
+        <Contenido tipo="Boton" pregunta="2+2=x">4</Contenido><!--seleccionar la opcion(boton) correcta-->
+        <Contenido tipo="VF" pregunta="2+4=x">6</Contenido> <!--Verdadero o Falso-->
     </Conociendolos>
-    <Ejercicios> Ejercicios
-        <Ejercicio Tipo="Completar">2 + 2 = 4</Ejercicio><!--Completar la ecuación-->
+    <Ejercicios  nivel="1" imagen="Cero.png" xml="Cero.xml">Ejercicios
+        <Ejercicio tipo="Completar" pregunta="2+2=x">4</Ejercicio><!--Completar la ecuación-->
     </Ejercicios>
 </Cero>

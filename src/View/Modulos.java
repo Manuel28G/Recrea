@@ -6,7 +6,7 @@
 
 package View;
 
-import Controller.MateriasPath;
+import Controller.CargarInformacion;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
@@ -18,9 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import Controller.WindosCreate;
+import Model.Objetos.General;
+import Model.Objetos.Leccion;
+import Model.Objetos.Materia;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JScrollPane;
+import org.jdom2.JDOMException;
 
 /**
  *
@@ -28,28 +35,71 @@ import javax.swing.JScrollPane;
  */
 public class Modulos extends javax.swing.JFrame {
 
-       JPanel PN_Botones=new JPanel(new GridLayout(3, 3, 0, 10));
+       JPanel PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
        JScrollPane SP_Materias;
        String rutaModulo;
+       JPanel Marco=new JPanel(),Marco2=new JPanel(),Marco3=new JPanel(),Marco4=new JPanel();
+       List<Leccion> ejercicios=new ArrayList<Leccion>();
        
        public Modulos() {
         initComponents();
-        this.setLayout(new BorderLayout(10,20));
+        this.setLayout(new BorderLayout(0,0));
         }
-       public void Modulo(String ruta){
+       public void Modulo(String ruta,Materia g){
+           
+           ejercicios=g.getAsignaturas();
            rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
-           WindosCreate wc=new WindosCreate(ruta);
+           WindosCreate wc=new WindosCreate(g.getAsignaturas().size());
            wc.WindowsHijo(this);
-           PN_Botones=wc.mostrarBot(ruta, PN_Botones);
-           PN_Botones.setBorder(BorderFactory.createEmptyBorder(10, 20, 10,20));//(arriba,izquierda,abajo,derecha) Margenes del JPanel
-
+           PN_Botones=wc.mostrarBotEj(g.getAsignaturas(), PN_Botones);
+          // PN_Botones.setBorder(BorderFactory.createEmptyBorder(10, 20, 10,20));//(arriba,izquierda,abajo,derecha) Margenes del JPanel
            SP_Materias = new JScrollPane(PN_Botones);
-           this.add(SP_Materias, BorderLayout.CENTER);          
+           this.add(SP_Materias, BorderLayout.CENTER);
+           
            // this.add(PN_Botones, BorderLayout.CENTER);
        }
-       public void actionPerformed(ActionEvent ae) 
+       
+       
+        public void configuracion(){
+        
+        SP_Materias.setOpaque(false);
+        this.add(SP_Materias, BorderLayout.CENTER);
+        
+        //codigo agregado para simular el marco e la pizarra
+        Marco.setBackground(new Color(102, 50, 0));
+        Marco2.setBackground(new Color(102, 50, 0));
+        Marco3.setBackground(new Color(102, 50, 0));
+        Marco4.setBackground(new Color(102, 50, 0));
+        this.add(Marco, BorderLayout.SOUTH);
+        this.add(Marco2, BorderLayout.WEST);
+        this.add(Marco3, BorderLayout.EAST);
+        this.add(Marco4, BorderLayout.NORTH);
+    
+    }
+       
+       public void actionPerformed(ActionEvent ae) throws JDOMException 
        {
-       System.out.println("Entro al action Modulos");
+        if(ae.getActionCommand()=="Regresar"){
+
+        //poner gif de cargando
+            Inicio init=new Inicio();
+            init.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+
+        }
+        for (int i=0;i<ejercicios.size();i++){
+          System.out.println("1: "+ae.getActionCommand());
+          System.out.println("2: "+ejercicios.get(i).getNombre());
+          if( ae.getActionCommand()==ejercicios.get(i).getNombre()){
+            System.out.println("Entro: "+ejercicios.get(i).getNombre());
+            Ejercicio Child=new Ejercicio();
+            Child.setVisible(true);
+            this.setVisible(false);
+            this.dispose();
+          }
+        }
+      
         }
  
 

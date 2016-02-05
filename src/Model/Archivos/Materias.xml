@@ -12,17 +12,17 @@ Este archivo contendra todas las materias del curso y sera utilizado para cargar
 para todas las opciones
 -->
 <Materias>
-    <cero nivel="1" imagen="Cero.png" xml="Cero.xml">Conociendo el cero</cero>
-    <numero nivel="1">Números</numero>
-    <reconum nivel="1">Reconociendo los números</reconum>
-    <cantidad nivel="1">Cantidades</cantidad>
-    <posicion nivel="1">Valor de posiciones</posicion>
-    <suma nivel="1">Sumando</suma>
-    <resta nivel="1">Restando</resta>
-    <multipicacion nivel="1">Multiplicando</multipicacion>
-    <division nivel="1">Dividiendo</division>
-    <sucesion nivel="1">Sucesiones</sucesion>
-    <propiedad nivel="1">Propiedades</propiedad>
-    <parimpar nivel="1">¿Par o Impar?</parimpar>
-    <multiplo nivel="1">Mis multiplos</multiplo>
+    <materia nombre="cero" nivel="1" imagen="CDU.png" xml="Cero.xml">Conociendo el cero</materia>
+    <materia nombre="numero" nivel="1" imagen="Numeros.png" xml="Numeros.xml">Números</materia>
+    <materia nombre="reconum" nivel="1" imagen="Numeros.png" xml="Reconum.xml">Reconociendo los números</materia>
+    <materia nombre="cantidad" nivel="1" imagen="Cero2.png" xml="Cantidad.xml">Cantidades</materia>
+    <materia nombre="posicion" nivel="1" imagen="Cero.png" xml="Posicion.xml">Valor de posiciones</materia>
+    <materia nombre="suma" nivel="1" imagen="Suma.jpg" xml="Suma.xml">Sumando</materia>
+    <materia nombre="resta" nivel="1" imagen="Resta.png" xml="Resta.xml">Restando</materia>
+    <materia nombre="multiplicacion" nivel="1" imagen="Multiplicacion2.png" xml="Multiplicacion.xml">Multiplicando</materia>
+    <materia nombre="division" nivel="1" imagen="Division.png" xml="Division.xml">Dividiendo</materia>
+    <materia nombre="sucesion" nivel="1" imagen="Cero.png" xml="Sucesion.xml">Sucesiones</materia>
+    <materia nombre="propiedad" nivel="1" imagen="Cero.png" xml="Propiedad.xml">Propiedades</materia>
+    <materia nombre="parimpar" nivel="1" imagen="Cero.png" xml="Parimpar.xml">¿Par o Impar?</materia>
+    <materia nombre="multiplo" nivel="1" imagen="Cero.png" xml="Multiplo.xml">Mis multiplos</materia>
 </Materias>

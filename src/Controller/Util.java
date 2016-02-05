@@ -20,21 +20,13 @@ public class Util {
     public static int BTCount=0;
     
     //Directorio de imagenes
-    public static String IMAGE_CENTENA_PATH="src/Model/Image/Centena.png";
-    public static String IMAGE_CERO_PATH="src/Model/Image/Cero.png";
-    public static String IMAGE_DECENA_PATH="src/Model/Image/Decena.png";
-    public static String IMAGE_DIVISION_PATH="src/Model/Image/Division.png";
-    public static String IMAGE_FRACCION_PATH="src/Model/Image/Fraccion.png";
-    public static String IMAGE_MULTIPLICACION_PATH="src/Model/Image/Multiplicacion.png";
-    public static String IMAGE_NUMEROS_PATH="src/Model/Image/Numeros.png";
-    public static String IMAGE_RESTA_PATH="src/Model/Image/Resta.png";
-    public static String IMAGE_SUMA_PATH="src/Model/Image/Suma.jpg";
-    public static String IMAGE_UNIDAD_PATH="src/Model/Image/Unidad.png";
-    public static String IMAGE_PIZARRA_PATH="src/Model/Image/Pizarra.jpg";
-    public static String IMAGE_TIZA_PATH="src/Model/Image/Tiza.png";
+    public static final String IMAGE_PATH="src/Model/Image/";
+    //Directorio de Archivos XML
+    public static final String ARCHIVOS_XML_PATH = "src/Model/Archivos/";
     
     //Los tags asociados a los archivos XML
     public static final String MATERIA_TAG= "Materias";
+    
     public static final String CERO_TAG= "Conociendo el cero";
     public static final String NUMEROS_TAG= "Números";
     public static final String RECONUM_TAG= "Reconociendo los números";
@@ -49,11 +41,22 @@ public class Util {
     public static final String PARIMPAR_TAG= "¿Par o Impar?";
     public static final String MULTIPLOS_TAG= "Mis multiplos";
     
+    //Rutas a sub etiquetas
+    public static final String RUTE_NUMERO_CONOCIENDO="Numero/Conociendolos";
+    public static final String RUTE_NUMERO_EJERCICIO="Numero/Ejercicios";
+    public static final String RUTE_CERO_CONOCIENDO="";
+    public static final String RUTE_CERO_EJERCICIO="";
+    
     //TAG generales para el area de práctica
     public static final String CONOCIENDO_TAG= "Conociendo";
     public static final String EJERCICIO_TAG= "Ejercicio";
     public static final String CONOCIENDOLOS_TAG= "Conociendolos";
     public static final String EJERCICIOS_TAG= "Ejercicios";
+    public static final String HIJO_XML_TAG="xml";
+    public static final String IMAGEN_TAG="imagen";
+    public static final String NIVEL_TAG="nivel";
+    public static final String TIPO_TAG="tipo";
+    public static final String PREGUNTA_TAG="pregunta";
 
     //Errores
     public static final String ERROR_XML_EMPTY_FILE = "Error loading XML file - The file is empty";

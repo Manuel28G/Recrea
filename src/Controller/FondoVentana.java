@@ -24,12 +24,12 @@ public  class FondoVentana extends javax.swing.JPanel {
          
      }
 
-      @Override
+    /*  @Override
     public void paintComponent(Graphics g){
      // Dimension tamanio=getSize();
       super.paintComponent(g);
-      Image imagenFondo=new ImageIcon(Util.IMAGE_CERO_PATH).getImage();
+      Image imagenFondo=new ImageIcon(Util.IMAGE_PATH).getImage();
       g.drawImage(imagenFondo, 0,0,getWidth(),getHeight(),null);
    
-    }
+    }*/
 }

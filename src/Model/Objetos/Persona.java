@@ -6,10 +6,19 @@
 
 package Model.Objetos;
 
+import java.util.List;
+
 /**
  *
  * @author Manuel
  */
 public class Persona {
+    
+    private String nombre;
+    private String apellido;
+    private String usuario;
+    private String contraseña;
+    private int nivel;
+    private List<Materia> materiasCursadas;
     
 }

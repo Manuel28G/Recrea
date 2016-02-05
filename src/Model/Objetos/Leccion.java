@@ -14,13 +14,9 @@ import java.util.List;
  * @author Manuel
  * @version 1.0
  */
-public class Leccion {
+public class Leccion extends General{
     
-    private String nombre;
-    private String imagenURL;
-    private int nivel;
     private List<Ejercicio> ejercicios;
-    private String descripcion;
     
     public void Leccion(){
        setNombre("");
@@ -39,37 +35,16 @@ public class Leccion {
     }
 
 //Get's
-    public String getNombre() {
-        return nombre;
-    }
-    public String getImagenURL() {
-        return imagenURL;
-    }
-    public int getNivel() {
-        return nivel;
-    }
+   
     public List<Ejercicio> getEjercicios() {
         return ejercicios;
     }
-    public String getDescripcion() {
-        return descripcion;
-    }
-
+  
 //Set's
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    public void setImagenURL(String imagenURL) {
-        this.imagenURL = imagenURL;
-    }
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
+   
     public void setEjercicios(List<Ejercicio> ejercicios) {
         this.ejercicios = ejercicios;
     }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+  
 
 }
