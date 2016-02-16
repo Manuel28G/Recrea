@@ -1,28 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
-
-<!--
+--><!--
 @Autor Manuel Goncalves
 @Version 1.0
 Este archivo contendra todas las materias del curso y sera utilizado para cargar los botones necesarios
 para todas las opciones
--->
-<Materias>
-    <cero nivel="1" imagen="Cero.png" xml="Cero.xml">Conociendo el cero</cero>
-    <numero nivel="1">Números</numero>
-    <reconum nivel="1">Reconociendo los números</reconum>
-    <cantidad nivel="1">Cantidades</cantidad>
-    <posicion nivel="1">Valor de posiciones</posicion>
-    <suma nivel="1">Sumando</suma>
-    <resta nivel="1">Restando</resta>
-    <multipicacion nivel="1">Multiplicando</multipicacion>
-    <division nivel="1">Dividiendo</division>
-    <sucesion nivel="1">Sucesiones</sucesion>
-    <propiedad nivel="1">Propiedades</propiedad>
-    <parimpar nivel="1">¿Par o Impar?</parimpar>
-    <multiplo nivel="1">Mis multiplos</multiplo>
+--><Materias>
+    <Materia Imagen="CDU.png" Nivel="1" XML="Cero.xml">Conociendo el cero</Materia>
+    <Materia Imagen="Numeros.png" Nivel="1" XML="Numeros.xml">Números</Materia>
+    <Materia Imagen="Numeros.png" Nivel="1" XML="Reconum.xml">Reconociendo los números</Materia>
+    <Materia Imagen="Cero2.png" Nivel="1" XML="Cantidad.xml">Cantidades</Materia>
+    <Materia Imagen="Cero.png" Nivel="1" XML="Posicion.xml">Valor de posiciones</Materia>
+    <Materia Imagen="Suma.jpg" Nivel="1" XML="Suma.xml">Sumando</Materia>
+    <Materia Imagen="Resta.png" Nivel="1" XML="Resta.xml">Restando</Materia>
+    <Materia Imagen="Multiplicacion2.png" Nivel="1" XML="Multiplicacion.xml">Multiplicando</Materia>
+    <Materia Imagen="Division.png" Nivel="1" XML="Division.xml">Dividiendo</Materia>
+    <Materia Imagen="Cero.png" Nivel="1" XML="Sucesion.xml">Sucesiones</Materia>
+    <Materia Imagen="Cero.png" Nivel="1" XML="Propiedad.xml">Propiedades</Materia>
+    <Materia Imagen="Cero.png" Nivel="1" XML="Parimpar.xml">¿Par o Impar?</Materia>
+    <Materia Imagen="Cero.png" Nivel="1" XML="Multiplo.xml">Mis multiplos</Materia>
+    
 </Materias>

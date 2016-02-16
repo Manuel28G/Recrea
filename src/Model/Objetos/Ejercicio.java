@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Manuel
  * @version 1.0
  */
-public class Ejercicio {
+public class Ejercicio extends EntidadGeneral {
     private String tipo;
     private String ejercicio;
     private String respuesta;

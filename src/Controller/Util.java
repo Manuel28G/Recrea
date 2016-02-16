@@ -23,9 +23,45 @@ public class Util {
     public static final String IMAGE_PATH="src/Model/Image/";
     //Directorio de Archivos XML
     public static final String ARCHIVOS_XML_PATH = "src/Model/Archivos/";
+    //Terminales de archivos
+    public static final String ARCHIVO_XML=".xml";
+    public static final String ARCHIVO_PNG=".png";
+    public static final String ARCHIVO_JPG=".jpg";
+    
     
     //Los tags asociados a los archivos XML
-    public static final String MATERIA_TAG= "Materias";
+    public static final String MATERIAS_TAG= "Materias";
+    public static final String MATERIA_CHILD= "Materia";
+    public static final String PERSONA_XML="Persona";
+    public static final String MATERIA_XML="Materias";
+    
+    //Atributos que van dentro de las etiquetas XML
+    public static final String FECHA_ATRIBUTE="Fecha";
+    public static final String HORA_ATRIBUTE="Hora";
+    public static final String NOTA_ATRIBUTE="Nota";
+    public static final String NIVEL_ATRIBUTE="Nivel";
+    public static final String XML_ATRIBUTE="XML";
+    public static final String IMAGEN_ATRIBUTE="Imagen";
+    public static final String TIPO_ATRIBUTE="Tipo";
+    public static final String PREGUNTA_ATRIBUTE="Pregunta";
+    public static final String DIA_ATRIBUTE="Dia";
+    public static final String PUNTOS_ATRIBUTE="Puntos";
+    //XML: PERSONA
+   public static final String PERSONA_ACTIVIDADES_TAG="Actividades";
+   public static final String PERSONA_ACTIVIDAD_CHILD="Actividad";
+   public static final String PERSONA_NOMBRE_TAG="Nombre";
+   public static final String PERSONA_APELLIDO_TAG="Apellido";
+   public static final String PERSONA_ID_TAG="Identificador";
+   
+      //XML: GENERALES
+    public static final String CONOCIENDOLOS_TAG= "Conociendolos";
+    public static final String EJERCICIOS_TAG= "Ejercicios";
+    public static final String EJERCICIO_TAG= "Ejercicio";
+    public static final String CONOCIENDO_CHILD= "Conociendo";
+    public static final String EJERCICIO_CHILD= "Ejercicio";
+    public static final String LECCION_TAG="Leccion";
+    
+    
     
     public static final String CERO_TAG= "Conociendo el cero";
     public static final String NUMEROS_TAG= "Números";
@@ -47,16 +83,8 @@ public class Util {
     public static final String RUTE_CERO_CONOCIENDO="";
     public static final String RUTE_CERO_EJERCICIO="";
     
-    //TAG generales para el area de práctica
-    public static final String CONOCIENDO_TAG= "Conociendo";
-    public static final String EJERCICIO_TAG= "Ejercicio";
-    public static final String CONOCIENDOLOS_TAG= "Conociendolos";
-    public static final String EJERCICIOS_TAG= "Ejercicios";
-    public static final String HIJO_XML_TAG="xml";
-    public static final String IMAGEN_TAG="imagen";
-    public static final String NIVEL_TAG="nivel";
-    public static final String TIPO_TAG="tipo";
-    public static final String PREGUNTA_TAG="pregunta";
+ 
+
 
     //Errores
     public static final String ERROR_XML_EMPTY_FILE = "Error loading XML file - The file is empty";

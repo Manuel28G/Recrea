@@ -14,7 +14,7 @@ import java.util.List;
  * @author Manuel
  * @version 1.0
  */
-public class Leccion extends General{
+public class Leccion extends EntidadGeneral{
     
     private List<Ejercicio> ejercicios;
     

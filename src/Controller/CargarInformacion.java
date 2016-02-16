@@ -9,8 +9,6 @@ package Controller;
 import Model.Objetos.Materia;
 import Model.Objetos.Ejercicio;
 import Model.Objetos.Leccion;
-import Model.Objetos.Persona;
-import Model.Objetos.Repaso;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.JDOMException;
@@ -20,21 +18,15 @@ import org.jdom2.JDOMException;
  */
 public class CargarInformacion {
    private int materiasCont;
-   private int leccionesCont;
-   private int repasosCont;
-   private int ejerciciosCont;
    private String rutaMateria;
    private List<Materia> materias;
    private List<Leccion> lecciones;
-   private List<Repaso> repasos;
    private List<Ejercicio> ejercicios;
-   private String materiaPATH;
-   private String ejercicioPATH;
    
     public CargarInformacion(String rutaArchivo){
         
         materias=new ArrayList<Materia>();
-        materiasCont=Model.AccionXML.ContarEtiquetas(rutaArchivo,"");
+        materiasCont=Model.ConsultarXML.ContarEtiquetas(rutaArchivo,"");
         rutaMateria=rutaArchivo;
         for(int i=0;i<materiasCont;i++){
             Materia materia= new Materia();
@@ -47,10 +39,10 @@ public class CargarInformacion {
         int i=0;
         List<Materia> respuesta=new ArrayList<Materia>();
         for(Materia mt:materias ){
-           mt.setNombre(Model.AccionXML.InformacionEtiqueta(rutaMateria, null, i,null).trim()); 
-           mt.setImagenURL(Model.AccionXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_TAG, i,null).trim());
-           mt.setHijoURL(Model.AccionXML.InformacionEtiqueta(rutaMateria,Util.HIJO_XML_TAG, i,null).trim());
-           mt.setNivel(Integer.parseInt(Model.AccionXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_TAG, i,null).trim()));
+           mt.setNombre(Model.ConsultarXML.InformacionEtiqueta(rutaMateria, null, i,null).trim()); 
+           mt.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_ATRIBUTE, i,null).trim());
+           mt.setHijoURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.XML_ATRIBUTE, i,null).trim());
+           mt.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_ATRIBUTE, i,null).trim()));
            mt.setAsignaturas(cargarLeccion(mt)); 
            i++;
            respuesta.add(mt);
@@ -64,13 +56,13 @@ public class CargarInformacion {
         
         int contHijo;
         String ruta=Util.ARCHIVOS_XML_PATH+mt.getHijoURL();
-        contHijo=Model.AccionXML.ContarEtiquetas(ruta,"");
+        contHijo=Model.ConsultarXML.ContarEtiquetas(ruta,"");
         lecciones=new ArrayList<Leccion>();
         for(int i=0;i<contHijo;i++ ){
             Leccion leccion=new Leccion();
-            leccion.setNombre(Model.AccionXML.InformacionEtiqueta(ruta, null, i,null).trim());
-            leccion.setImagenURL(Model.AccionXML.InformacionEtiqueta(ruta,Util.IMAGEN_TAG, i,null).trim());
-            leccion.setNivel(Integer.parseInt(Model.AccionXML.InformacionEtiqueta(ruta,Util.NIVEL_TAG, i,null).trim()));
+            leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, null, i,null).trim());
+            leccion.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.IMAGEN_ATRIBUTE, i,null).trim());
+            leccion.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.NIVEL_ATRIBUTE, i,null).trim()));
             leccion.setEjercicios(cargarEjercicio(leccion,ruta));
             lecciones.add(leccion);
         }
@@ -80,13 +72,13 @@ public class CargarInformacion {
     private List<Ejercicio> cargarEjercicio(Leccion lc,String Ruta){
         ejercicios=new ArrayList<Ejercicio>();
         try{
-        int contHijo= Model.AccionXML.ContarEtiquetas(Ruta,lc.getNombre());
+        int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,lc.getNombre());
         
         for(int i=0;i<contHijo;i++ ){
             Ejercicio ejercicio=new Ejercicio();
-            ejercicio.setEjercicio(Model.AccionXML.InformacionEtiqueta(Ruta, Util.PREGUNTA_TAG, i,lc.getNombre()).trim());
-            ejercicio.setRespuesta(Model.AccionXML.InformacionEtiqueta(Ruta,null, i,lc.getNombre()).trim());
-            ejercicio.setTipo(Model.AccionXML.InformacionEtiqueta(Ruta,Util.TIPO_TAG, i,lc.getNombre()).trim());
+            ejercicio.setEjercicio(Model.ConsultarXML.InformacionEtiqueta(Ruta, Util.PREGUNTA_ATRIBUTE, i,lc.getNombre()).trim());
+            ejercicio.setRespuesta(Model.ConsultarXML.InformacionEtiqueta(Ruta,null, i,lc.getNombre()).trim());
+            ejercicio.setTipo(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.TIPO_ATRIBUTE, i,lc.getNombre()).trim());
             ejercicios.add(ejercicio);
         }
         return ejercicios;
@@ -99,7 +91,7 @@ public class CargarInformacion {
 /*    
     public List<Repaso> cargarRepaso(Materia mt){
         List<Repaso> repasos=new ArrayList<Repaso>();
-        int contHijo=Model.AccionXML.ContarEtiquetas(Util.ARCHIVOS_XML_PATH + mt.getHijoURL());
+        int contHijo=Model.ConsultarXML.ContarEtiquetas(Util.ARCHIVOS_XML_PATH + mt.getHijoURL());
 
         String ruta;
          for(int i=0;i<contHijo;i++ ){
@@ -107,9 +99,9 @@ public class CargarInformacion {
             
             Leccion leccion=new Leccion();
             ruta=Util.ARCHIVOS_XML_PATH+mt.getHijoURL();
-            leccion.setNombre(Model.AccionXML.InformacionEtiqueta(ruta, null, rm));
-            leccion.setImagenURL(Model.AccionXML.InformacionEtiqueta(ruta,Util.IMAGEN_TAG, rm));
-            leccion.setNivel(Integer.parseInt(Model.AccionXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_TAG, i)));
+            leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, null, rm));
+            leccion.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.IMAGEN_TAG, rm));
+            leccion.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_TAG, i)));
             lecciones.add(leccion);
         }
         
@@ -120,7 +112,7 @@ public class CargarInformacion {
    public Repaso randomRepaso(Leccion lc){
        Repaso rs=new Repaso();
        int minimo=0;
-       int maximo=Model.AccionXML.ContarEtiquetas(Util.ARCHIVOS_XML_PATH + .getHijoURL());
+       int maximo=Model.ConsultarXML.ContarEtiquetas(Util.ARCHIVOS_XML_PATH + .getHijoURL());
        int rm= minimo + (int)(Math.random()*maximo); 
        
        return rs;

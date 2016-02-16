@@ -1,18 +1,17 @@
 package View;
 
+import Componentes.FrameRecrea;
+import Componentes.PanelRecrea;
+import Contrato.ContratoGeneral;
 import Controller.CargarInformacion;
+import Controller.Util;
 import Controller.WindosCreate;
-//import Model.Objetos.General;
 import Model.Objetos.Materia;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import org.jdom2.JDOMException;
 
 
@@ -22,28 +21,24 @@ import org.jdom2.JDOMException;
  *
  * @author Manuel
  */
-public class Inicio extends javax.swing.JFrame implements ActionListener{
+public class Inicio extends FrameRecrea implements ContratoGeneral{
 
-    private JPanel PN_Botones;
-    private JPanel Marco,Marco2,Marco3,Marco4;
-    private final JScrollPane SP_Materias;
+    private PanelRecrea PN_Botones;
     private List<Materia> materias;
-    private String ruta=Controller.Util.ARCHIVOS_XML_PATH+"Materias.xml";
+    private String ruta=Controller.Util.ARCHIVOS_XML_PATH+Util.MATERIAS_TAG+Util.ARCHIVO_XML;
+    private Persona usuario;
+    private Modulos Child;
     
     public Inicio() throws JDOMException {
         initComponents(); 
-        Marco=new JPanel();
-        Marco2=new JPanel();
-        Marco3=new JPanel();
-        Marco4=new JPanel();
-        this.setLayout(new BorderLayout(0,0));
         CargarInformacion info=new CargarInformacion(ruta);
         materias=info.cargarMateria();
-        WindosCreate wc=new WindosCreate(materias.size());
-        wc.WindowsHijo(this);
+        WindosCreate wc=new WindosCreate(materias.size(),this);
         PN_Botones=wc.mostrarBot(materias, PN_Botones);
-        SP_Materias = new JScrollPane(PN_Botones);
-        this.configuracion();
+        this.configuracion(PN_Botones);
+        try{
+        Model.EliminarXML.BorrarMateria("pruebaa");}
+        catch (Exception e){System.out.println("Error en crear archivo: "+e);}
     }
 
     /**
@@ -71,21 +66,6 @@ public class Inicio extends javax.swing.JFrame implements ActionListener{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void configuracion(){
-        
-        SP_Materias.setOpaque(false);
-        this.add(SP_Materias, BorderLayout.CENTER);
-        //codigo agregado para simular el marco e la pizarra
-        Marco.setBackground(new Color(102, 50, 0));
-        Marco2.setBackground(new Color(102, 50, 0));
-        Marco3.setBackground(new Color(102, 50, 0));
-        Marco4.setBackground(new Color(102, 50, 0));
-        this.add(Marco, BorderLayout.SOUTH);
-        this.add(Marco2, BorderLayout.WEST);
-        this.add(Marco3, BorderLayout.EAST);
-        this.add(Marco4, BorderLayout.NORTH);
-    
-    }
     /**
      * @param args the command line arguments
      */
@@ -129,22 +109,39 @@ public class Inicio extends javax.swing.JFrame implements ActionListener{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
+
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(this.isVisible())
+    public void actionSiguiente(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionSalir(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionOpciones(ActionEvent ae) {
+              if(this.isVisible())
         {
         System.out.println(ae.getActionCommand());
-        Modulos Child= new Modulos();
+       // Modulos Child= new Modulos();
         for(int i=0;i<materias.size();i++){
             if(ae.getActionCommand()==materias.get(i).getNombre()){
-                Child.Modulo(materias.get(i).getHijoURL(),materias.get(i));
+                usuario=new Persona();
+                Child= new Modulos(materias.get(i).getHijoURL(),materias.get(i), usuario);
                 break;
             }
         }
         Child.setVisible(true);
         this.setVisible(false);
         this.dispose();
-        }
+        } 
+    }
+
+    @Override
+    public void actionSonido(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

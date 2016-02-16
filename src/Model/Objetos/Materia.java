@@ -15,7 +15,7 @@ import java.util.List;
  * @author Manuel
  * @version 1.0
  */
-public class Materia extends General {
+public class Materia extends EntidadGeneral {
         
     private String hijoURL;//La ruta al archivo de la leccion correspondiente a la materia
     private List<Leccion> asignaturas;

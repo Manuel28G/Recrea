@@ -13,11 +13,9 @@ import java.util.List;
  *
  * @author Manuel
  */
-public class Repaso {
+public class Repaso extends EntidadGeneral{
     
-    private String imagenURL;
     private List<Ejercicio> ejercicios;
-    private String descripcion;
     
 //Constructor
     public void Repaso(){
@@ -33,25 +31,15 @@ public class Repaso {
     }
     
 //Get's    
-    public String getImagenURL() {
-        return imagenURL;
-    }
+ 
     public List<Ejercicio> getEjercicios() {
         return ejercicios;
     }
-    public String getDescripcion() {
-        return descripcion;
-    }
     //Set's
     
-    public void setImagenURL(String imagenURL) {
-        this.imagenURL = imagenURL;
-    }
+
     public void setEjercicios(List<Ejercicio> ejercicios) {
         this.ejercicios = ejercicios;
-    }
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
 }

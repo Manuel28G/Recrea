@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/S:/GitHub/Recrea/src/View/Modulos.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Numeros.xml</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Objetos/Persona.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Controller/WindosCreate.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Controller/FondoVentana.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/AgregarXML.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/CrearXML.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/EliminarXML.java</file>
             <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Cero.xml</file>
-            <file>file:/S:/GitHub/Recrea/src/View/Ejercicio.java</file>
-            <file>file:/S:/GitHub/Recrea/src/View/Practice.java</file>
+            <file>file:/S:/GitHub/Recrea/src/View/Inicio.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Controller/Util.java</file>
         </group>
     </open-files>
 </project-private>

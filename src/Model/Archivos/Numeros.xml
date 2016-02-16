@@ -8,17 +8,17 @@ Se utiliza el punto y coma (;) para hacer el split
 -->
 
     <Numeros>
-        <Conociendolos nivel="1" imagen="Cero.png" xml="Cero.xml">Conociendolos
-            <Conociendo tipo="NUMERO-NUMEROS" pregunta="DOS" >2</Conociendo><!--identificar la respuesta asociada a la muestra inicial-->
-            <Conociendo tipo="NUMERO-LETRAS" pregunta="1" >UNO</Conociendo>
+        <Conociendolos Nivel="1" Imagen="Cero.png" >Conociendolos
+            <Conociendo Tipo="NUMEROS" Pregunta="DOS" >2</Conociendo><!--identificar la respuesta asociada a la muestra inicial-->
+            <Conociendo Tipo="NUMERO-LETRAS" Pregunta="1" >UNO</Conociendo>
             <Conociendo></Conociendo>
             <Conociendo></Conociendo>
             <Conociendo></Conociendo>
         </Conociendolos>
-        <Ejercicios nivel="1" imagen="Cero.png" xml="Cero.xml"> Ejercicios
-            <Ejercicio pregunta="3+0=?" tipo="NUMERO-NUMEROS" >3</Ejercicio><!--Ejercicio de ecuacion,identificar respuesta-->
-            <Ejercicio pregunta="2+1=?" tipo="NUMERO-NUMEROS">3</Ejercicio>
-            <Ejercicio pregunta="3+?=5" tipo="NUMERO-NUMEROS">2</Ejercicio>
+        <Ejercicios Nivel="1" Imagen="Cero.png" > Ejercicios
+            <Ejercicio Pregunta="3+0=?" Tipo="NUMEROS" >3</Ejercicio><!--Ejercicio de ecuacion,identificar respuesta-->
+            <Ejercicio Pregunta="2+1=?" Tipo="NUMEROS">3</Ejercicio>
+            <Ejercicio Pregunta="3+?=5" Tipo="NUMEROS">2</Ejercicio>
             <Ejercicio></Ejercicio>
             <Ejercicio></Ejercicio>
         </Ejercicios>

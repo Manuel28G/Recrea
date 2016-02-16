@@ -6,103 +6,37 @@
 
 package View;
 
-import Controller.CargarInformacion;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
+import Componentes.FrameRecrea;
+import Componentes.PanelRecrea;
+import Contrato.ContratoGeneral;
 import Controller.WindosCreate;
-import Model.Objetos.General;
 import Model.Objetos.Leccion;
 import Model.Objetos.Materia;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JScrollPane;
-import org.jdom2.JDOMException;
 
 /**
  *
  * @author Manuel
  */
-public class Modulos extends javax.swing.JFrame {
+public class Modulos extends FrameRecrea implements ContratoGeneral {
 
-       JPanel PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
-       JScrollPane SP_Materias;
+       PanelRecrea PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
        String rutaModulo;
-       JPanel Marco=new JPanel(),Marco2=new JPanel(),Marco3=new JPanel(),Marco4=new JPanel();
-       List<Leccion> ejercicios=new ArrayList<Leccion>();
+       List<Leccion> ejercicios;
+       private Persona usuario;
        
-       public Modulos() {
-        initComponents();
-        this.setLayout(new BorderLayout(0,0));
-        }
-       public void Modulo(String ruta,Materia g){
-           
+       public Modulos(String ruta,Materia g, Persona usr){
+           initComponents();
+           usuario=usr;
            ejercicios=g.getAsignaturas();
            rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
-           WindosCreate wc=new WindosCreate(g.getAsignaturas().size());
-           wc.WindowsHijo(this);
+           WindosCreate wc=new WindosCreate(g.getAsignaturas().size(),this);
            PN_Botones=wc.mostrarBotEj(g.getAsignaturas(), PN_Botones);
-          // PN_Botones.setBorder(BorderFactory.createEmptyBorder(10, 20, 10,20));//(arriba,izquierda,abajo,derecha) Margenes del JPanel
-           SP_Materias = new JScrollPane(PN_Botones);
-           this.add(SP_Materias, BorderLayout.CENTER);
-           
-           // this.add(PN_Botones, BorderLayout.CENTER);
+           this.configuracion(PN_Botones);
        }
        
-       
-        public void configuracion(){
-        
-        SP_Materias.setOpaque(false);
-        this.add(SP_Materias, BorderLayout.CENTER);
-        
-        //codigo agregado para simular el marco e la pizarra
-        Marco.setBackground(new Color(102, 50, 0));
-        Marco2.setBackground(new Color(102, 50, 0));
-        Marco3.setBackground(new Color(102, 50, 0));
-        Marco4.setBackground(new Color(102, 50, 0));
-        this.add(Marco, BorderLayout.SOUTH);
-        this.add(Marco2, BorderLayout.WEST);
-        this.add(Marco3, BorderLayout.EAST);
-        this.add(Marco4, BorderLayout.NORTH);
-    
-    }
-       
-       public void actionPerformed(ActionEvent ae) throws JDOMException 
-       {
-        if(ae.getActionCommand()=="Regresar"){
-
-        //poner gif de cargando
-            Inicio init=new Inicio();
-            init.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-
-        }
-        for (int i=0;i<ejercicios.size();i++){
-          System.out.println("1: "+ae.getActionCommand());
-          System.out.println("2: "+ejercicios.get(i).getNombre());
-          if( ae.getActionCommand()==ejercicios.get(i).getNombre()){
-            System.out.println("Entro: "+ejercicios.get(i).getNombre());
-            Ejercicio Child=new Ejercicio();
-            Child.setVisible(true);
-            this.setVisible(false);
-            this.dispose();
-          }
-        }
-      
-        }
- 
-
  
 
     /**
@@ -161,7 +95,7 @@ public class Modulos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modulos().setVisible(true);
+                new Modulos("",null,null).setVisible(true);
             }
         });
     }
@@ -169,4 +103,42 @@ public class Modulos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionSiguiente(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void actionSalir(ActionEvent e) {
+      try{
+            //poner gif de cargando
+                Inicio init=new Inicio();
+                init.setVisible(true);
+                this.setVisible(false);
+                this.dispose();
+
+            }
+        catch (Exception ex){
+
+        }
+    }
+
+    @Override
+    public void actionOpciones(ActionEvent ae) {
+    
+        for (int i=0;i<ejercicios.size();i++){
+          if( ae.getActionCommand()==ejercicios.get(i).getNombre()){
+            Practica Child=new Practica(ejercicios.get(i),usuario,this);
+            Child.setVisible(true);
+            this.setVisible(false);
+            break;
+          }
+        } 
+     }
+
+    @Override
+    public void actionSonido(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
