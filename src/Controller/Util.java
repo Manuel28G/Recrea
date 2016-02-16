@@ -23,6 +23,11 @@ public class Util {
     public static final String IMAGE_PATH="src/Model/Image/";
     //Directorio de Archivos XML
     public static final String ARCHIVOS_XML_PATH = "src/Model/Archivos/";
+    //Directorio donde se guardaran los archivos de recrea
+    public static final String DIRECTORIO_RECREA="/Recrea Matemática";
+    
+    //Separador de directorio
+    public static final String SEPARADOR_DIRECTORIO="/";
     //Terminales de archivos
     public static final String ARCHIVO_XML=".xml";
     public static final String ARCHIVO_PNG=".png";

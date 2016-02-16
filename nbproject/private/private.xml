@@ -4,10 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/S:/GitHub/Recrea/src/Model/AgregarXML.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Usuario.xml</file>
             <file>file:/S:/GitHub/Recrea/src/Model/CrearXML.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/EliminarXML.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Cero.xml</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/CargarXMLDialog.java</file>
             <file>file:/S:/GitHub/Recrea/src/View/Inicio.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/FrameRecrea.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/GuardarXMLDialog.java</file>
             <file>file:/S:/GitHub/Recrea/src/Controller/Util.java</file>
         </group>
     </open-files>
