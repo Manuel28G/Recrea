@@ -16,6 +16,8 @@ $RECYCLE.BIN/
 
 #Netbeans
 build/
+/build/
+build\
 
 # Windows shortcuts
 *.lnk
