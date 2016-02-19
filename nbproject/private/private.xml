@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/S:/GitHub/Recrea/src/Model/AgregarXML.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Usuario.xml</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/CrearXML.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Componentes/CargarXMLDialog.java</file>
-            <file>file:/S:/GitHub/Recrea/src/View/Inicio.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Componentes/FrameRecrea.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Componentes/GuardarXMLDialog.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Controller/Util.java</file>
+            <file>file:/S:/GitHub/Recrea/src/View/AgregarEjercicio.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Materias.xml</file>
+            <file>file:/S:/GitHub/Recrea/src/View/AgregarLeccion.java</file>
+            <file>file:/S:/GitHub/Recrea/src/View/AgregarMateria.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Cero.xml</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/ComboBoxRecrea.java</file>
         </group>
     </open-files>
 </project-private>
