@@ -37,6 +37,10 @@ public class CargarXMLDialog extends javax.swing.JFileChooser {
     String archivoNombre;
     String strDestino;
     
+    public CargarXMLDialog(){
+        
+    }
+    
     public CargarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
        this.setFileFilter(filtro);

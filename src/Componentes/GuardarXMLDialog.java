@@ -41,6 +41,10 @@ public class GuardarXMLDialog extends javax.swing.JFileChooser {
     String archivoNombre;
     String strDestino;
     
+    public GuardarXMLDialog(){
+        
+    }
+    
     /**
      * 
      * @param cG 

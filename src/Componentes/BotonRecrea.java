@@ -19,6 +19,10 @@ import javax.swing.JButton;
  */
 public class BotonRecrea extends JButton {
     
+    
+    public BotonRecrea(){
+        
+    }
     /**
      * Constructor de la clase BotonOpciones
      * @param tipo "Opciones" "Siguiente" "Regresar" "Sonido"

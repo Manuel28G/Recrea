@@ -15,35 +15,37 @@ import javax.swing.JLabel;
  */
 public class LabelRecrea extends JLabel {
     
+    private String tamañoTxt="INTERMEDIO";
+    private String colorTxt="BLANCO";
+    private int size=0;
+    private String tipografia="Tahoma";
+    
     public LabelRecrea(String msj,String tmño, String clr){
         Texto(msj, tmño, clr);
     }
     
     public LabelRecrea(){
-        Texto("","GRANDE","BLANCO");
+        Texto("",tamañoTxt,colorTxt);
     }
     
      public LabelRecrea(String msj){
-        Texto(msj,"GRANDE","BLANCO");
+        Texto(msj,tamañoTxt,colorTxt);
     }
-    /**
-     * Se creará el texto de acuerdo a cierta configuracion
-     * @param mensaje Mensaje añadido al Jlabel
-     * @param tamaño "GRANDE,MEDIADO,PEQUEÑO"
-     * @param color "NEGRO,ROJO,AZUL,VERDE"
-     * @return 
-     */
-     private void Texto(String mensaje,String tamaño,String color){
-         int size=0;
-         
-         switch(tamaño){
+     public void setTamaño(String tamaño){
+          switch(tamaño){
              case "GRANDE":
                  size=24; break;
+             case "INTERMEDIO":
+                 size=18; break;
              case "MEDIANO": 
                  size=12;break;
              case "PEQUEÑO": 
                  size=6;break;
          }
+     }
+     public void setColor(String color){
+          
+        
          switch(color){
              case "NEGRO":
          this.setForeground(Color.BLACK); break;
@@ -55,8 +57,19 @@ public class LabelRecrea extends JLabel {
          this.setForeground(Color.WHITE);break;
             
          }
-         
-         this.setFont(new java.awt.Font("Tahoma", 0, size)); 
+     }
+     
+    /**
+     * Se creará el texto de acuerdo a cierta configuracion
+     * @param mensaje Mensaje añadido al Jlabel
+     * @param tamaño "GRANDE,MEDIADO,PEQUEÑO"
+     * @param color "NEGRO,ROJO,AZUL,VERDE"
+     * @return 
+     */
+     private void Texto(String mensaje,String tamaño,String color){
+         setTamaño(tamaño);
+         setColor(color);
+         this.setFont(new java.awt.Font(tipografia, 0, size)); 
          this.setText(mensaje);
      }
      

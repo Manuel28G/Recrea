@@ -16,5 +16,8 @@ public class TextBoxRecrea extends JTextField {
     public TextBoxRecrea(String str){
         super.setText(str);
     }
+    public TextBoxRecrea(){
+        
+    }
  
 }

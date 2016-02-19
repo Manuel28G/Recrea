@@ -5,15 +5,14 @@
  */
 
 package Componentes;
-import javax.swing.JTextField;
-
+import javax.swing.JComboBox;
 /**
  *
  * @author Manuel Goncalves L.
  */
-public class NumberBoxRecrea extends  JTextField{
+public class ComboBoxRecrea extends JComboBox {
     
-    public NumberBoxRecrea(){
+    public ComboBoxRecrea(){
         
     }
 }
