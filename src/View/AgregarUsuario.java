@@ -8,7 +8,6 @@ package View;
 
 import Componentes.PanelRecrea;
 import Componentes.TextBoxRecrea;
-import java.awt.Color;
 import javax.swing.JTextField;
 
 /**
@@ -27,9 +26,7 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
         initComponents();
         this.add(panelP);
         this.configuracion(panelP);
-        TF_Nombre= new JTextField("HOLA");
-        TF_Nombre.replaceSelection("Hisufb");
-        TF_Nombre.setText("HOLA2");
+        
     }
 
     /**
@@ -41,42 +38,33 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TF_Nombre = new javax.swing.JTextField();
-        TF_Apellido = new javax.swing.JTextField();
-        LB_Bienvenido1 = new javax.swing.JLabel();
-        LB_Bienvenido2 = new javax.swing.JLabel();
-        LB_Bienvenido3 = new javax.swing.JLabel();
-        LB_Nombre = new javax.swing.JLabel();
-        LB_Apellido = new javax.swing.JLabel();
-        BT_Comenzar = new javax.swing.JButton();
+        numberBoxRecrea1 = new Componentes.NumberBoxRecrea();
+        LB_Bienvenida1 = new Componentes.LabelRecrea();
+        LB_Bienvenida2 = new Componentes.LabelRecrea();
+        LB_Bienvenida3 = new Componentes.LabelRecrea();
+        LB_Nombre = new Componentes.LabelRecrea();
+        LB_Apellido = new Componentes.LabelRecrea();
+        TB_Nombre = new Componentes.TextBoxRecrea();
+        TB_Apellido = new Componentes.TextBoxRecrea();
+        BT_Comenzar = new Componentes.BotonRecrea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TF_Nombre.setToolTipText("jbhbhbj");
+        LB_Bienvenida1.setText("Bienvenido a Recrea el lugar donde");
 
-        TF_Apellido.setToolTipText("jnjnj");
+        LB_Bienvenida2.setText("tu y yo practicaremos matemáticas");
 
-        LB_Bienvenido1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LB_Bienvenido1.setForeground(new java.awt.Color(255, 255, 255));
-        LB_Bienvenido1.setText("Bienvenido a Recrea el lugar donde");
+        LB_Bienvenida3.setText("¡Empezemos!");
 
-        LB_Bienvenido2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LB_Bienvenido2.setForeground(new java.awt.Color(255, 255, 255));
-        LB_Bienvenido2.setText("tu y yo practicaremos matemáticas");
-
-        LB_Bienvenido3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LB_Bienvenido3.setForeground(new java.awt.Color(255, 255, 255));
-        LB_Bienvenido3.setText("¡Empezemos!");
-
-        LB_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LB_Nombre.setForeground(new java.awt.Color(255, 255, 255));
-        LB_Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LB_Nombre.setText("¿Como te llamas?");
 
-        LB_Apellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LB_Apellido.setForeground(new java.awt.Color(255, 255, 255));
-        LB_Apellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LB_Apellido.setText("¿Cual es tu apellido?");
+
+        TB_Apellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TB_ApellidoActionPerformed(evt);
+            }
+        });
 
         BT_Comenzar.setText("Comenzar");
 
@@ -85,53 +73,58 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LB_Bienvenido1)
-                            .addComponent(LB_Bienvenido2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TF_Nombre)
-                                        .addComponent(TF_Apellido)
-                                        .addComponent(LB_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(LB_Bienvenido3)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(LB_Bienvenida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LB_Bienvenida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 317, Short.MAX_VALUE))))
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LB_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TB_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(LB_Bienvenida3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(LB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(LB_Bienvenido1)
+                .addGap(21, 21, 21)
+                .addComponent(LB_Bienvenida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LB_Bienvenido2)
-                .addGap(18, 18, 18)
-                .addComponent(LB_Bienvenido3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LB_Nombre)
-                .addGap(9, 9, 9)
-                .addComponent(TF_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(LB_Apellido)
+                .addComponent(LB_Bienvenida2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(LB_Bienvenida3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TF_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BT_Comenzar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(46, 46, 46))
+                .addComponent(LB_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TB_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TB_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TB_ApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TB_ApellidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,13 +162,14 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BT_Comenzar;
-    private javax.swing.JLabel LB_Apellido;
-    private javax.swing.JLabel LB_Bienvenido1;
-    private javax.swing.JLabel LB_Bienvenido2;
-    private javax.swing.JLabel LB_Bienvenido3;
-    private javax.swing.JLabel LB_Nombre;
-    private javax.swing.JTextField TF_Apellido;
-    private javax.swing.JTextField TF_Nombre;
+    private Componentes.BotonRecrea BT_Comenzar;
+    private Componentes.LabelRecrea LB_Apellido;
+    private Componentes.LabelRecrea LB_Bienvenida1;
+    private Componentes.LabelRecrea LB_Bienvenida2;
+    private Componentes.LabelRecrea LB_Bienvenida3;
+    private Componentes.LabelRecrea LB_Nombre;
+    private Componentes.TextBoxRecrea TB_Apellido;
+    private Componentes.TextBoxRecrea TB_Nombre;
+    private Componentes.NumberBoxRecrea numberBoxRecrea1;
     // End of variables declaration//GEN-END:variables
 }
