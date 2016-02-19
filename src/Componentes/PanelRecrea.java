@@ -21,7 +21,9 @@ public class PanelRecrea extends JPanel {
     
 
   
-    
+    public PanelRecrea(){
+        
+    }
    //JPanel PN_Botones= new JPanel(new GridLayout(10, 3,10,10));
     public PanelRecrea(GridLayout gL){
       this.setLayout(gL);
