@@ -8,6 +8,7 @@ package View;
 
 import Componentes.PanelRecrea;
 import Componentes.TextBoxRecrea;
+import Controller.ControllerCrear;
 import javax.swing.JTextField;
 
 /**
@@ -60,13 +61,12 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
 
         LB_Apellido.setText("¿Cual es tu apellido?");
 
-        TB_Apellido.addActionListener(new java.awt.event.ActionListener() {
+        BT_Comenzar.setText("Comenzar");
+        BT_Comenzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TB_ApellidoActionPerformed(evt);
+                BT_ComenzarActionPerformed(evt);
             }
         });
-
-        BT_Comenzar.setText("Comenzar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,10 +91,8 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(LB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BT_Comenzar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(277, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,9 +120,18 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TB_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TB_ApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TB_ApellidoActionPerformed
+    private void BT_ComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ComenzarActionPerformed
+      try{
+      ControllerCrear.CrearUsuario(TB_Nombre.getText(), TB_Apellido.getText());
+      Inicio ini= new Inicio();
+      this.setVisible(false);
+      this.dispose();
+      ini.setVisible(true);
+      }
+      catch(Exception ex){
+          
+      }
+    }//GEN-LAST:event_BT_ComenzarActionPerformed
 
     /**
      * @param args the command line arguments

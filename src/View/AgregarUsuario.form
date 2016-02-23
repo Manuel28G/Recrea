@@ -52,11 +52,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="LB_Apellido" max="32767" attributes="0"/>
                           <Component id="TB_Apellido" max="32767" attributes="0"/>
+                          <Component id="BT_Comenzar" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="BT_Comenzar" min="-2" pref="177" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="277" max="32767" attributes="0"/>
@@ -116,14 +113,14 @@
     <Component class="Componentes.TextBoxRecrea" name="TB_Nombre">
     </Component>
     <Component class="Componentes.TextBoxRecrea" name="TB_Apellido">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TB_ApellidoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="Componentes.BotonRecrea" name="BT_Comenzar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Comenzar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_ComenzarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
