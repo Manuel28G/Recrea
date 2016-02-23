@@ -19,6 +19,21 @@ public class Util {
     public static int BTSizeH=150;
     public static int BTCount=0;
     
+    //Archivo de configuración
+    public static final String CONFIGURACION_XML="Configuracion.xml";
+    public static final String CONFIGURACION_TAG="Configuracion";
+    public static final String CONFIGURACION_TIPO_EJERCICIO="EjercicioTipo";
+    
+    public static final String COMBOBOX_SELECCIONAR="-Seleccionar-";
+    public static final String COMBOBOX_SELECCIONAR_MATERIA="-Seleccionar Materia-";
+    public static final String COMBOBOX_SELECCIONAR_LECCION="-Seleccionar Leccion-";
+    public static final String COMBOBOX_SELECCIONAR_TIPO="-Tipo de ejercicio-";
+    public static final String BOTON_TIPO_OPCION="Opciones";
+    public static final String BOTON_TIPO_SALIR="Regresar";
+    public static final String BOTON_TIPO_SEGUIR="Seguiente";
+    public static final String BOTON_TIPO_SONIDO="Sonido";
+    
+    public static final String NULL_TAG="null";
     //Directorio de imagenes
     public static final String IMAGE_PATH="src/Model/Image/";
     //Directorio de Archivos XML
@@ -35,10 +50,11 @@ public class Util {
     
     
     //Los tags asociados a los archivos XML
+    public static final String RUTA_MATERIA_XML="src/Model/Archivos/Materias.xml" ;
     public static final String MATERIAS_TAG= "Materias";
     public static final String MATERIA_CHILD= "Materia";
     public static final String PERSONA_XML="Persona";
-    public static final String MATERIA_XML="Materias";
+    public static final String MATERIA_XML="Materias";//poner Materias.xml
     
     //Atributos que van dentro de las etiquetas XML
     public static final String FECHA_ATRIBUTE="Fecha";
