@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!--
+    Botones R:Numeros : saldran botones con solo numeros para la respuesta
+    Botones R:Letras  : saldran solo letras ("Uno") para la respuesta
+    Verdero-Falso     : saldran dos botones para denotar si es V ó F la afirmación
+    Escribir Número   : saldra un TextBox Recrea para completar la ecuación
+    Escribir Letras   : saldrá un NúmberBox Recrea para completar la ecuación-->
+
+<Configuracion>
+    <EjercicioTipo>
+        <Tipo>Verdadero-Falso</Tipo>
+        <Tipo>Escribir Letras</Tipo>
+        <Tipo>Escribir Número</Tipo>
+        <Tipo>Botones R:Número</Tipo>
+        <Tipo>Botones R:Letras</Tipo>
+    </EjercicioTipo>
+</Configuracion>
