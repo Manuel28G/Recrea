@@ -11,6 +11,7 @@ import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,7 +31,7 @@ import org.xml.sax.SAXException;
  *
  * @author Manuel Goncalves L.
  */
-public class GuardarXMLDialog extends javax.swing.JFileChooser {
+public class ExportarXMLDialog extends javax.swing.JFileChooser {
     int seleccion;
     File DirDestino;// directorio donde se copiaran los archivos 
     File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
@@ -41,17 +42,21 @@ public class GuardarXMLDialog extends javax.swing.JFileChooser {
     String archivoNombre;
     String strDestino;
     
-    public GuardarXMLDialog(){
+    public ExportarXMLDialog(){
         
+       this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
+       this.setFileFilter(filtro);
+       seleccion = this.showSaveDialog(new JFrame());//puede ser new JFrame()
     }
     
     /**
      * 
      * @param cG 
      */
-   public GuardarXMLDialog(Component cG){
+   public ExportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
        this.setFileFilter(filtro);
+       this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(cG);//puede ser new JFrame()
    }
    

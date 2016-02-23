@@ -7,6 +7,8 @@
 package Componentes;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -38,7 +40,13 @@ public class FrameRecrea extends JFrame {
         this.add(Marco, BorderLayout.SOUTH);
         this.add(Marco2, BorderLayout.WEST);
         this.add(Marco3, BorderLayout.EAST);
-        this.add(Marco4, BorderLayout.NORTH);
+        this.add(Marco4, BorderLayout.NORTH);    
+
+        this.setResizable(false);
     
     }
+     public void fullScreen(){
+        GraphicsDevice grafica=GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        grafica.setFullScreenWindow(this); 
+     }
 }

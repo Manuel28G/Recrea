@@ -14,10 +14,11 @@ import javax.swing.JTextField;
 public class TextBoxRecrea extends JTextField {
     
     public TextBoxRecrea(String str){
+        super();
         super.setText(str);
     }
     public TextBoxRecrea(){
-        
+        super();
     }
  
 }

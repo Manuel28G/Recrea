@@ -10,6 +10,7 @@ import Controller.Util;
 import java.awt.Component;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,7 +26,7 @@ import org.w3c.dom.Document;
  *
  * @author Manuel Goncalves L.
  */
-public class CargarXMLDialog extends javax.swing.JFileChooser {
+public class ImportarXMLDialog extends javax.swing.JFileChooser {
     
     int seleccion;
     File DirDestino;// directorio donde se copiaran los archivos 
@@ -37,12 +38,16 @@ public class CargarXMLDialog extends javax.swing.JFileChooser {
     String archivoNombre;
     String strDestino;
     
-    public CargarXMLDialog(){
+    public ImportarXMLDialog(){
         
+       this.setFileSelectionMode( JFileChooser.FILES_ONLY);
+       this.setFileFilter(filtro);
+       seleccion = this.showOpenDialog(new JFrame());
     }
     
-    public CargarXMLDialog(Component cG){
+    public ImportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
+       this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        this.setFileFilter(filtro);
        seleccion = this.showOpenDialog(cG);
     }

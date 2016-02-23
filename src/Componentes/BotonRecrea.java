@@ -6,7 +6,7 @@
 
 package Componentes;
 
-import Contrato.ContratoGeneral;
+import Contrato.ContratoBotones;
 import Controller.Util;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
@@ -21,15 +21,15 @@ public class BotonRecrea extends JButton {
     
     
     public BotonRecrea(){
-        
+        super();
     }
     /**
      * Constructor de la clase BotonOpciones
      * @param tipo "Opciones" "Siguiente" "Regresar" "Sonido"
      * @param actGen Interface del Form que se quiere agregar el actionListener
      */
-    public BotonRecrea(String tipo,ContratoGeneral actGen){
-        
+    public BotonRecrea(String tipo,ContratoBotones actGen){
+        super();
         TipoDeBoton(tipo,actGen);
         
         }
@@ -60,19 +60,19 @@ public class BotonRecrea extends JButton {
      * @param tipo "Opciones" "Siguiente" "Regresar" "Sonido"
      * @param actGen Interface del Form que se quiere agregar el actionListener
      */
-    private void TipoDeBoton(String tipo,ContratoGeneral actGen){
+    private void TipoDeBoton(String tipo,ContratoBotones actGen){
         switch(tipo)
         {
-            case "Opciones":
+            case Util.BOTON_TIPO_OPCION:
                 this.addActionListener(ActionsListener.ActionOpciones(actGen));
                 break;
-            case "Siguiente":
+            case Util.BOTON_TIPO_SEGUIR:
                 this.addActionListener(ActionsListener.ActionSiguiente(actGen));
                 break;
-            case "Regresar": 
+            case Util.BOTON_TIPO_SALIR: 
                 this.addActionListener(ActionsListener.ActionSalir(actGen));
                 break;
-            case "Sonido":
+            case Util.BOTON_TIPO_SONIDO:
                 this.addActionListener(ActionsListener.ActionSonido(actGen));
                 break;
         }

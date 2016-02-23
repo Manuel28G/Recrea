@@ -25,6 +25,7 @@ public class LabelRecrea extends JLabel {
     }
     
     public LabelRecrea(){
+        super();
         Texto("",tamañoTxt,colorTxt);
     }
     
