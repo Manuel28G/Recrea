@@ -9,6 +9,7 @@ package Controller;
 import Componentes.BotonRecrea;
 import Componentes.LabelRecrea;
 import Componentes.PanelRecrea;
+import Contrato.ContratoBotones;
 import Model.Objetos.Leccion;
 import Model.Objetos.Materia;
 import Contrato.ContratoGeneral;
@@ -34,10 +35,10 @@ public class WindosCreate extends JPanel {
     private String LetrasColor;
     private PanelRecrea PN_Botones ;
     private BotonRecrea boton ;
-    private ContratoGeneral ctoGen;
+    private ContratoBotones ctoGen;
 
 
-    public WindosCreate(int MateriasCont,ContratoGeneral ctoGeneral){
+    public WindosCreate(int MateriasCont,ContratoBotones ctoGeneral){
         ctoGen=ctoGeneral;
         BT_Botones = new JButton[MateriasCont];
         LB_Materias=new JLabel[MateriasCont];
