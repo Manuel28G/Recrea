@@ -13,13 +13,13 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import Componentes.ActionsListener;
 import Componentes.BotonRecrea;
 import Componentes.LabelRecrea;
 import Componentes.PanelRecrea;
+import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 
 /**
@@ -42,11 +42,11 @@ public class WindowsEjercicio {
     private BotonRecrea salir;
     
     private GridBagConstraints GridBC ;
-    private ContratoGeneral ctoEjercicio;
+    private ContratoBotones ctoEjercicio;
     
 
     
-    public  WindowsEjercicio(ContratoGeneral ctoGen){
+    public  WindowsEjercicio(ContratoBotones ctoGen){
         ctoEjercicio=ctoGen;
         
         this.salir = new BotonRecrea("Regresar",ctoEjercicio);
