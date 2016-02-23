@@ -2,8 +2,9 @@ package View;
 
 import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
+import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
-import Controller.CargarInformacion;
+import Controller.ControllerConsultar;
 import Controller.Util;
 import Controller.WindosCreate;
 import Model.Objetos.Materia;
@@ -21,7 +22,7 @@ import org.jdom2.JDOMException;
  *
  * @author Manuel
  */
-public class Inicio extends FrameRecrea implements ContratoGeneral{
+public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBotones{
 
     private PanelRecrea PN_Botones;
     private List<Materia> materias;
@@ -30,15 +31,15 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
     private Modulos Child;
     
     public Inicio() throws JDOMException {
+   
         initComponents(); 
-        CargarInformacion info=new CargarInformacion(ruta);
+        ControllerConsultar info=new ControllerConsultar(ruta);
         materias=info.cargarMateria();
         WindosCreate wc=new WindosCreate(materias.size(),this);
         PN_Botones=wc.mostrarBot(materias, PN_Botones);
         this.configuracion(PN_Botones);
-        try{
-        Model.EliminarXML.BorrarMateria("pruebaa");}
-        catch (Exception e){System.out.println("Error en crear archivo: "+e);}
+        this.fullScreen();
+        MB_Recrea.setContrato(this); //para aseignar los ActionListener
     }
 
     /**
@@ -50,7 +51,19 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MB_Recrea = new Componentes.MenuBarRecrea(this);
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu3.setText("File");
+        MB_Recrea.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        MB_Recrea.add(jMenu4);
+
+        setJMenuBar(MB_Recrea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,7 +73,7 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
         pack();
@@ -97,7 +110,11 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Inicio().setVisible(true);
+                   if(Controller.ControllerCrear.consultarUsuario())
+                       new Inicio().setVisible(true);
+                else{
+                       new AgregarUsuario().setVisible(true);
+                   }
                 } catch (JDOMException ex) {
                     Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -107,21 +124,24 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Componentes.MenuBarRecrea MB_Recrea;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     // End of variables declaration//GEN-END:variables
 
 
     @Override
-    public void actionSiguiente(ActionEvent e) {
+    public void ActionSiguiente(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void actionSalir(ActionEvent e) {
+    public void ActionSalir(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void actionOpciones(ActionEvent ae) {
+    public void ActionOpciones(ActionEvent ae) {
               if(this.isVisible())
         {
         System.out.println(ae.getActionCommand());
@@ -140,8 +160,19 @@ public class Inicio extends FrameRecrea implements ContratoGeneral{
     }
 
     @Override
-    public void actionSonido(ActionEvent e) {
+    public void ActionSonido(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void SetEnable(boolean bol){
+       this.SetEnable(bol);
+    }
+
+    @Override
+    public void Reaload() {
+    this.paintAll(this.getGraphics());  
+    this.revalidate();
+   }
 }
 
