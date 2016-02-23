@@ -12,9 +12,6 @@ import java.awt.event.ActionEvent;
  * @author Manuel
  */
 public interface ContratoGeneral {
-    
-    public void actionSiguiente(ActionEvent e);
-    public void actionSalir(ActionEvent e);
-    public void actionOpciones(ActionEvent e);
-    public void actionSonido(ActionEvent e);
+    public void SetEnable(boolean bol);
+    public void Reaload();
 }
