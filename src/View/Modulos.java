@@ -8,6 +8,7 @@ package View;
 
 import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
+import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Controller.WindosCreate;
 import Model.Objetos.Leccion;
@@ -20,7 +21,7 @@ import java.util.List;
  *
  * @author Manuel
  */
-public class Modulos extends FrameRecrea implements ContratoGeneral {
+public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBotones {
 
        PanelRecrea PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
        String rutaModulo;
@@ -35,6 +36,9 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
            WindosCreate wc=new WindosCreate(g.getAsignaturas().size(),this);
            PN_Botones=wc.mostrarBotEj(g.getAsignaturas(), PN_Botones);
            this.configuracion(PN_Botones);
+           this.fullScreen();
+           MB_Recrea.setContrato(this);
+           
        }
        
  
@@ -48,7 +52,19 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MB_Recrea = new Componentes.MenuBarRecrea();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("File");
+        MB_Recrea.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        MB_Recrea.add(jMenu2);
+
+        setJMenuBar(MB_Recrea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +74,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,15 +118,18 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Componentes.MenuBarRecrea MB_Recrea;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void actionSiguiente(ActionEvent e) {
+    public void ActionSiguiente(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void actionSalir(ActionEvent e) {
+    public void ActionSalir(ActionEvent e) {
       try{
             //poner gif de cargando
                 Inicio init=new Inicio();
@@ -120,12 +139,12 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
 
             }
         catch (Exception ex){
-
+         System.out.println("Error en salir Modulos: "+e);
         }
     }
 
     @Override
-    public void actionOpciones(ActionEvent ae) {
+    public void ActionOpciones(ActionEvent ae) {
     
         for (int i=0;i<ejercicios.size();i++){
           if( ae.getActionCommand()==ejercicios.get(i).getNombre()){
@@ -138,7 +157,17 @@ public class Modulos extends FrameRecrea implements ContratoGeneral {
      }
 
     @Override
-    public void actionSonido(ActionEvent e) {
+    public void ActionSonido(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void SetEnable(boolean bol){
+       this.SetEnable(bol);
+    }
+
+    @Override
+    public void Reaload() {
+     this.paintAll(this.getGraphics());  
     }
 }
