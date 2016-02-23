@@ -2,7 +2,10 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+      <Color id="Cursor Por defecto"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -26,13 +29,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="35" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LB_Titulo1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="LB_Titulo2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="31" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="LB_Titulo1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LB_Titulo2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="BT_Cancelar" min="-2" pref="76" max="-2" attributes="0"/>
@@ -106,16 +104,25 @@
     <Component class="Componentes.NumberBoxRecrea" name="TB_Nivel">
     </Component>
     <Component class="Componentes.TextBoxRecrea" name="TB_CargarImagen">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="Componentes.BotonRecrea" name="BT_Crear">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this)"/>
+      </AuxValues>
     </Component>
     <Component class="Componentes.BotonRecrea" name="BT_Cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this)"/>
+      </AuxValues>
     </Component>
     <Component class="Componentes.LabelRecrea" name="LB_Nombre">
       <Properties>
@@ -131,6 +138,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cargar Imagen"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_OPCION,this)"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

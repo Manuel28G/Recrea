@@ -6,20 +6,37 @@
 
 package View;
 
+import Contrato.ContratoGeneral;
+import Controller.Util;
+import java.awt.event.ActionEvent;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Manuel Goncalves L.
  */
-public class AgregarMateria extends Componentes.FrameRecrea {
-    Componentes.PanelRecrea pnRecrea;
+public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.ContratoBotones {
+    private Componentes.PanelRecrea pnRecrea;
+    private Componentes.ImportarImagenDialog imgDialog;
+    private ContratoGeneral ctoGeneral;
     /**
      * Creates new form AgregarMateria
      */
-    public AgregarMateria() {
+     public AgregarMateria() {
         pnRecrea=new Componentes.PanelRecrea();
         initComponents();
         this.add(pnRecrea);
         this.configuracion(pnRecrea);
+        this.add(new AgregarLeccion().getLayeredPane());
+    }
+     
+    public AgregarMateria(ContratoGeneral ctoGen) {
+        ctoGeneral=ctoGen;
+        pnRecrea=new Componentes.PanelRecrea();
+        initComponents();
+        this.add(pnRecrea);
+        this.configuracion(pnRecrea);
+        //ctoGeneral.SetEnable(false);
     }
 
     /**
@@ -36,17 +53,20 @@ public class AgregarMateria extends Componentes.FrameRecrea {
         TB_Nombre = new Componentes.TextBoxRecrea();
         TB_Nivel = new Componentes.NumberBoxRecrea();
         TB_CargarImagen = new Componentes.TextBoxRecrea();
-        BT_Crear = new Componentes.BotonRecrea();
-        BT_Cancelar = new Componentes.BotonRecrea();
+        BT_Crear = new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this);
+        BT_Cancelar = new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this);
         LB_Nombre = new Componentes.LabelRecrea();
         LB_Nivel = new Componentes.LabelRecrea();
-        BT_CargarImagen = new Componentes.BotonRecrea();
+        BT_CargarImagen = new Componentes.BotonRecrea(Util.BOTON_TIPO_OPCION,this);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         LB_Titulo1.setText("A continuación se presentaran los campos");
 
         LB_Titulo2.setText("para la creación de una nueva materia");
+
+        TB_CargarImagen.setEnabled(false);
 
         BT_Crear.setText("Crear");
 
@@ -65,11 +85,8 @@ public class AgregarMateria extends Componentes.FrameRecrea {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LB_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LB_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LB_Titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LB_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,4 +180,39 @@ public class AgregarMateria extends Componentes.FrameRecrea {
     private Componentes.NumberBoxRecrea TB_Nivel;
     private Componentes.TextBoxRecrea TB_Nombre;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ActionSiguiente(ActionEvent e) {
+     Controller.ControllerAgregar ctAgregar= new Controller.ControllerAgregar();
+     ctAgregar.AgregarMateria(imgDialog.getSelectedFile().getName(),
+                              TB_Nivel.getText(),TB_Nombre.getText());
+     imgDialog.Cargar();
+     ctoGeneral.Reaload();
+     this.dispose();
+     
+    }
+
+    @Override
+    public void ActionSalir(ActionEvent e) {
+    this.dispose();
+    }
+
+    @Override
+    public void ActionOpciones(ActionEvent e) {
+      imgDialog=new Componentes.ImportarImagenDialog();
+      if(imgDialog.getStatus()==JFileChooser.APPROVE_OPTION)
+      {
+        TB_CargarImagen.setText(imgDialog.getSelectedFile().toString());
+        //para mostrar la ruta entera al dejar el cursor sobre el componente
+        this.TB_CargarImagen.setToolTipText(imgDialog.getSelectedFile().toString());
+      }
+      
+    }
+
+    @Override
+    public void ActionSonido(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }
