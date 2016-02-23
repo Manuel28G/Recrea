@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -46,10 +46,10 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="CB_Materia" max="32767" attributes="0"/>
                                   <Component id="TB_CargarImagen" max="32767" attributes="0"/>
-                                  <Component id="TB_Nombre" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                                  <Component id="TB_Nombre" alignment="0" pref="173" max="32767" attributes="0"/>
                                   <Component id="TB_Nivel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Component id="CB_Materia" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -66,8 +66,8 @@
               <Component id="LB_Titulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="CB_Materia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="LB_Materia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CB_Materia" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -100,8 +100,6 @@
         <Property name="text" type="java.lang.String" value="Agregar nueva lecci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="Componentes.ComboBoxRecrea" name="CB_Materia">
-    </Component>
     <Component class="Componentes.LabelRecrea" name="LB_Materia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Materia"/>
@@ -124,6 +122,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BT_CargarImagenActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_OPCION,this)"/>
+      </AuxValues>
     </Component>
     <Component class="Componentes.TextBoxRecrea" name="TB_CargarImagen">
       <Properties>
@@ -138,11 +139,19 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this)"/>
+      </AuxValues>
     </Component>
     <Component class="Componentes.BotonRecrea" name="BT_Cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this)"/>
+      </AuxValues>
+    </Component>
+    <Component class="Componentes.ComboBoxRecrea" name="CB_Materia">
     </Component>
   </SubComponents>
 </Form>

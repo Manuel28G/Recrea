@@ -6,21 +6,38 @@
 
 package View;
 
+import Controller.ControllerAgregar;
+import Controller.ControllerConsultar;
+import Controller.Util;
+import Model.Objetos.Materia;
+import java.awt.event.ActionEvent;
+import javax.swing.JFileChooser;
+import org.jdom2.JDOMException;
+
 /**
  *
  * @author Manuel Goncalves L.
  */
-public class AgregarLeccion extends Componentes.FrameRecrea {
+public class AgregarLeccion extends Componentes.FrameRecrea implements Contrato.ContratoBotones{
 
     Componentes.PanelRecrea pnRecrea;
+    ControllerConsultar materias=new ControllerConsultar();
+    ControllerAgregar agregarEjerc=new ControllerAgregar();
+    private Componentes.ImportarImagenDialog imgDialog;
     /**
      * Creates new form AgregarLeccion
      */
-    public AgregarLeccion() {
+    public AgregarLeccion(){
         pnRecrea=new Componentes.PanelRecrea();
         initComponents();
         this.add(pnRecrea);
         this.configuracion(pnRecrea);
+        
+        try{
+        CB_Materia=materias.CargarComboBoxMateria(CB_Materia);}
+        catch(Exception e){
+        System.out.println("Excepcion en AgregarLeccion: "+e);
+        }
     }
 
     /**
@@ -33,18 +50,18 @@ public class AgregarLeccion extends Componentes.FrameRecrea {
     private void initComponents() {
 
         LB_Titulo = new Componentes.LabelRecrea();
-        CB_Materia = new Componentes.ComboBoxRecrea();
         LB_Materia = new Componentes.LabelRecrea();
         LB_Nombre = new Componentes.LabelRecrea();
         LB_Nivel = new Componentes.LabelRecrea();
-        BT_CargarImagen = new Componentes.BotonRecrea();
+        BT_CargarImagen = new Componentes.BotonRecrea(Util.BOTON_TIPO_OPCION,this);
         TB_CargarImagen = new Componentes.TextBoxRecrea();
         TB_Nombre = new Componentes.TextBoxRecrea();
         TB_Nivel = new Componentes.NumberBoxRecrea();
-        BT_Crear = new Componentes.BotonRecrea();
-        BT_Cancelar = new Componentes.BotonRecrea();
+        BT_Crear = new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this);
+        BT_Cancelar = new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this);
+        CB_Materia = new Componentes.ComboBoxRecrea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         LB_Titulo.setText("Agregar nueva lección");
 
@@ -91,10 +108,10 @@ public class AgregarLeccion extends Componentes.FrameRecrea {
                                     .addComponent(BT_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CB_Materia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(TB_CargarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(TB_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CB_Materia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
@@ -104,8 +121,8 @@ public class AgregarLeccion extends Componentes.FrameRecrea {
                 .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CB_Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LB_Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LB_Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_Materia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,4 +197,32 @@ public class AgregarLeccion extends Componentes.FrameRecrea {
     private Componentes.NumberBoxRecrea TB_Nivel;
     private Componentes.TextBoxRecrea TB_Nombre;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ActionSiguiente(ActionEvent e) {
+    Materia mt=(Materia)CB_Materia.GetItemRecrea();    
+    agregarEjerc.AgregarLeccion(TB_Nivel.getText(), imgDialog.getSelectedFile().getName(),TB_Nombre.getText(), mt.getHijoURL());
+    this.dispose();
+    }
+
+    @Override
+    public void ActionSalir(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ActionOpciones(ActionEvent e) {
+      imgDialog=new Componentes.ImportarImagenDialog();
+      if(imgDialog.getStatus()==JFileChooser.APPROVE_OPTION)
+      {
+        TB_CargarImagen.setText(imgDialog.getSelectedFile().toString());
+        //para mostrar la ruta entera al dejar el cursor sobre el componente
+        this.TB_CargarImagen.setToolTipText(imgDialog.getSelectedFile().toString());
+      }}
+
+    @Override
+    public void ActionSonido(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
