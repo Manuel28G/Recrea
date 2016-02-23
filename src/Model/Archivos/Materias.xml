@@ -21,5 +21,4 @@ para todas las opciones
     <Materia Imagen="Cero.png" Nivel="1" XML="Propiedad.xml">Propiedades</Materia>
     <Materia Imagen="Cero.png" Nivel="1" XML="Parimpar.xml">¿Par o Impar?</Materia>
     <Materia Imagen="Cero.png" Nivel="1" XML="Multiplo.xml">Mis multiplos</Materia>
-    
 </Materias>

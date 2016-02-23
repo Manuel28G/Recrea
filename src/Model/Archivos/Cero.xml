@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
-
-<Cero>
-    <Conociendolos Nivel="1" Imagen="Cero.png" >Conociendolos
-        <Contenido Tipo="NUMEROS" Pregunta="2+2=x" Puntos="3">4</Contenido><!--seleccionar la opcion(boton) correcta-->
-        <Contenido Tipo="VERDADERO-FALSO" Pregunta="2+4=x">6</Contenido> <!--Verdadero o Falso-->
-    </Conociendolos>
-    <Ejercicios  Nivel="1" Imagen="Cero.png" >Ejercicios
-        <Ejercicio Tipo="NUMEROS" Pregunta="2+2=x">4</Ejercicio><!--Completar la ecuación-->
-    </Ejercicios>
+--><Cero>
+    <Leccion Imagen="Cero.png" Nivel="1">Conociendolos
+        <Contenido Pregunta="2+2=x" Puntos="3" Tipo="NUMEROS">4</Contenido><!--seleccionar la opcion(boton) correcta-->
+        <Contenido Pregunta="2+4=x" Tipo="VERDADERO-FALSO">6</Contenido> <!--Verdadero o Falso-->
+    </Leccion>
+    <Leccion Imagen="Cero.png" Nivel="1">Ejercicios
+        <Ejercicio Pregunta="2+2=x" Tipo="NUMEROS">4</Ejercicio><!--Completar la ecuación-->
+        <Ejercicio Fecha="19:18:36 21/02/2016" Pregunta="Pregunta1" Puntos="3" Tipo="Letra">2</Ejercicio>
+    </Leccion>
 </Cero>

@@ -90,7 +90,6 @@ public static void XMLMateriasAdd(String img,String nivl,String xml,String mater
     document.normalize();  
     CrearXML.CrearXML(document,archivo);
     XMLBasic(xml);
-    XMLLeccionAdd("10","Default.jpg","Prueba prueba01",xml+Util.ARCHIVO_XML);
     }
     catch(Exception e)
     {
@@ -120,7 +119,6 @@ public static void XMLLeccionAdd(String nivel,String imagen,String leccion,Strin
     actAdd.setAttribute(Util.NIVEL_ATRIBUTE, nivel);
     root.appendChild(actAdd);
     document.normalize();  
-    
     CrearXML.CrearXML(document,archivoXML);
     }
     catch(Exception e)
@@ -146,7 +144,9 @@ public static void XMLEjercicioAdd(String tipo,String pts,String pregunta,String
     Date date=new Date(); //fecha actual
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
-    Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+xmlFile));  
+    String archivoRuta=Util.ARCHIVOS_XML_PATH+xmlFile;
+    System.out.println(archivoRuta);
+    Document document = db.parse(new File(archivoRuta));  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.EJERCICIO_TAG);
     actAdd.setTextContent(resp);
