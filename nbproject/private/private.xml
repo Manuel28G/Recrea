@@ -4,11 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/S:/GitHub/Recrea/src/View/AgregarEjercicio.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Materias.xml</file>
-            <file>file:/S:/GitHub/Recrea/src/View/AgregarLeccion.java</file>
-            <file>file:/S:/GitHub/Recrea/src/View/AgregarMateria.java</file>
-            <file>file:/S:/GitHub/Recrea/src/Model/Archivos/Cero.xml</file>
-            <file>file:/S:/GitHub/Recrea/src/Componentes/ComboBoxRecrea.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/VFRecrea.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/LabelRecrea.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/TextBoxRecrea.java</file>
+            <file>file:/S:/GitHub/Recrea/src/Componentes/FrameRecrea.java</file>
         </group>
     </open-files>
 </project-private>
