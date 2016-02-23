@@ -8,6 +8,7 @@ package View;
 
 import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
+import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Model.Objetos.Leccion;
 import Model.Objetos.Persona;
@@ -16,7 +17,7 @@ import java.awt.event.ActionEvent;
  *
  * @author Manuel
  */
-public class Practica extends FrameRecrea implements ContratoGeneral {
+public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBotones {
 
     /**
      * Creates new form Practica
@@ -32,6 +33,7 @@ public class Practica extends FrameRecrea implements ContratoGeneral {
         usuario=usr;
         Controller.Ejercicio.WindowsEjercicio Wc=new Controller.Ejercicio.WindowsEjercicio(this);
         PanelRecrea pR=Wc.loquesa(lcn.getEjercicios().get(0),"1 de 3","Juan Guinaldez");
+        this.fullScreen();
         this.configuracion(pR);
     }
     /**
@@ -61,19 +63,19 @@ public class Practica extends FrameRecrea implements ContratoGeneral {
 
     
     @Override
-    public void actionOpciones(ActionEvent ae) {
+    public void ActionOpciones(ActionEvent ae) {
        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      
     }
     
     @Override
-    public void actionSiguiente(ActionEvent ae) {
+    public void ActionSiguiente(ActionEvent ae) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
     }
     
     @Override
-    public void actionSalir(ActionEvent ae) {
+    public void ActionSalir(ActionEvent ae) {
        try{
             //poner gif de cargando
                 mod.setVisible(true);
@@ -87,8 +89,12 @@ public class Practica extends FrameRecrea implements ContratoGeneral {
     }
     
     @Override
-    public void actionSonido(ActionEvent ae) {
+    public void ActionSonido(ActionEvent ae) {
        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    @Override
+    public void SetEnable(boolean bol){
+       this.SetEnable(bol);
     }
     
     
@@ -131,5 +137,10 @@ public class Practica extends FrameRecrea implements ContratoGeneral {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Reaload() {
+        this.paintAll(this.getGraphics());    
+    }
 
 }
