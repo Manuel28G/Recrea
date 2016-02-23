@@ -6,11 +6,17 @@
 
 package Model;
 
+import Controller.Util;
 import java.io.File;
 import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 /**
@@ -32,14 +38,14 @@ public static int ContarEtiquetas(String Documento,String nivel){
       Element nodo=doc.getRootElement();;
       List<Element> nodos;
 
-       if(nivel!=""){
+       if(!nivel.equals("")){
           nodo=elementoNodo(nivel,nodo.getChildren());
        }
       return nodo.getChildren().size();
     
     }
       catch(Exception ex){
-         System.out.println("Error en puertoTransporte: "+ex);
+         System.out.println("Error en ConsultarXML.contarEtiquetas: "+ex);
          return -1;
       }
     
@@ -55,11 +61,13 @@ public static int ContarEtiquetas(String Documento,String nivel){
 public static Element elementoNodo(String texto,List<Element> elementos) throws Exception{
          Element nodo=null;
          for(Element el: elementos){
-            if(el.getName().equals(texto))
+            if(el.getName().equals(texto)){
                 nodo=el;
+                break;
+            }
          }
           if(nodo==null)
-              throw new Exception("Error al intentar encontrar el nodo: AccionesXML.elementoNodo()");
+              throw new Exception("Error al intentar encontrar el nodo: ConsultarXML.elementoNodo()");
           
           return nodo;
       
@@ -79,7 +87,7 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
     String [] rut;
     SAXBuilder builder = new SAXBuilder();
     if(Ruta!=null)
-        rut=Ruta.split("/");
+        rut=Ruta.split(Util.SEPARADOR_DIRECTORIO);
     else
         rut=new String[0];
     org.jdom2.Element rootNode ;
@@ -108,5 +116,43 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
    }
     
 }
+public static String InformacionEtiquetaRec(String Documento,String Variable,String nombre){
+     //Se crea un SAXBuilder para poder parsear el archivo
+    String Respuesta="";
+    File xmlFile = new File(Documento );
+   try{
+        
+    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+    DocumentBuilder db = dbf.newDocumentBuilder();
+    Document document = db.parse(xmlFile);  
+    org.w3c.dom.Element root=document.getDocumentElement();
+        NodeList lsNode=root.getElementsByTagName(Util.LECCION_TAG);//(Element)root.getElementsByTagName(Util.PERSONA_ACTIVIDAD_TAG);
+   for(int i=0;i<lsNode.getLength();i++){
+       Node elemtn=lsNode.item(i).getFirstChild();
+       System.out.println("prim:"+elemtn.getTextContent());
+       if(nombre.equals(elemtn.getTextContent())){
+            Respuesta = elemtn.getParentNode().getAttributes().getNamedItem(Variable).getTextContent();
+            System.out.println("Respuesta consultar: "+Respuesta);
+        break;}
+   }
+   return Respuesta;
+   }
+   catch(Exception ex){
+       return "";
+   }
+    
+}
 
+/**
+ * Metodo para saber si un archivo existe 
+ * @param archivoRuta ruta del archivo a consultar
+ * @return true: si existe el archivo, false: si no existe el archivo
+ */
+public static boolean archivoCreado(String archivoRuta){
+  File folder= new File(archivoRuta);
+  if(!folder.exists()){
+      return false;
+  } 
+  return true;
+}
 }
