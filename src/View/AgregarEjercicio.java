@@ -6,21 +6,49 @@
 
 package View;
 
+import Componentes.NumberBoxRecrea;
+import Componentes.TextBoxRecrea;
+import Componentes.VFRecrea;
+import Controller.Util;
+import Model.Objetos.Materia;
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author Manuel Goncalves L.
  */
-public class AgregarEjercicio extends Componentes.FrameRecrea {
+public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrato.ContratoBotones{
 
-    Componentes.PanelRecrea pnRecrea;
+    private Componentes.PanelRecrea pnRecrea;
+    private Controller.ControllerConsultar  cc=new Controller.ControllerConsultar();
+    private Controller.ControllerAgregar ca=new Controller.ControllerAgregar();
+    private Point pt;
+    private String tipo;
+    private String puntos;
+    private String pregunta;
+    private String respuesta;
+    private String xmlFile;
+    private String leccion;
+    private Materia materiaObj;
+    private Component compEnUso;
+    private VFRecrea PN_Respuesta;
+    private NumberBoxRecrea NB_Respuesta;
     /**
      * Creates new form AgregarEjercicio
      */
     public AgregarEjercicio() {
         pnRecrea=new Componentes.PanelRecrea();
         initComponents();
+        pt=TB_Respuesta.getLocation();
         this.add(pnRecrea);
+        compEnUso=TB_Respuesta;
         this.configuracion(pnRecrea);
+        CB_Materia=cc.CargarComboBoxMateria(CB_Materia);//Carga las materias al CB
+        //Carga el tipo de ejercicio al comboBox, como para este caso no es 
+        //dependiente de la lección se carga directamente.
+        CB_Tipo=cc.CargarComboBoxTipoEjercicio(CB_Tipo);  
     }
 
     /**
@@ -40,37 +68,53 @@ public class AgregarEjercicio extends Componentes.FrameRecrea {
         LB_Respuesta = new Componentes.LabelRecrea();
         LB_Puntos = new Componentes.LabelRecrea();
         TB_Puntos = new Componentes.NumberBoxRecrea();
-        TB_Respuesta = new Componentes.TextBoxRecrea();
         CB_Tipo = new Componentes.ComboBoxRecrea();
-        CB_Leccion = new Componentes.ComboBoxRecrea();
         CB_Materia = new Componentes.ComboBoxRecrea();
+        BT_Crear = new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this);
+        BT_Cancelar = new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this);
+        CB_Leccion = new Componentes.ComboBoxRecrea(Util.COMBOBOX_SELECCIONAR);
         jScrollPane1 = new javax.swing.JScrollPane();
         TA_Pregunta = new Componentes.TAreaRecrea();
-        BT_Crear = new Componentes.BotonRecrea();
-        BT_Cancelar = new Componentes.BotonRecrea();
+        PN_ContentR = new Componentes.PanelRecrea();
+        TB_Respuesta = new Componentes.TextBoxRecrea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         LB_Titulo.setText("Agregar ejercicio");
 
         LB_Materia.setText("Materia");
+        LB_Materia.setAutoscrolls(true);
 
         LB_Leccion.setText("Lección");
+        LB_Leccion.setAutoscrolls(true);
 
         LB_Tipo.setText("Tipo");
+        LB_Tipo.setAutoscrolls(true);
 
         LB_Pregunta.setText("Contenido/Pregunta");
+        LB_Pregunta.setAutoscrolls(true);
 
         LB_Respuesta.setText("Respuesta");
+        LB_Respuesta.setAutoscrolls(true);
 
         LB_Puntos.setText("Puntos");
+        LB_Puntos.setAutoscrolls(true);
 
+        CB_Tipo.setAutoscrolls(true);
         CB_Tipo.setEnabled(false);
+        CB_Tipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_TipoItemStateChanged(evt);
+            }
+        });
 
-        CB_Leccion.setEnabled(false);
-
-        TA_Pregunta.setText("");
-        jScrollPane1.setViewportView(TA_Pregunta);
+        CB_Materia.setAutoscrolls(true);
+        CB_Materia.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_MateriaItemStateChanged(evt);
+            }
+        });
 
         BT_Crear.setText("Crear");
 
@@ -81,46 +125,81 @@ public class AgregarEjercicio extends Componentes.FrameRecrea {
             }
         });
 
+        CB_Leccion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CB_LeccionItemStateChanged(evt);
+            }
+        });
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        TA_Pregunta.setText("");
+        jScrollPane1.setViewportView(TA_Pregunta);
+
+        TB_Respuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TB_RespuestaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PN_ContentRLayout = new javax.swing.GroupLayout(PN_ContentR);
+        PN_ContentR.setLayout(PN_ContentRLayout);
+        PN_ContentRLayout.setHorizontalGroup(
+            PN_ContentRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PN_ContentRLayout.createSequentialGroup()
+                .addGap(0, 22, Short.MAX_VALUE)
+                .addComponent(TB_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        PN_ContentRLayout.setVerticalGroup(
+            PN_ContentRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PN_ContentRLayout.createSequentialGroup()
+                .addComponent(TB_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(LB_Respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(LB_Puntos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TB_Respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(TB_Puntos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(2, 2, 2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LB_Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LB_Respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LB_Puntos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PN_ContentR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 33, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(LB_Leccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                    .addComponent(LB_Materia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CB_Leccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CB_Materia, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LB_Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(LB_Leccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                                            .addComponent(LB_Materia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(LB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(CB_Materia, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                                            .addComponent(CB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(CB_Leccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(0, 2, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LB_Titulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,23 +218,23 @@ public class AgregarEjercicio extends Componentes.FrameRecrea {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LB_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CB_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(LB_Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LB_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TB_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(PN_ContentR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -164,6 +243,80 @@ public class AgregarEjercicio extends Componentes.FrameRecrea {
     private void BT_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_CancelarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BT_CancelarActionPerformed
+
+    private void CB_MateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_MateriaItemStateChanged
+      if(CB_Materia.getSelectedIndex()>0)
+      {
+          
+        CB_Leccion= cc.CargarComboBoxLeccion(CB_Leccion,(Materia) CB_Materia.GetItemRecrea());
+        CB_Leccion.setEnabled(true);
+      }
+      else 
+      {
+          CB_Leccion.setEnabled(false);
+          CB_Leccion.setSelectedIndex(0);
+          CB_Tipo.setEnabled(false);
+          CB_Tipo.setSelectedIndex(0);
+      }
+    }//GEN-LAST:event_CB_MateriaItemStateChanged
+
+    private void CB_LeccionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_LeccionItemStateChanged
+      if(CB_Leccion.getSelectedIndex()>0)
+        CB_Tipo.setEnabled(true);
+      else{
+        CB_Tipo.setEnabled(false);
+        CB_Tipo.setSelectedIndex(0);
+      }
+    }//GEN-LAST:event_CB_LeccionItemStateChanged
+
+    private void CB_TipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_TipoItemStateChanged
+      if(CB_Tipo.getSelectedItem().toString().equals("Escribir Número"))
+      {
+          
+        PN_ContentR.remove(compEnUso);
+        PN_ContentR.validate();
+        PN_ContentR.revalidate();
+        NB_Respuesta=new NumberBoxRecrea();
+        PN_ContentR.add(NB_Respuesta);
+        this.NB_Respuesta.setSize(compEnUso.getSize());
+        this.NB_Respuesta.setLocation(pt);
+        this.paintComponents(NB_Respuesta.getGraphics());
+        compEnUso=NB_Respuesta;
+        NB_Respuesta.setText("Numeros");
+      }
+      else
+      if(CB_Tipo.getSelectedItem().toString().equals("Verdadero-Falso"))
+      {
+          
+        PN_ContentR.remove(compEnUso);
+        PN_ContentR.validate();
+        PN_ContentR.revalidate();
+        PN_Respuesta=new VFRecrea();
+        PN_ContentR.add(PN_Respuesta);
+        this.PN_Respuesta.setSize(compEnUso.getSize());
+        this.PN_Respuesta.setLocation(pt);
+        this.paintComponents(PN_Respuesta.getGraphics());
+        compEnUso=PN_Respuesta;
+        
+      }else
+      if(CB_Tipo.getSelectedItem().toString().equals("Escribir Letras"))
+      {
+        PN_ContentR.remove(compEnUso);
+        PN_ContentR.validate();
+        PN_ContentR.revalidate();
+        TB_Respuesta=new TextBoxRecrea();
+        PN_ContentR.add(TB_Respuesta);
+        this.TB_Respuesta.setSize(compEnUso.getSize());
+        this.TB_Respuesta.setLocation(pt);
+        this.paintComponents(TB_Respuesta.getGraphics());
+        compEnUso=TB_Respuesta;
+        TB_Respuesta.setText("Letras");
+      }
+    }//GEN-LAST:event_CB_TipoItemStateChanged
+
+    private void TB_RespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TB_RespuestaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TB_RespuestaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,9 +366,40 @@ public class AgregarEjercicio extends Componentes.FrameRecrea {
     private Componentes.LabelRecrea LB_Respuesta;
     private Componentes.LabelRecrea LB_Tipo;
     private Componentes.LabelRecrea LB_Titulo;
+    private Componentes.PanelRecrea PN_ContentR;
     private Componentes.TAreaRecrea TA_Pregunta;
     private Componentes.NumberBoxRecrea TB_Puntos;
     private Componentes.TextBoxRecrea TB_Respuesta;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void ActionSiguiente(ActionEvent e) {
+    tipo=CB_Tipo.getSelectedItem().toString();
+    puntos=TB_Puntos.getText();
+    pregunta=TA_Pregunta.getText();
+    respuesta=TB_Respuesta.getText();
+    materiaObj=(Materia)CB_Materia.GetItemRecrea();
+    xmlFile=materiaObj.getHijoURL();
+    leccion=CB_Leccion.GetItemRecrea().getNombre();
+    ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,xmlFile,leccion);
+    this.dispose();
+    }
+
+    @Override
+    public void ActionSalir(ActionEvent e) {
+      this.dispose(); 
+    }
+
+    @Override
+    public void ActionOpciones(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ActionSonido(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }
