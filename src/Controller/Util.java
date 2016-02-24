@@ -18,6 +18,11 @@ public class Util {
     public static int BTSizeW=150;
     public static int BTSizeH=150;
     public static int BTCount=0;
+    //Expreciones regulares
+    public static final String EXPR_SOLOTEXTO=".*[A-Z]|[a-z]|[ \\t\\n\\x0b\\r\\f].*";
+    public static final String EXPR_SOLOENTEROS=".*[0-9].*";
+    public static final String EXPR_ENTEROyTEXTO=".*[A-Z]|[a-z]|[0-9].*";
+    
     
     //Archivo de configuración
     public static final String CONFIGURACION_XML="Configuracion.xml";
