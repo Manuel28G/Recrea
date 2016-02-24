@@ -6,6 +6,10 @@
 
 package Componentes;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JTextField;
 /**
  *
@@ -13,12 +17,18 @@ import javax.swing.JTextField;
  */
 public class TextBoxRecrea extends JTextField {
     
+    
     public TextBoxRecrea(String str){
         super();
         super.setText(str);
+        this.addKeyListener(Componentes.ActionsListener.ActionTextBox(this));
     }
     public TextBoxRecrea(){
         super();
+        this.addKeyListener(Componentes.ActionsListener.ActionTextBox(this));
     }
+    
+    
+   
  
 }

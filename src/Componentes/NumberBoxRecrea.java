@@ -15,5 +15,6 @@ public class NumberBoxRecrea extends  JTextField{
     
     public NumberBoxRecrea(){
         
+        this.addKeyListener(Componentes.ActionsListener.ActionNumberBox(this));
     }
 }
