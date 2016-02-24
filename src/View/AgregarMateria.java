@@ -8,6 +8,7 @@ package View;
 
 import Contrato.ContratoGeneral;
 import Controller.Util;
+import Controller.Validaciones;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
 
@@ -19,6 +20,7 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
     private Componentes.PanelRecrea pnRecrea;
     private Componentes.ImportarImagenDialog imgDialog;
     private ContratoGeneral ctoGeneral;
+    private Validaciones valid=new Validaciones();
     /**
      * Creates new form AgregarMateria
      */
@@ -183,13 +185,17 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
 
     @Override
     public void ActionSiguiente(ActionEvent e) {
+        if(valid.ValidarTextField(TB_Nivel) &&
+           valid.ValidarTextField(TB_Nombre) &&
+           valid.ValidarTextField(this.TB_CargarImagen)){
      Controller.ControllerAgregar ctAgregar= new Controller.ControllerAgregar();
      ctAgregar.AgregarMateria(imgDialog.getSelectedFile().getName(),
                               TB_Nivel.getText(),TB_Nombre.getText());
      imgDialog.Cargar();
      ctoGeneral.Reaload();
      this.dispose();
-     
+        }
+        //agregar alerta 
     }
 
     @Override
@@ -206,6 +212,9 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
         //para mostrar la ruta entera al dejar el cursor sobre el componente
         this.TB_CargarImagen.setToolTipText(imgDialog.getSelectedFile().toString());
       }
+      else{
+      TB_CargarImagen.setText("");
+      TB_CargarImagen.setToolTipText("");}
       
     }
 

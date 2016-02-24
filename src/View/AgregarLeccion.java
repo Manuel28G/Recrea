@@ -9,10 +9,10 @@ package View;
 import Controller.ControllerAgregar;
 import Controller.ControllerConsultar;
 import Controller.Util;
+import Controller.Validaciones;
 import Model.Objetos.Materia;
 import java.awt.event.ActionEvent;
 import javax.swing.JFileChooser;
-import org.jdom2.JDOMException;
 
 /**
  *
@@ -24,6 +24,7 @@ public class AgregarLeccion extends Componentes.FrameRecrea implements Contrato.
     ControllerConsultar materias=new ControllerConsultar();
     ControllerAgregar agregarEjerc=new ControllerAgregar();
     private Componentes.ImportarImagenDialog imgDialog;
+    private Validaciones valid=new Validaciones();
     /**
      * Creates new form AgregarLeccion
      */
@@ -200,14 +201,19 @@ public class AgregarLeccion extends Componentes.FrameRecrea implements Contrato.
 
     @Override
     public void ActionSiguiente(ActionEvent e) {
+    if(valid.ValidarTextField(TB_Nivel)&&
+       valid.ValidarComboBox(CB_Materia)&&
+       valid.ValidarTextField(this.TB_CargarImagen)&&
+       valid.ValidarTextField(this.TB_Nombre)){
     Materia mt=(Materia)CB_Materia.GetItemRecrea();    
     agregarEjerc.AgregarLeccion(TB_Nivel.getText(), imgDialog.getSelectedFile().getName(),TB_Nombre.getText(), mt.getHijoURL());
-    this.dispose();
+    this.dispose();}
+    //poner mensaje alerta
     }
 
     @Override
     public void ActionSalir(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      this.dispose();
     }
 
     @Override
@@ -218,7 +224,11 @@ public class AgregarLeccion extends Componentes.FrameRecrea implements Contrato.
         TB_CargarImagen.setText(imgDialog.getSelectedFile().toString());
         //para mostrar la ruta entera al dejar el cursor sobre el componente
         this.TB_CargarImagen.setToolTipText(imgDialog.getSelectedFile().toString());
-      }}
+      }
+      else{
+      TB_CargarImagen.setText("");
+      TB_CargarImagen.setToolTipText("");}
+    }
 
     @Override
     public void ActionSonido(ActionEvent e) {

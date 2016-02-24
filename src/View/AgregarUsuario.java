@@ -7,9 +7,9 @@
 package View;
 
 import Componentes.PanelRecrea;
-import Componentes.TextBoxRecrea;
 import Controller.ControllerCrear;
-import javax.swing.JTextField;
+import Controller.Validaciones;
+import java.awt.Color;
 
 /**
  *
@@ -17,6 +17,7 @@ import javax.swing.JTextField;
  */
 public class AgregarUsuario extends Componentes.FrameRecrea {
 
+    private Validaciones valid=new Validaciones();
     /**
      * Creates new form AgregarUsuario
      */
@@ -122,11 +123,17 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
 
     private void BT_ComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ComenzarActionPerformed
       try{
+      if(valid.ValidarTextField(TB_Nombre)&&
+         valid.ValidarTextField(TB_Apellido)){
       ControllerCrear.CrearUsuario(TB_Nombre.getText(), TB_Apellido.getText());
       Inicio ini= new Inicio();
       this.setVisible(false);
       this.dispose();
       ini.setVisible(true);
+      }
+      else{
+          this.LB_Bienvenida3.setText("Debes colocar tus datos para comenzar");
+          this.LB_Bienvenida3.setForeground(Color.RED);}
       }
       catch(Exception ex){
           

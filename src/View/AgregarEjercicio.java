@@ -10,6 +10,7 @@ import Componentes.NumberBoxRecrea;
 import Componentes.TextBoxRecrea;
 import Componentes.VFRecrea;
 import Controller.Util;
+import Controller.Validaciones;
 import Model.Objetos.Materia;
 import java.awt.Component;
 import java.awt.Point;
@@ -35,6 +36,7 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     private Component compEnUso;
     private VFRecrea PN_Respuesta;
     private NumberBoxRecrea NB_Respuesta;
+    private Validaciones valid=new Validaciones();
     /**
      * Creates new form AgregarEjercicio
      */
@@ -247,7 +249,6 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     private void CB_MateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_MateriaItemStateChanged
       if(CB_Materia.getSelectedIndex()>0)
       {
-          
         CB_Leccion= cc.CargarComboBoxLeccion(CB_Leccion,(Materia) CB_Materia.GetItemRecrea());
         CB_Leccion.setEnabled(true);
       }
@@ -270,7 +271,8 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     }//GEN-LAST:event_CB_LeccionItemStateChanged
 
     private void CB_TipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_TipoItemStateChanged
-      if(CB_Tipo.getSelectedItem().toString().equals("Escribir Número"))
+     valid.ValidarRespuesta(compEnUso);
+        if(CB_Tipo.getSelectedItem().toString().equals("Escribir Número"))
       {
           
         PN_ContentR.remove(compEnUso);
@@ -282,7 +284,6 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
         this.NB_Respuesta.setLocation(pt);
         this.paintComponents(NB_Respuesta.getGraphics());
         compEnUso=NB_Respuesta;
-        NB_Respuesta.setText("Numeros");
       }
       else
       if(CB_Tipo.getSelectedItem().toString().equals("Verdadero-Falso"))
@@ -310,7 +311,6 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
         this.TB_Respuesta.setLocation(pt);
         this.paintComponents(TB_Respuesta.getGraphics());
         compEnUso=TB_Respuesta;
-        TB_Respuesta.setText("Letras");
       }
     }//GEN-LAST:event_CB_TipoItemStateChanged
 
@@ -375,6 +375,12 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
 
     @Override
     public void ActionSiguiente(ActionEvent e) {
+    if(valid.ValidarComboBox(CB_Tipo)&&
+       valid.ValidarComboBox(CB_Materia)&&
+       valid.ValidarComboBox(CB_Leccion) &&
+       valid.ValidarTextArea(TA_Pregunta)&&
+       valid.ValidarTextField(TB_Puntos) &&
+       valid.ValidarRespuesta(compEnUso)){
     tipo=CB_Tipo.getSelectedItem().toString();
     puntos=TB_Puntos.getText();
     pregunta=TA_Pregunta.getText();
@@ -384,6 +390,9 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     leccion=CB_Leccion.GetItemRecrea().getNombre();
     ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,xmlFile,leccion);
     this.dispose();
+    }
+    else
+     System.out.println("Error falta agregar un campo");
     }
 
     @Override
