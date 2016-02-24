@@ -159,8 +159,10 @@ public class ControllerConsultar {
         
         for(int Cont=0;Cont<cantEjer;Cont++)
         {
+            EntidadGeneral egEJE2=new EntidadGeneral();
             subRuta=Util.CONFIGURACION_TIPO_EJERCICIO;
-            cbRecrea.addItem(ConsultarXML.InformacionEtiqueta(rutaXML,null,Cont,subRuta));
+            egEJE2.setNombre(ConsultarXML.InformacionEtiqueta(rutaXML,null,Cont,subRuta));
+            cbRecrea.AddItemRecrea(egEJE2);
         }
         return cbRecrea;
         }

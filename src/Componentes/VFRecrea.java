@@ -18,8 +18,8 @@ public class VFRecrea extends PanelRecrea{
     private int dimX=145;
     private int dimY=23;
     private ButtonGroup btGroup=new ButtonGroup();
-    private JRadioButton rbVerdad;
-    private JRadioButton rbFalso;
+    public JRadioButton rbVerdad;
+    public JRadioButton rbFalso;
     private int size=12;
     private String tipografia="Tahoma";
     private Color colorTexto=Color.WHITE;
