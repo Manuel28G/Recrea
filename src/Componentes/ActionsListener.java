@@ -8,8 +8,15 @@ package Componentes;
 
 import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
+import Controller.Util;
+import Controller.Validaciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +24,9 @@ import java.awt.event.ActionListener;
  */
 public class ActionsListener {
  
+  
+    private static final Validaciones valid= new Validaciones();
+    
  ///Action Botones
    /**
     * 
@@ -168,5 +178,47 @@ public class ActionsListener {
   }  
   
   ///FIN MenuBar
+   
+   //TextBox
+public static KeyAdapter ActionTextBox (final TextBoxRecrea tb)  {
+     return new KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(KeyEvent e)
+            {
+             try{
+             Pattern pt=Pattern.compile(Util.EXPR_SOLOTEXTO);
+             Matcher mt=pt.matcher(""+e.getKeyChar());
+             if(!mt.find() || !valid.longituMaxTextField(tb)){
+                 e.consume();
+             }
+             
+            }
+            catch(Exception ex){}
+            }
+        };  
+  } 
+   //Fin TextBox
+   
+   //NumberBox
+   public static KeyAdapter ActionNumberBox(final NumberBoxRecrea nb)  {
+     return new KeyAdapter() 
+        {
+            @Override
+            public void keyTyped(KeyEvent e)
+            {
+             try{
+             Pattern pt=Pattern.compile(Util.EXPR_SOLOENTEROS);
+             Matcher mt=pt.matcher(""+e.getKeyChar());
+             if(!valid.longituMaxTextField(nb) || !mt.find()){
+                 e.consume();
+             }
+             
+            }
+            catch(Exception ex){}
+            }
+        };  
+  } 
+   //FinNumberBox
 
 }
