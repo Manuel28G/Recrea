@@ -46,6 +46,7 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
         
        this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
        this.setFileFilter(filtro);
+       this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(new JFrame());//puede ser new JFrame()
     }
     
@@ -59,9 +60,12 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(cG);//puede ser new JFrame()
    }
-   
+    private int getStatus(){
+        return seleccion;
+    }
    public void Guardar(){
-    try{
+      try{
+       if(this.getStatus()==JFileChooser.APPROVE_OPTION){
         DirDestino=this.getSelectedFile();
         DirRecrea=new File(DirDestino+Util.DIRECTORIO_RECREA);
         DirRecrea.mkdir();
@@ -82,6 +86,7 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
                    }
                }
            }
+    }
     }
     catch(Exception e){}
      
