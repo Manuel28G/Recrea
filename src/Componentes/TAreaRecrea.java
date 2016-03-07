@@ -6,6 +6,7 @@
 
 package Componentes;
 
+import Controller.Util;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
@@ -15,34 +16,36 @@ import javax.swing.JTextArea;
  */
 public class TAreaRecrea extends JTextArea{
     private Color clr;
+    private final Configuracion config=new Configuracion();
+    private final String color=Util.CONFIG_COLOR_LETRA_BLANCO;
+    private final String tamaño=Util.CONFIG_TAMAÑO_LETRA_GRANDE;
     
   private void SetTransparent(){
         clr= new Color(0,0,0,0);
         this.setOpaque(false);
         this.setBackground(clr);
-        this.setOpaque(false);
-        this.setBackground(clr);
-      
-        // Working.. As it wants to be transparent.
-        this.setOpaque(false);
-        this.setBackground(clr);
     }
+  
+  public void SetConfigText(){
+    config.SetConfiguracion(color, tamaño, this);
+  }
+  
+  private void Configuracion(){
+    this.setLineWrap(true);
+    this.setWrapStyleWord(true);
+  }
     
   public TAreaRecrea (){
+    super(10,1); 
+    Configuracion();
     SetTransparent();
-    
-   this.setColumns(20);
-   this.setRows(5);
-   this.setText("2Bienvenido a Recrea el lugar donde\ntu y yo practicaremos matemáticas\n\n¡Empezemos!\npor cierto ¿Cómo te llamas?");
-        
     }
   public TAreaRecrea(String msj){
-   SetTransparent();
+   super(10,1);
    this.setText(msj);
-   this.setColumns(20);
-   this.setRows(5);
-   this.setText("2Bienvenido a Recrea el lugar donde\ntu y yo practicaremos matemáticas\n\n¡Empezemos!\npor cierto ¿Cómo te llamas?");
-        
+   Configuracion();
+   SetTransparent();
   }
+
   
 }
