@@ -10,12 +10,15 @@ import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
 import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
-import Controller.WindosCreate;
+import Controller.Util;
+import Controller.WindowsCreate;
+import Model.Objetos.Actividad;
 import Model.Objetos.Leccion;
 import Model.Objetos.Materia;
 import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,19 +28,22 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
 
        PanelRecrea PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
        String rutaModulo;
-       List<Leccion> ejercicios;
-       private Persona usuario;
+       List<Leccion> leccion;
+       private Persona usuario=new Persona();
+       private Actividad actividad;
        
        public Modulos(String ruta,Materia g, Persona usr){
+           
            initComponents();
+           
+           MB_Recrea.setContrato(this);
            usuario=usr;
-           ejercicios=g.getAsignaturas();
+           leccion=g.getAsignaturas();
            rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
-           WindosCreate wc=new WindosCreate(g.getAsignaturas().size(),this);
+           WindowsCreate wc=new WindowsCreate(g.getAsignaturas().size(),this);
            PN_Botones=wc.mostrarBotEj(g.getAsignaturas(), PN_Botones);
            this.configuracion(PN_Botones);
            this.fullScreen();
-           MB_Recrea.setContrato(this);
            
        }
        
@@ -52,7 +58,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MB_Recrea = new Componentes.MenuBarRecrea();
+        MB_Recrea = new Componentes.MenuBarRecrea(this);
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -145,15 +151,25 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
 
     @Override
     public void ActionOpciones(ActionEvent ae) {
-    
-        for (int i=0;i<ejercicios.size();i++){
-          if( ae.getActionCommand()==ejercicios.get(i).getNombre()){
-            Practica Child=new Practica(ejercicios.get(i),usuario,this);
-            Child.setVisible(true);
-            this.setVisible(false);
-            break;
-          }
-        } 
+
+        for (int i=0;i<leccion.size();i++){
+          if( ae.getActionCommand()==leccion.get(i).getNombre()){
+              
+                if(leccion.get(i).getEjercicios().size()==0)
+                    JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYEJERCICIOS, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                else{
+                    
+                  actividad=new Actividad();
+                  actividad.SetNombre(leccion.get(i).getNombre());
+                  usuario.addActividad(actividad);
+                 Practica Child=new Practica(leccion.get(i),usuario,this,0);
+                 Child.setVisible(true);
+                 this.setVisible(false);
+                 
+                 }
+                 break;
+            }
+        }
      }
 
     @Override
@@ -170,4 +186,14 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     public void Reaload() {
      this.paintAll(this.getGraphics());  
     }
+    
+    @Override
+    public Persona GetPersona() {
+      return this.usuario;
+    }
+    
+    @Override
+    public void avisoMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this,mensaje, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                }
 }

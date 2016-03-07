@@ -6,13 +6,14 @@ import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Controller.ControllerConsultar;
 import Controller.Util;
-import Controller.WindosCreate;
+import Controller.WindowsCreate;
 import Model.Objetos.Materia;
 import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.jdom2.JDOMException;
 
 
@@ -25,17 +26,20 @@ import org.jdom2.JDOMException;
 public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBotones{
 
     private PanelRecrea PN_Botones;
-    private List<Materia> materias;
-    private String ruta=Controller.Util.ARCHIVOS_XML_PATH+Util.MATERIAS_TAG+Util.ARCHIVO_XML;
-    private Persona usuario;
+    private final List<Materia> materias;
+    private final String ruta=Controller.Util.ARCHIVOS_XML_PATH+Util.MATERIAS_TAG+Util.ARCHIVO_XML;
+    private Persona usuario=new Persona();
     private Modulos Child;
     
     public Inicio() throws JDOMException {
-   
-        initComponents(); 
+        
         ControllerConsultar info=new ControllerConsultar(ruta);
+        usuario=info.CargarPersona();
+        //se inician aca los componentes para que de tiempo
+        //a que se cargue la persona y sus actividades
+        initComponents();  
         materias=info.cargarMateria();
-        WindosCreate wc=new WindosCreate(materias.size(),this);
+        WindowsCreate wc=new WindowsCreate(materias.size(),this);
         PN_Botones=wc.mostrarBot(materias, PN_Botones);
         this.configuracion(PN_Botones);
         this.fullScreen();
@@ -110,6 +114,7 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+                    Controller.ControllerConsultar.ExisteArchivoMateria();
                    if(Controller.ControllerCrear.consultarUsuario())
                        new Inicio().setVisible(true);
                 else{
@@ -148,14 +153,17 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
        // Modulos Child= new Modulos();
         for(int i=0;i<materias.size();i++){
             if(ae.getActionCommand()==materias.get(i).getNombre()){
-                usuario=new Persona();
+                if(materias.get(i).getAsignaturas().size()==0)
+                     JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYLECCION, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                else{
                 Child= new Modulos(materias.get(i).getHijoURL(),materias.get(i), usuario);
+                Child.setVisible(true);
+                this.setVisible(false);
+                this.dispose();
+                }
                 break;
             }
         }
-        Child.setVisible(true);
-        this.setVisible(false);
-        this.dispose();
         } 
     }
 
@@ -174,5 +182,15 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
     this.paintAll(this.getGraphics());  
     this.revalidate();
    }
+
+    @Override
+    public Persona GetPersona() {
+      return this.usuario;
+    }
+
+    @Override
+    public void avisoMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this,mensaje, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                }
 }
 

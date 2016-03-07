@@ -6,13 +6,28 @@
 
 package View;
 
+import Componentes.BotonRecrea;
 import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
 import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
+import Controller.ControllerAgregar;
+import Controller.ControllerConsultar;
+import Controller.Util;
+import Controller.Validaciones;
+import Model.Objetos.Actividad;
+import Model.Objetos.Ejercicio;
 import Model.Objetos.Leccion;
 import Model.Objetos.Persona;
+import Model.Objetos.Respuesta;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Manuel
@@ -22,20 +37,45 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
     /**
      * Creates new form Practica
      */
-    private Leccion leccion;
-    private Persona usuario;
-    private Modulos mod;
+    private final Leccion leccion;
+    private final Persona usuario;
+    private final Modulos mod;
+    private final Ejercicio ejercicio;
+    private final int cantEjer;
+    private final Component respuesta;
+    private final Respuesta resultado;        
+    private final DateFormat fechaActual = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");//formato que queremos para guardar en el xml
+    private final Date date=new Date(); //fecha actual
+    private final Validaciones valid=new Validaciones();
+    private final ControllerConsultar cc=new ControllerConsultar();
+    private final int contador;
+    private String respTexto="";
+    private final Controller.WindowsEjercicio Weje;
+    private ControllerAgregar cAgregar;
+    private Actividad actividad;//Objeto para la actividad que se esta realizando
+    private List<Respuesta> respuestas;//lista de objetos Respuesta
+    private boolean sinRespuesta=false;//para los ejercicios que no tienen respuesta (es teoría)
     
-    public Practica(Leccion lcn,Persona usr,Modulos modulos) {
+    public Practica(Leccion lcn,Persona usr,Modulos modulos,int cont) {
         initComponents();
-        mod=modulos;
-        leccion=lcn;
-        usuario=usr;
-        Controller.Ejercicio.WindowsEjercicio Wc=new Controller.Ejercicio.WindowsEjercicio(this);
-        PanelRecrea pR=Wc.loquesa(lcn.getEjercicios().get(0),"1 de 3","Juan Guinaldez");
+        resultado=new Respuesta();
+        resultado.SetTiempoInicio(fechaActual.format(date));
+        contador=cont;
+        mod=modulos;//obtenemos el módulo
+        leccion=lcn;//obtenemos la lección
+        usuario=usr;//obtenemos el usuario
+        //obtenemos la ultima actividad la cual es la que estamos realizando
+        int ultimaActividad=usuario.getActividades().size()-1;
+        actividad=usuario.getActividades().get(ultimaActividad);
+        respuestas=actividad.GetRespuesta();
+        ejercicio=lcn.getEjercicios().get(contador);
+        cantEjer=leccion.getEjercicios().size();
+        Weje=new Controller.WindowsEjercicio(this);
+        PanelRecrea pR=Weje.ConfigurarWindows(ejercicio,(contador+1)+" de "+cantEjer,usuario.getNombre()+" "+usuario.getApellido());
+        respuesta=Weje.getComponenteRespuesta();//Obtenemos el componente de la respuesta
         this.fullScreen();
         this.configuracion(pR);
-    }
+       }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,27 +104,72 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
     
     @Override
     public void ActionOpciones(ActionEvent ae) {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-     
+       respTexto=ae.getActionCommand();
+       List<BotonRecrea> botones=Weje.getBotones();
+       for(BotonRecrea bt:botones){
+           if(bt.getName().equals(respTexto))
+               bt.setBackground(Color.CYAN);
+           else
+               bt.setBackground(Color.LIGHT_GRAY);
+       }
+       
     }
     
     @Override
     public void ActionSiguiente(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+
+        if(respTexto!=""|| respuesta==null || valid.ValidarRespuestaVacia(respuesta)||
+          ( JOptionPane.showConfirmDialog
+          (this,Util.DIALOG_CONFIRMAR_CONTINUAR, Util.DIALOG_TITULO_MENSAJE, JOptionPane.OK_CANCEL_OPTION)==JOptionPane.YES_OPTION)){
+            resultado.SetPregunta(ejercicio.getEjercicio());
+            resultado.SetRespuestaCorrecta(ejercicio.getRespuesta());
+            
+
+            if(respTexto!="")
+                resultado.SetRespuestaRealizada(respTexto);
+            else
+                resultado.SetRespuestaRealizada(cc.ObtenerRespuesta(respuesta));
+            resultado.SetTiempoRespuesta(fechaActual.format(date));
+            
+            resultado.SetPuntoTotal(ejercicio.getPuntos());
+            if(resultado.EsCorrecta())
+                resultado.SetPuntosObtenido(ejercicio.getPuntos());
+            actividad.AddRespuesta(resultado);
+            if(contador<leccion.getEjercicios().size()-1)
+            {
+                Practica ptca=new Practica(leccion,usuario,mod,contador+1);
+                ptca.setVisible(true);
+            }
+            else
+            {
+                cAgregar=new ControllerAgregar();
+                int totalP=valid.totalPuntos(respuestas);
+                int notaObt=valid.totalPuntosObtenidos(respuestas);
+                actividad.SetPuntosTotales(Integer.toString(totalP));
+              //  actividad.SetPtosObtenidos(Integer.toString(Estadistica.calculoDeNota(totalP, notaObt)));
+                actividad.SetPtosObtenidos(Integer.toString(notaObt));
+                cAgregar.AgregarActividadPersona(actividad);
+               Resultados result=new Resultados(mod,usuario,0);
+               result.setVisible(true);
+            }
+            this.setVisible(false);
+            this.dispose();
+        }
+        
     }
     
     @Override
     public void ActionSalir(ActionEvent ae) {
        try{
-            //poner gif de cargando
+               if(JOptionPane.showConfirmDialog(this,Util.DIALOG_CONFIRMAR_SALIDA, Util.DIALOG_TITULO_SALIDA, JOptionPane.OK_CANCEL_OPTION)==JOptionPane.YES_OPTION){
                 mod.setVisible(true);
+              //  usuario.resetActividades();
                 this.setVisible(false);
                 this.dispose();
-
+               }
             }
         catch (Exception ex){
-
+               System.out.println(ex);
         }
     }
     
@@ -130,7 +215,7 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Practica(null,null,null).setVisible(true);
+                new Practica(null,null,null,0).setVisible(true);
             }
         });
     }
@@ -142,5 +227,14 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
     public void Reaload() {
         this.paintAll(this.getGraphics());    
     }
+    
+    @Override
+    public Persona GetPersona() {
+      return this.usuario;
+    }
 
+    @Override
+    public void avisoMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this,mensaje, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                }
 }

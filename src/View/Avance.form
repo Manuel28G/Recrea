@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="PN_Contenedor" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="PN_Contenedor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="Componentes.PanelRecrea" name="PN_Contenedor">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="labelRecrea1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                              <Component id="LB_Usuario" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelRecrea8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRecrea16" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="LB_PuntosObtenidos" max="32767" attributes="0"/>
+                                  <Component id="LB_DiaMenosProductivo" max="32767" attributes="0"/>
+                                  <Component id="LB_DiaMasProductivo" max="32767" attributes="0"/>
+                                  <Component id="LB_PromEjercicios" max="32767" attributes="0"/>
+                                  <Component id="LB_EjerciciosRealizados" max="32767" attributes="0"/>
+                                  <Component id="LB_UltimaPractica" max="32767" attributes="0"/>
+                                  <Component id="LB_PuntosTotales" max="32767" attributes="0"/>
+                                  <Component id="LB_NotaGeneral" min="-2" pref="257" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Component id="botonSalirRecrea1" min="-2" pref="354" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_Usuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_UltimaPractica" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_EjerciciosRealizados" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_PromEjercicios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_DiaMasProductivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_DiaMenosProductivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_PuntosObtenidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_PuntosTotales" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelRecrea16" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LB_NotaGeneral" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <Component id="botonSalirRecrea1" min="-2" pref="75" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="Componentes.BotonSalirRecrea" name="botonSalirRecrea1">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Componentes.BotonSalirRecrea(this,true)"/>
+          </AuxValues>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Estudiante:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_Usuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea2"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#xda;ltima pr&#xe1;ctica:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ejercicios realizados:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Probabilidad de pr&#xe1;ctica diaria:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="D&#xed;a mas productivo:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="D&#xed;a menos productivo:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Puntos obtenidos:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_PuntosObtenidos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea9"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_DiaMenosProductivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea10"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_DiaMasProductivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea11"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_PromEjercicios">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea12"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_EjerciciosRealizados">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea13"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_UltimaPractica">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea14"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Puntos totales:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="labelRecrea16">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nota general:"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_PuntosTotales">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea17"/>
+          </Properties>
+        </Component>
+        <Component class="Componentes.LabelRecrea" name="LB_NotaGeneral">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="labelRecrea18"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
