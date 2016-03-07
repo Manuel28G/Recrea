@@ -42,11 +42,13 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
     public ImportarImagenDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
        this.setFileFilter(filtro);
+       this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showOpenDialog(cG);
     }
     
  public void Cargar()
  {
+    if(this.getStatus()==JFileChooser.APPROVE_OPTION){
         ArchDestino=this.getSelectedFile();
         DirDestino=new File(Util.IMAGE_PATH);
         DirDestino.mkdir();
@@ -57,7 +59,7 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
         DirDestino=new File(DirDestino+Util.SEPARADOR_DIRECTORIO+ArchDestino.getName());
         System.out.println(DirOrigen);
         System.out.println(DirDestino);
-        ImportarImagen(DirOrigen,DirDestino.toString());
+        ImportarImagen(DirOrigen,DirDestino.toString());}
                   
  }
                

@@ -42,6 +42,7 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
         
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
        this.setFileFilter(filtro);
+       this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showOpenDialog(new JFrame());
     }
     
@@ -51,9 +52,13 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
        this.setFileFilter(filtro);
        seleccion = this.showOpenDialog(cG);
     }
+    private int getStatus(){
+        return seleccion;
+    }
     
  public void Cargar()
  {
+      if(this.getStatus()==JFileChooser.APPROVE_OPTION){
         ArchDestino=this.getSelectedFile();
         DirDestino=new File(Util.ARCHIVOS_XML_PATH);
         DirDestino.mkdir();
@@ -65,6 +70,7 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
         System.out.println(DirOrigen);
         System.out.println(DirDestino);
         CrearXML(DirOrigen,DirDestino.toString());
+      }
                   
  }
                
