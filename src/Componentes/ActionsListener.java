@@ -10,13 +10,14 @@ import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
+import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -119,19 +120,19 @@ public class ActionsListener {
         };  
   }  
 
-   public static ActionListener ActionAgregarMateria (final ContratoGeneral contGen)  {
+   public static ActionListener ActionAgregarMateria ()  {
      return new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                View.AgregarMateria nuevaMat=new View.AgregarMateria(contGen);
+                View.AgregarMateria nuevaMat=new View.AgregarMateria();
                 nuevaMat.setVisible(true);
             }
         };  
   }  
     
-   public static ActionListener ActionAgregarLeccion (final ContratoGeneral contGen)  {
+   public static ActionListener ActionAgregarLeccion ()  {
      return new ActionListener() 
         {
             @Override
@@ -143,7 +144,7 @@ public class ActionsListener {
         };  
   }  
       
-   public static ActionListener ActionAgregarEjercicio (final ContratoGeneral contGen)  {
+   public static ActionListener ActionAgregarEjercicio ()  {
      return new ActionListener() 
         {
             @Override
@@ -151,6 +152,21 @@ public class ActionsListener {
             {
                 View.AgregarEjercicio nuevaEjer=new View.AgregarEjercicio();
                 nuevaEjer.setVisible(true);
+            }
+        };  
+  }  
+    public static ActionListener ActionCargarAvance (final ContratoGeneral pers)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+               if(pers.GetPersona().getActividades().size()>0){
+                View.Avance avance=new View.Avance(pers.GetPersona());
+                avance.setVisible(true);}
+               else
+                   pers.avisoMensaje(Util.DIALOG_MENSAJE_NOHAYREGISTRO);
+               //agregar alerta de que no hay actividades
             }
         };  
   }  
@@ -220,5 +236,6 @@ public static KeyAdapter ActionTextBox (final TextBoxRecrea tb)  {
         };  
   } 
    //FinNumberBox
+
 
 }
