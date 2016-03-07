@@ -39,17 +39,18 @@ public class AgregarXML {
  * @param Curso tema o curso que se realizo 
  * @since 1.0.0
  */
-public static void XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String Curso){
+public static void XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total){
     try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
     Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+Util.PERSONA_XML+Util.ARCHIVO_XML));  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.PERSONA_ACTIVIDAD_CHILD);
-    actAdd.setTextContent(Curso);
+    actAdd.setTextContent(leccion);
     actAdd.setAttribute(Util.FECHA_ATRIBUTE, fecha);
     actAdd.setAttribute(Util.HORA_ATRIBUTE, hora);
     actAdd.setAttribute(Util.NOTA_ATRIBUTE, calf);
+    actAdd.setAttribute(Util.NOTA_TOTAL_ATRIBUTE, total);
     actAdd.setAttribute(Util.DIA_ATRIBUTE, dia);
     NodeList lsNode=root.getElementsByTagName(Util.PERSONA_ACTIVIDADES_TAG);//(Element)root.getElementsByTagName(Util.PERSONA_ACTIVIDAD_TAG);
     Element pr=(Element)lsNode.item(0);
