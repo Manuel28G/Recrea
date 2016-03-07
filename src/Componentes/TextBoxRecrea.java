@@ -6,10 +6,6 @@
 
 package Componentes;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JTextField;
 /**
  *

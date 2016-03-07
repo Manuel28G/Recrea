@@ -6,14 +6,12 @@
 
 package Componentes;
 import Contrato.ContratoGeneral;
-import Controller.Util;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
+import org.jdom2.JDOMException;
 /**
  *
  * @author Manuel Goncalves L.
@@ -26,7 +24,7 @@ public class MenuBarRecrea extends JMenuBar{
     private String[][] opcSub;
     private ContratoGeneral contGen;
     
-    public MenuBarRecrea(){
+    public MenuBarRecrea() throws JDOMException{
       super.removeAll();
       menuRecrea();
     }
@@ -41,8 +39,8 @@ public class MenuBarRecrea extends JMenuBar{
     
     
     private void menuRecrea(){
-        opcSub=new String[][]{{"Cargar"},
-                           {"Guardar"}};
+        opcSub=new String[][]{{"Cargar Materias"},
+                           {"Guardar Materias"}};
         CrearMenu("Archivo",opcSub);
         opcSub=new String[][]{{"Agregar","Materia","Leccion","Ejercicio"},
                {"Modificar","Materia","Leccion","Ejercicio"},
@@ -108,11 +106,14 @@ public class MenuBarRecrea extends JMenuBar{
   private ActionListener ActionsLis(String nombreMenu){
       switch(nombreMenu)
       {
-          case "Cargar":return Componentes.ActionsListener.ActionCargarXML(); 
-          case "Guardar":return Componentes.ActionsListener.ActionGuardarXML();
-          case "Agregar"+"Materia":return Componentes.ActionsListener.ActionAgregarMateria(contGen);
-          case "AgregarLeccion":return Componentes.ActionsListener.ActionAgregarLeccion(contGen);
-          case "AgregarEjercicio":return Componentes.ActionsListener.ActionAgregarEjercicio(contGen);
+          case "Cargar Materias":return Componentes.ActionsListener.ActionCargarXML(); 
+          case "Guardar Materias":return Componentes.ActionsListener.ActionGuardarXML();
+          case "Agregar"+"Materia":return Componentes.ActionsListener.ActionAgregarMateria();
+          case "Agregar"+"Leccion":return Componentes.ActionsListener.ActionAgregarLeccion();
+          case "Agregar"+"Ejercicio":return Componentes.ActionsListener.ActionAgregarEjercicio();
+              
+              
+          case "Avance": return Componentes.ActionsListener.ActionCargarAvance(contGen);
        
       }
          return null;

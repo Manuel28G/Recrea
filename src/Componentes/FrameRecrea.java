@@ -7,8 +7,7 @@
 package Componentes;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -46,7 +45,14 @@ public class FrameRecrea extends JFrame {
     
     }
      public void fullScreen(){
-        GraphicsDevice grafica=GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        grafica.setFullScreenWindow(this); 
+       // GraphicsDevice grafica=GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+       // grafica.setFullScreenWindow(this); 
+        
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().getWidth());
+        int ySize = ((int) tk.getScreenSize().getHeight());
+        this.setSize(xSize,ySize);
+         //this.setExtendedState( JFrame.MAXIMIZED_BOTH);
+         
      }
 }

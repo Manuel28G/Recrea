@@ -6,7 +6,6 @@
 
 package Componentes;
 
-import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -19,6 +18,7 @@ public class LabelRecrea extends JLabel {
     private String colorTxt="BLANCO";
     private int size=0;
     private String tipografia="Tahoma";
+    private Configuracion config=new Configuracion();
     
     public LabelRecrea(String msj,String tmño, String clr){
         Texto(msj, tmño, clr);
@@ -32,7 +32,7 @@ public class LabelRecrea extends JLabel {
      public LabelRecrea(String msj){
         Texto(msj,tamañoTxt,colorTxt);
     }
-     public void setTamaño(String tamaño){
+ /*    public void setTamaño(String tamaño){
           switch(tamaño){
              case "GRANDE":
                  size=24; break;
@@ -58,7 +58,7 @@ public class LabelRecrea extends JLabel {
          this.setForeground(Color.WHITE);break;
             
          }
-     }
+     }*/
      
     /**
      * Se creará el texto de acuerdo a cierta configuracion
@@ -68,9 +68,7 @@ public class LabelRecrea extends JLabel {
      * @return 
      */
      private void Texto(String mensaje,String tamaño,String color){
-         setTamaño(tamaño);
-         setColor(color);
-         this.setFont(new java.awt.Font(tipografia, 0, size)); 
+         config.SetConfiguracion(color, tamaño, this);
          this.setText(mensaje);
      }
      

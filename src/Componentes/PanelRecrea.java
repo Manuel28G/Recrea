@@ -7,6 +7,7 @@
 package Componentes;
 
 import Controller.Util;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  */
 public class PanelRecrea extends JPanel {
     
-
+    public Component compEnUso;
   
     public PanelRecrea(){
         super();
