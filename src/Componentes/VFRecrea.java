@@ -27,8 +27,8 @@ public class VFRecrea extends PanelRecrea{
     
     public VFRecrea(){
         super();
-        rbVerdad=new JRadioButton("V");
-        rbFalso=new JRadioButton("F");
+        rbVerdad=new JRadioButton("Verdadero");
+        rbFalso=new JRadioButton("Falso");
         rbVerdad.setFont(tipoTexto);
         rbVerdad.setForeground(colorTexto);
         rbFalso.setFont(tipoTexto);
@@ -38,6 +38,13 @@ public class VFRecrea extends PanelRecrea{
         btGroup.add(rbFalso);
         this.add(rbVerdad);
         this.add(rbFalso);
+    }
+    
+    public void SetConfig(){
+     size=18;
+     tipoTexto=new java.awt.Font(tipografia, 0, size);
+     rbFalso.setFont(tipoTexto);
+     rbVerdad.setFont(tipoTexto);
     }
     
 

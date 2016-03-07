@@ -12,6 +12,47 @@ package Controller;
  * @version 1.0
  */
 public class Util {
+    
+    public static final String FORMATO_FECHA="dd/MM/yyyy";
+    public static final String FORMATO_DIA_SEMANA="EEEE";
+    public static final String FORMATO_HORA="HH:mm:ss";
+    //Dialogos
+    public static final String DIALOG_CONFIRMAR_SALIDA="¿Seguro que desea salir? si confirma se perdera el avance realizado.";
+    public static final String DIALOG_TITULO_SALIDA="Salir";
+    public static final String DIALOG_TITULO_MENSAJE="Mensaje";
+    public static final String DIALOG_MENSAJE_NOHAYEJERCICIOS="Disculpe esta lección aún no tiene ejercicios asignados.";
+    
+    public static final String DIALOG_MENSAJE_NOHAYREGISTRO="Aún no se han realizado actividades en Recrea. \n ¡vuelva pronto!";
+    public static final String DIALOG_MENSAJE_NOHAYLECCION="Disculpe esta Materia aún no tiene lecciones asignadas.";
+    public static final String DIALOG_CONFIRMAR_CONTINUAR="No ha respondido el ejercicio,se contara la respuesta como incorrecta directamente \n¿seguro que desea continuar?";
+    public static final String DIALOG_MENSAJE_APROBADA="¡Correcto,Felicitaciones!";
+    public static final String DIALOG_MENSAJE_FALLIDO="Lo siento, no es correcto";
+    public static final String DIALOG_MENSAJE_NOAPLICA="No aplica";
+    
+    public static final String SEPARADOR_DE=" de ";
+    //Configuracion
+    public static final String CONFIG_TAMAÑO_LETRA_MED="MEDIANO";
+    public static final String CONFIG_TAMAÑO_LETRA_INTERMED="INTERMEDIO";
+    public static final String CONFIG_TAMAÑO_LETRA_PEQUE="PEQUEÑO";
+    public static final String CONFIG_TAMAÑO_LETRA_GRANDE="GRANDE";
+    public static final int MAX_COLUMNAS_TEXTAREA=284;//esto es el tamaño del text area equivale a 17 columnas
+    
+    public static final String CONFIG_COLOR_LETRA_NEGRO="NEGRO";
+    public static final String CONFIG_COLOR_LETRA_BLANCO="BLANCO";
+    public static final String CONFIG_COLOR_LETRA_ROJO="ROJO";
+    public static final String CONFIG_COLOR_LETRA_AZUL="AZUL";
+    
+    //tipo de ejercicio
+    public static final String EJERCICIO_TIPO_BOTON="Botones";
+    public static final String EJERCICIO_TIPO_ESCRIBIR="Escribir";
+    public static final String EJERCICIO_TIPO_VF="Verdadero-Falso";
+    public static final String EJERCICIO_TIPO_RESP_NUMERO="Número";
+    public static final String EJERCICIO_TIPO_RESP_LETRA="Letras";
+    
+    public static final String RESPUESTA_VF_VERDADERO="Verdadero";
+    public static final String RESPUESTA_VF_FALSO="Falso";
+    
+    public static final String SALTO_DE_LINEA="\n";
     //Configuracion de botones 
     public static int BTPositionX=15;
     public static int BTPositionY=15;
@@ -33,14 +74,26 @@ public class Util {
     public static final String COMBOBOX_SELECCIONAR_MATERIA="-Seleccionar Materia-";
     public static final String COMBOBOX_SELECCIONAR_LECCION="-Seleccionar Leccion-";
     public static final String COMBOBOX_SELECCIONAR_TIPO="-Tipo de ejercicio-";
+    public static final String COMBOBOX_SINRESPUESTA="Sin respuesta";
     public static final String BOTON_TIPO_OPCION="Opciones";
     public static final String BOTON_TIPO_SALIR="Regresar";
     public static final String BOTON_TIPO_SEGUIR="Seguiente";
     public static final String BOTON_TIPO_SONIDO="Sonido";
+    public static final String BOTON_TIPO_CARITA="Carita";//para los botones del resultado de carita feliz o triste
+    
+    public static final String ETIQUETA_NOMBRE="NombreEtiqueta";
     
     public static final String NULL_TAG="null";
     //Directorio de imagenes
     public static final String IMAGE_PATH="src/Model/Image/";
+    public static final String IMAGEN_RESALTADO="Resaltar";
+    public static final String IMAGEN_SONIDO="sonido.png";
+    public static final String IMAGEN_CARITA_FELIZ="CaritaFeliz.png";
+    public static final String IMAGEN_CARITA_TRISTE="CaritaTriste.png";
+    public static final String IMAGEN_SEGUIR="Seguir.png";
+    public static final String IMAGEN_SALIR="Salir.png";
+    public static final String IMAGEN_REGRESAR="Regresar.png";
+    public static final String IMAGEN_DEFAULT="default.png";
     //Directorio de Archivos XML
     public static final String ARCHIVOS_XML_PATH = "src/Model/Archivos/";
     //Directorio donde se guardaran los archivos de recrea
@@ -56,6 +109,7 @@ public class Util {
     
     //Los tags asociados a los archivos XML
     public static final String RUTA_MATERIA_XML="src/Model/Archivos/Materias.xml" ;
+    public static final String RUTA_PERSONA_XML="src/Model/Archivos/Persona.xml";
     public static final String MATERIAS_TAG= "Materias";
     public static final String MATERIA_CHILD= "Materia";
     public static final String PERSONA_XML="Persona";
@@ -65,6 +119,7 @@ public class Util {
     public static final String FECHA_ATRIBUTE="Fecha";
     public static final String HORA_ATRIBUTE="Hora";
     public static final String NOTA_ATRIBUTE="Nota";
+    public static final String NOTA_TOTAL_ATRIBUTE="NotaTotal";
     public static final String NIVEL_ATRIBUTE="Nivel";
     public static final String XML_ATRIBUTE="XML";
     public static final String IMAGEN_ATRIBUTE="Imagen";
