@@ -5,6 +5,7 @@
  */
 
 package Contrato;
+import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 
 /**
@@ -14,4 +15,6 @@ import java.awt.event.ActionEvent;
 public interface ContratoGeneral {
     public void SetEnable(boolean bol);
     public void Reaload();
+    public Persona GetPersona();
+    public void avisoMensaje(String mensaje);
 }
