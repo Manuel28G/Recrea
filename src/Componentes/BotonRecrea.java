@@ -8,7 +8,9 @@ package Componentes;
 
 import Contrato.ContratoBotones;
 import Controller.Util;
+import java.awt.Color;
 import java.awt.Insets;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,11 +20,19 @@ import javax.swing.JButton;
  * @author Manuel
  */
 public class BotonRecrea extends JButton {
-    
+    private Configuracion config=new Configuracion();
     
     public BotonRecrea(){
         super();
     }
+    
+    private void configuracion(){
+        
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setFont(config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED));
+        this.setForeground(config.SetColor(Util.CONFIG_COLOR_LETRA_NEGRO));
+    }
+    
     /**
      * Constructor de la clase BotonOpciones
      * @param tipo "Opciones" "Siguiente" "Regresar" "Sonido"
@@ -31,8 +41,18 @@ public class BotonRecrea extends JButton {
     public BotonRecrea(String tipo,ContratoBotones actGen){
         super();
         TipoDeBoton(tipo,actGen);
-        
+      //  configuracion();
         }
+    
+    /**
+     * Constructor de la clase BotonOpciones
+     * @param texto 
+     */
+    public BotonRecrea(String texto){
+        super();
+        this.setText(texto);
+        configuracion();
+    }
     /**
       * 
       * @param img  imagen que se le asignará al boton 
@@ -43,6 +63,7 @@ public class BotonRecrea extends JButton {
       */
     public JButton BotonConfig(String img,String name,int x,int y){
         ImageIcon imagen=new ImageIcon(Util.IMAGE_PATH+img);
+        File resaltadoF=new File(Util.IMAGE_PATH+Util.IMAGEN_RESALTADO+img);
         this.setIcon(imagen);
         this.setActionCommand(name);
         this.setSize(x, y);
@@ -52,7 +73,8 @@ public class BotonRecrea extends JButton {
         this.setFocusPainted(false);
         this.setMargin(new Insets(0, 0, 0, 0));//(int top, int left, int bottom, int right)
         this.addMouseListener(null);
-        this.setRolloverIcon(new ImageIcon(Util.IMAGE_PATH+"Resaltar"+img)); 
+        if(resaltadoF.exists())
+             this.setRolloverIcon(new ImageIcon(resaltadoF.getPath())); 
         return this;
     }
     /**
