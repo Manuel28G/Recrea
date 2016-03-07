@@ -123,8 +123,8 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
 
     private void BT_ComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_ComenzarActionPerformed
       try{
-      if(valid.ValidarTextField(TB_Nombre)&&
-         valid.ValidarTextField(TB_Apellido)){
+      if(valid.ValidarRespuestaVacia(TB_Nombre)&&
+         valid.ValidarRespuestaVacia(TB_Apellido)){
       ControllerCrear.CrearUsuario(TB_Nombre.getText(), TB_Apellido.getText());
       Inicio ini= new Inicio();
       this.setVisible(false);

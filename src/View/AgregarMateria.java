@@ -10,6 +10,7 @@ import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import javax.swing.JFileChooser;
 
 /**
@@ -21,6 +22,7 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
     private Componentes.ImportarImagenDialog imgDialog;
     private ContratoGeneral ctoGeneral;
     private Validaciones valid=new Validaciones();
+    private String imagen;
     /**
      * Creates new form AgregarMateria
      */
@@ -29,17 +31,8 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
         initComponents();
         this.add(pnRecrea);
         this.configuracion(pnRecrea);
-        this.add(new AgregarLeccion().getLayeredPane());
     }
      
-    public AgregarMateria(ContratoGeneral ctoGen) {
-        ctoGeneral=ctoGen;
-        pnRecrea=new Componentes.PanelRecrea();
-        initComponents();
-        this.add(pnRecrea);
-        this.configuracion(pnRecrea);
-        //ctoGeneral.SetEnable(false);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,9 +94,9 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
                                 .addComponent(LB_Nivel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TB_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(TB_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -114,14 +107,14 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LB_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LB_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TB_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -185,15 +178,16 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
 
     @Override
     public void ActionSiguiente(ActionEvent e) {
-        if(valid.ValidarTextField(TB_Nivel) &&
-           valid.ValidarTextField(TB_Nombre) &&
-           valid.ValidarTextField(this.TB_CargarImagen)){
-     Controller.ControllerAgregar ctAgregar= new Controller.ControllerAgregar();
-     ctAgregar.AgregarMateria(imgDialog.getSelectedFile().getName(),
-                              TB_Nivel.getText(),TB_Nombre.getText());
-     imgDialog.Cargar();
-     ctoGeneral.Reaload();
-     this.dispose();
+        if(valid.ValidarRespuestaVacia(TB_Nivel) &&
+           valid.ValidarRespuestaVacia(TB_Nombre)){
+          if(valid.ValidarRespuestaVacia(this.TB_CargarImagen)){
+              imagen=imgDialog.getSelectedFile().getName();
+              imgDialog.Cargar();}
+          else{
+              imagen=Util.IMAGEN_DEFAULT;}
+            Controller.ControllerAgregar ctAgregar= new Controller.ControllerAgregar();
+            ctAgregar.AgregarMateria(imagen,TB_Nivel.getText(),TB_Nombre.getText());
+            this.dispose();
         }
         //agregar alerta 
     }

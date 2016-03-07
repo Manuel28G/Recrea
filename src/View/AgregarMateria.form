@@ -45,9 +45,9 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TB_Nivel" min="-2" pref="60" max="-2" attributes="0"/>
                               <Component id="TB_Nombre" min="-2" pref="174" max="-2" attributes="0"/>
                               <Component id="TB_CargarImagen" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                              <Component id="TB_Nivel" alignment="0" min="-2" pref="76" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -64,16 +64,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="LB_Titulo2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="LB_Nombre" max="32767" attributes="0"/>
-                  <Component id="TB_Nombre" min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LB_Nombre" min="-2" max="-2" attributes="0"/>
+                  <Component id="TB_Nombre" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TB_Nivel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="LB_Nivel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="TB_CargarImagen" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="BT_CargarImagen" alignment="3" min="-2" max="-2" attributes="0"/>

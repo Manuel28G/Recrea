@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="LB_Titulo" min="-2" max="-2" attributes="0"/>
@@ -37,19 +37,19 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="BT_Crear" min="-2" pref="108" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="BT_CargarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LB_Materia" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="LB_Nombre" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LB_Materia" min="-2" max="-2" attributes="0"/>
                                   <Component id="LB_Nivel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BT_CargarImagen" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace pref="37" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TB_CargarImagen" max="32767" attributes="0"/>
-                                  <Component id="TB_Nombre" alignment="0" pref="173" max="32767" attributes="0"/>
-                                  <Component id="TB_Nivel" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Component id="TB_Nombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="CB_Materia" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TB_CargarImagen" alignment="1" min="-2" pref="204" max="-2" attributes="0"/>
+                                  <Component id="TB_Nivel" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
