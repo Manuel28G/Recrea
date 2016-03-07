@@ -5,18 +5,27 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!--
-    Botones R:Numeros : saldran botones con solo numeros para la respuesta
-    Botones R:Letras  : saldran solo letras ("Uno") para la respuesta
-    Verdero-Falso     : saldran dos botones para denotar si es V ó F la afirmación
-    Escribir Número   : saldra un TextBox Recrea para completar la ecuación
-    Escribir Letras   : saldrá un NúmberBox Recrea para completar la ecuación-->
+    Botones:Numeros = saldran botones con solo numeros para la respuesta
+    Botones:Letras  = saldran solo letras ("Uno") para la respuesta
+    Verdero-Falso     = saldran dos botones para denotar si es V ó F la afirmación
+    Escribir:Número   = saldra un TextBox Recrea para completar la ecuación
+    Escribir:Letras   = saldrá un NúmberBox Recrea para completar la ecuación-->
 
 <Configuracion>
     <EjercicioTipo>
         <Tipo>Verdadero-Falso</Tipo>
-        <Tipo>Escribir Letras</Tipo>
-        <Tipo>Escribir Número</Tipo>
-        <Tipo>Botones R:Número</Tipo>
-        <Tipo>Botones R:Letras</Tipo>
+        <Tipo>Escribir:Letras</Tipo>
+        <Tipo>Escribir:Número</Tipo>
+        <Tipo>Botones:Número</Tipo>
+        <Tipo>Sin respuesta</Tipo>
     </EjercicioTipo>
+    <Texto>
+        <Tamaño></Tamaño>
+        <Color></Color>
+        <Letra></Letra>
+    </Texto>
+    <ArchivosRuta>
+        <RutaImagenes></RutaImagenes>
+        <RutaArchivosXML></RutaArchivosXML>
+    </ArchivosRuta>
 </Configuracion>

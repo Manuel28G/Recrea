@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--><Reconum>
+    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué son números?
+        <Ejercicio Fecha="10:32:23 06/03/2016" Pregunta="¡Hola! &#10;en esta sección aprenderemos sobre los números, veras que es fácil y divertido " Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="10:38:39 06/03/2016" Pregunta="&#10;&#10;&#10;&#10;                                                                     UNO&#10;&#10;                                                                        1&#10;&#10;&#10;                                                        _________&#10;                                                        |____           |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                       _____|         |____&#10;                                                       |_____________|" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        </Leccion>
+    <Leccion Imagen="vf.png" Nivel="1">¿Es verdadero?</Leccion>
+    <Leccion Imagen="ABC.png" Nivel="1">Escribelo en letra</Leccion>
+    <Leccion Imagen="123.png" Nivel="1">Escribelo en número</Leccion>
+</Reconum>

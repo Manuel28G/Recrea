@@ -35,7 +35,7 @@ public static int ContarEtiquetas(String Documento,String nivel){
        
       SAXBuilder builder = new SAXBuilder();
       org.jdom2.Document doc = builder.build(Documento);
-      Element nodo=doc.getRootElement();;
+      Element nodo=doc.getRootElement();
       List<Element> nodos;
 
        if(!nivel.equals("")){
@@ -61,7 +61,7 @@ public static int ContarEtiquetas(String Documento,String nivel){
 public static Element elementoNodo(String texto,List<Element> elementos) throws Exception{
          Element nodo=null;
          for(Element el: elementos){
-            if(el.getName().equals(texto)){
+            if(el.getName().trim().equals(texto.trim())||el.getText().trim().equals(texto.trim())){
                 nodo=el;
                 break;
             }
@@ -104,8 +104,12 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
         List list = rootNode.getChildren( );
         //Se obtiene el elemento 'tabla'
         org.jdom2.Element tabla = (org.jdom2.Element) list.get(indice);
-        if(Variable!=null)
-            Respuesta = tabla.getAttributeValue(Variable);
+
+        if(Variable!=null){
+            if(Variable.equals(Util.ETIQUETA_NOMBRE))
+                Respuesta=tabla.getName();
+            else
+                Respuesta = tabla.getAttributeValue(Variable);}
         else
             Respuesta=tabla.getText(); 
 

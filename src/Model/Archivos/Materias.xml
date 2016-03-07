@@ -8,17 +8,12 @@ and open the template in the editor.
 Este archivo contendra todas las materias del curso y sera utilizado para cargar los botones necesarios
 para todas las opciones
 --><Materias>
-    <Materia Imagen="CDU.png" Nivel="1" XML="Cero.xml">Conociendo el cero</Materia>
-    <Materia Imagen="Numeros.png" Nivel="1" XML="Numeros.xml">Números</Materia>
+    <Materia Imagen="cero.png" Nivel="1" XML="Cero.xml">Conociendo el cero</Materia>
     <Materia Imagen="Numeros.png" Nivel="1" XML="Reconum.xml">Reconociendo los números</Materia>
-    <Materia Imagen="Cero2.png" Nivel="1" XML="Cantidad.xml">Cantidades</Materia>
-    <Materia Imagen="Cero.png" Nivel="1" XML="Posicion.xml">Valor de posiciones</Materia>
-    <Materia Imagen="Suma.jpg" Nivel="1" XML="Suma.xml">Sumando</Materia>
+    <Materia Imagen="Cantidades.png" Nivel="1" XML="Cantidad.xml">Cantidades</Materia>
+    <Materia Imagen="Suma.png" Nivel="1" XML="Suma.xml">Sumando</Materia>
     <Materia Imagen="Resta.png" Nivel="1" XML="Resta.xml">Restando</Materia>
-    <Materia Imagen="Multiplicacion2.png" Nivel="1" XML="Multiplicacion.xml">Multiplicando</Materia>
-    <Materia Imagen="Division.png" Nivel="1" XML="Division.xml">Dividiendo</Materia>
-    <Materia Imagen="Cero.png" Nivel="1" XML="Sucesion.xml">Sucesiones</Materia>
-    <Materia Imagen="Cero.png" Nivel="1" XML="Propiedad.xml">Propiedades</Materia>
-    <Materia Imagen="Cero.png" Nivel="1" XML="Parimpar.xml">¿Par o Impar?</Materia>
-    <Materia Imagen="Cero.png" Nivel="1" XML="Multiplo.xml">Mis multiplos</Materia>
+    <Materia Imagen="Multiplicacion.png" Nivel="1" XML="Multiplicacion.xml">Multiplicando</Materia>
+    <Materia Imagen="sucesiones.png" Nivel="1" XML="Sucesion.xml">Sucesiones</Materia>
+    <Materia Imagen="parImpar.png" Nivel="1" XML="Parimpar.xml">¿Par o Impar?</Materia>
 </Materias>

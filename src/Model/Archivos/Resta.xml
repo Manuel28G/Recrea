@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+Se utiliza el punto y coma (;) para hacer el split
+--><Resta>
+    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué es la resta?</Leccion>
+    <Leccion Imagen="vf.png" Nivel="1">¿Es correcto?</Leccion>
+    <Leccion Imagen="123.png" Nivel="1">Escribe la respuesta</Leccion>
+    <Leccion Imagen="default.png" Nivel="1">¡Repasemos!</Leccion>
+</Resta>

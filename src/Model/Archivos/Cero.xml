@@ -3,12 +3,26 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 --><Cero>
-    <Leccion Imagen="Cero.png" Nivel="1">Conociendolos
-        <Contenido Pregunta="2+2=x" Puntos="3" Tipo="NUMEROS">4</Contenido><!--seleccionar la opcion(boton) correcta-->
-        <Contenido Pregunta="2+4=x" Tipo="VERDADERO-FALSO">6</Contenido> <!--Verdadero o Falso-->
+    <Leccion Imagen="explicacion.png" Nivel="1">Conociendolo al cero
+        <Ejercicio Fecha="02:17:55 05/03/2016" Pregunta="¡Hola! Mucho gusto soy el número CERO , así se escribe mi nombre y si quieres saber como me veo, soy parecido a una pelota pero sin relleno:&#10;                                           &#10;                                                       0&#10;&#10;esa es mi forma y mi nombre, espero lo recuerdes, es un placer conocerte.&#10;&#10;Palabra:  CERO&#10;Número:     0" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="02:29:09 05/03/2016" Pregunta="¡Hola de nuevo! &#10;&#10;Esta vez quiero mostrarte que significa mi forma y mi nombre, mi número lo usan para demostrar cuando falta o sobra algo, por ejemplo: &#10;&#10;Si maria le pide 1 manzana a Juan y Juan le entrega una manzana a Maria&#10;&#10;¿Cuantas manzanas le falta a Juan entregar ? &#10;¡Correcto, ninguna!&#10;por eso se coloca el número cero&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="02:36:45 05/03/2016" Pregunta="SUMANDO CON CERO&#10;&#10;Cuando los demas números me invitan a sumar a mi me gusta dejar todo como esta, soy un número muy tranquilo por eso si Maria tiene 3 manzana y Juan le Regala 0 Manzanas&#10;&#10;¿Cuantas manzanas tiene ahora María?&#10;&#10;                       0&#10;&#10;Vamos a explicarlo de otra forma recuerda que mi número es para decir que no hay nada, entonces si Maria tiene 3 Manzanas y tu no le das nada a Maria &#10;&#10;¿Cuantas manzanas tiene ahora María?&#10;&#10;&#10;" Puntos="0" Tipo="Escribir:Número">0</Ejercicio>
+        <Ejercicio Fecha="02:42:25 05/03/2016" Pregunta="RESTANDO CON CERO&#10;&#10;Hola de nuevo, veo que estas aprendiendo mucho.&#10;Si recuerdas como soy sumando aqui sera igual de fácil cuando restamos estamos &quot;quitando&quot; algo, sigamos con el mismo ejemplo:&#10;&#10;Si Maria tiene CINCO manzanas y ella se come CERO manzanas&#10;&#10;¿Cuantas manzanas le quedan a Maria?" Puntos="0" Tipo="Botones:Número">5</Ejercicio>
+        <Ejercicio Fecha="02:54:07 05/03/2016" Pregunta="MULTIPLICANDO CON CERO&#10;&#10;Cuando me invitan a multiplicar soy muy molesto y no me gusta compartir por eso boto a los otros numeros y al final siempre quedo yo solo.&#10;&#10;por ejemplo si Juan tiene 0 Manzanas y quiere darle la misma cantidad de manzanas a Maria y Pedro&#10;&#10;¿Cuantas Manzanas le dio Juan a Maria y Pedro?" Puntos="0" Tipo="Escribir:Letras">cero</Ejercicio>
+        <Ejercicio Fecha="03:11:37 05/03/2016" Pregunta="Escribe el número:&#10;&#10;Si Maria tiene SEIS Manzanas y Juan le regala CERO,&#10;&#9;¿Cuantas Manzanas tiene ahora Maria?&#10;&#10;" Puntos="2" Tipo="Botones:Número">6</Ejercicio>
     </Leccion>
-    <Leccion Imagen="Cero.png" Nivel="1">Ejercicios
-        <Ejercicio Pregunta="2+2=x" Tipo="NUMEROS">4</Ejercicio><!--Completar la ecuación-->
-        <Ejercicio Fecha="19:18:36 21/02/2016" Pregunta="Pregunta1" Puntos="3" Tipo="Letra">2</Ejercicio>
+    <Leccion Imagen="suma.png" Nivel="1">Sumando con cero
+        <Ejercicio Fecha="03:07:25 05/03/2016" Pregunta="¡Hola! yo te recuerdo, ¿Tú te acuerdas de mi? soy el cero y esta vez harémos unos cuantos ejercicios de suma y nos divertiremos juntos ya veras que fácil será.&#10;&#10;&#10;Recuerda cuando sumo soy un número muy tímido y dejo todo como esta.&#10;&#10;Si Juan tiene 3 manzanas y Maria le regala 0 Manzanas&#10;&#10;¿Cuantas manzanas tiene Juan ahora? &#10;¡Correcto! sigue teniendo tres manzanas &#10;entonces, ¿Cuanto es 3 + 0? &#10;¡Correcto Nuevamente! 3 + 0 = 3&#10;&#10;¡COMENZEMOS!" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="03:09:10 05/03/2016" Pregunta="Si Juan Tiene 3 Manzanas y Maria le regala 0 Manzanas&#10;&#10;&#9;&#10;&#9; ¿Ahora Juan tiene 30 Manzanas?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="03:15:38 05/03/2016" Pregunta="Si Pedro tiene CERO manzanas y Maria le Regala 5 Manzanas,&#10;¿Cuantas Manzanas tiene ahora Pedro?" Puntos="2" Tipo="Botones:Número">5</Ejercicio>
+        <Ejercicio Fecha="03:18:24 05/03/2016" Pregunta="  &#10;&#9;&#10;&#10;&#9;&#9;¿Cuanto es 3 + 0 ?" Puntos="2" Tipo="Escribir:Número">3</Ejercicio>
+        <Ejercicio Fecha="03:19:06 05/03/2016" Pregunta="  &#10;&#9;&#10;&#10;&#9;&#9;¿Cuanto es 0 + 7 ?" Puntos="2" Tipo="Botones:Número">7</Ejercicio>
+        <Ejercicio Fecha="03:19:58 05/03/2016" Pregunta="  &#10;&#9;&#10;&#10;&#9;&#9;¿ 5 + 0 = 50 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="03:21:34 05/03/2016" Pregunta="&#10;Si Maria tiene 5 peras y juan le regala 0 Peras&#10;&#9;¿Cuantas peras tiene ahora Maria?" Puntos="2" Tipo="Escribir:Letras">CINCO</Ejercicio>
+        <Ejercicio Fecha="03:22:56 05/03/2016" Pregunta="  Escribe el resultado en letras&#10;&#9;&#10;&#10;&#9;&#9;¿Cuanto es 0 + 0 ?" Puntos="2" Tipo="Escribir:Letras">CERO</Ejercicio>
+        <Ejercicio Fecha="03:25:29 05/03/2016" Pregunta="Si Juan tiene CERO carritos y Miguel le regala  SIETE carritos a Juan&#10;&#10;&#9;&#9;¿Cuantos carritos tiene ahora Juan?" Puntos="2" Tipo="Botones:Número">7</Ejercicio>
+        <Ejercicio Fecha="03:26:33 05/03/2016" Pregunta="&#10;&#10;&#9;&#9;¿CERO mas CINCO es igual a CINCO?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
     </Leccion>
+    <Leccion Imagen="resta.png" Nivel="1">Restando con cero</Leccion>
+    <Leccion Imagen="multiplicacion.png" Nivel="1">Multiplicando con cero</Leccion>
 </Cero>
