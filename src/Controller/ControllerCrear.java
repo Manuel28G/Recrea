@@ -14,7 +14,11 @@ import java.util.Random;
  */
 public class ControllerCrear {
     
-    
+    /**
+     * Método para crear un usuario nuevo
+     * @param Nombre Nombre del usuario
+     * @param Apellido Apellido del usuario
+     */
     public static void CrearUsuario(String Nombre, String Apellido){
         Random rm=new Random();
         String identificador=Integer.toString(rm.nextInt(100));

@@ -13,22 +13,20 @@ package Controller;
  */
 public class Util {
     
+    public static final String RUTA_SONIDO_CLICK="/Model/Sonido/Click1.wav";
+    public static final String RUTA_SONIDO_SOBREBOTON="/Model/Sonido/Boton1.wav";
+    public static final String RUTA_SONIDO_CORRECTO="/Model/Sonido/Win.wav";
+    public static final String RUTA_SONIDO_EQUIVOCADO="/Model/Sonido/Fail.wav";
+    
+    public static final String RESPUESTA="Respuesta";
+    public static final String PREGUNTA="Pregunta";
+    
+    public static final String LETRA_TIPO_TAHOMA="Tahoma";
+    
     public static final String FORMATO_FECHA="dd/MM/yyyy";
     public static final String FORMATO_DIA_SEMANA="EEEE";
     public static final String FORMATO_HORA="HH:mm:ss";
-    //Dialogos
-    public static final String DIALOG_CONFIRMAR_SALIDA="¿Seguro que desea salir? si confirma se perdera el avance realizado.";
-    public static final String DIALOG_TITULO_SALIDA="Salir";
-    public static final String DIALOG_TITULO_MENSAJE="Mensaje";
-    public static final String DIALOG_MENSAJE_NOHAYEJERCICIOS="Disculpe esta lección aún no tiene ejercicios asignados.";
-    
-    public static final String DIALOG_MENSAJE_NOHAYREGISTRO="Aún no se han realizado actividades en Recrea. \n ¡vuelva pronto!";
-    public static final String DIALOG_MENSAJE_NOHAYLECCION="Disculpe esta Materia aún no tiene lecciones asignadas.";
-    public static final String DIALOG_CONFIRMAR_CONTINUAR="No ha respondido el ejercicio,se contara la respuesta como incorrecta directamente \n¿seguro que desea continuar?";
-    public static final String DIALOG_MENSAJE_APROBADA="¡Correcto,Felicitaciones!";
-    public static final String DIALOG_MENSAJE_FALLIDO="Lo siento, no es correcto";
-    public static final String DIALOG_MENSAJE_NOAPLICA="No aplica";
-    
+
     public static final String SEPARADOR_DE=" de ";
     //Configuracion
     public static final String CONFIG_TAMAÑO_LETRA_MED="MEDIANO";
@@ -179,6 +177,18 @@ public class Util {
     public static final String ERROR_PIECE_IMAGEI_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
     public static final String ERROR_PIECE_IMAGED_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
     
-
+    //Dialogos
+    public static final String DIALOG_CONFIRMAR_SALIDA="¿Seguro que desea salir? si confirma se perdera el avance realizado.";
+    public static final String DIALOG_TITULO_SALIDA="Salir";
+    public static final String DIALOG_TITULO_MENSAJE="Mensaje";
+    public static final String DIALOG_MENSAJE_NOHAYEJERCICIOS="Disculpe esta lección aún no tiene ejercicios asignados.";
+    
+    public static final String DIALOG_MENSAJE_NOHAYREGISTRO="Aún no se han realizado actividades en Recrea. \n ¡vuelva pronto!";
+    public static final String DIALOG_MENSAJE_NOHAYLECCION="Disculpe esta Materia aún no tiene lecciones asignadas.";
+    public static final String DIALOG_CONFIRMAR_CONTINUAR="No ha respondido el ejercicio,se contara la respuesta como incorrecta directamente \n¿seguro que desea continuar?";
+    public static final String DIALOG_MENSAJE_APROBADA="¡Correcto,Felicitaciones!";
+    public static final String DIALOG_MENSAJE_FALLIDO="Lo siento, no es correcto";
+    public static final String DIALOG_MENSAJE_NOAPLICA="No aplica";
+    public static final String DIALOG_MENSAJE_COLOCAR_DATOS="Debes colocar tus datos para comenzar";
     
 }

@@ -29,7 +29,7 @@ import org.jdom2.JDOMException;
  * @author Manuel
  */
 public class ControllerConsultar {
-   private final int materiasCont;
+   private int materiasCont;
    private final String rutaMateria;
    private List<Materia> materias;
    private List<Leccion> lecciones;
@@ -40,19 +40,41 @@ public class ControllerConsultar {
    private final EntidadGeneral egEJE=new EntidadGeneral();
     private Persona persona;
     
-   
+   /**
+    * Constructor 
+    */
     public ControllerConsultar(){
         
-        materias=new ArrayList<Materia>();
         rutaMateria=Util.RUTA_MATERIA_XML;
+        
+    }
+    
+    /**
+    * Constructor
+    * @param rutaArchivo ruta del archivo que contiene el documento con las materias
+    */
+    public ControllerConsultar(String rutaArchivo){
+        
+        rutaMateria=rutaArchivo;
+        
+    }
+    /**
+     * Método para consultar la cantidad de materias registradas en el sistema y
+     * preparar el entorno en base a esto
+     */
+    private void consultarMaterias(){
+        materias=new ArrayList<>();
         materiasCont=Model.ConsultarXML.ContarEtiquetas(rutaMateria,"");
         for(int i=0;i<materiasCont;i++){
             Materia materia= new Materia();
             materias.add(materia);
         }
-        
     }
-   
+   /**
+    * Método para obtener la respuesta realizada por el usuario
+    * @param comp componente que contiene la respuesta
+    * @return la respuesta realizada por el usuario
+    */
     public String ObtenerRespuesta(Component comp){
       try{
        switch(comp.getClass().getSimpleName()){
@@ -71,33 +93,41 @@ public class ControllerConsultar {
       }
        return "";
    }
-   
+   /**
+    * Método que retorna la respuesta seleccionada por el usuario en la
+    * seccion de Verdadero o falso
+    * @param resp Componente VFRecrea que contiene los radio button de verdad o falso
+    * @return respuesta seleccionada por el usuario; retorna vacio si no selecciono algo
+    */
     private String RespRadioButton(VFRecrea resp){
        if(resp.rbFalso.isSelected())
            return Util.RESPUESTA_VF_FALSO;
        else
+       if(resp.rbVerdad.isSelected())
            return Util.RESPUESTA_VF_VERDADERO;
+       else
+           return "";
+           
+       
    }
-   
+   /**
+    * Método que retorna la respuesta de los TexboxRecrea y NumberBoxRecrea
+    * @param textResp componente TBRecrea o NBRecrea
+    * @return respuesta realizada por el usuario
+    */
     private String RespTextField(JTextField textResp){
     return textResp.getText();
    }
    
-    public ControllerConsultar(String rutaArchivo){
-        
-        materias=new ArrayList<Materia>();
-        materiasCont=Model.ConsultarXML.ContarEtiquetas(rutaArchivo,"");
-        rutaMateria=rutaArchivo;
-        for(int i=0;i<materiasCont;i++){
-            Materia materia= new Materia();
-            materias.add(materia);
-        }
-        
-    }
-    
+    /**
+     * Método para cargar las materias asociadas a la aplicación
+     * @return listado de materias totales en la aplicación
+     * @throws JDOMException 
+     */
     public List<Materia> cargarMateria() throws JDOMException{
         int i=0;
-        List<Materia> respuesta=new ArrayList<Materia>();
+        consultarMaterias();
+        List<Materia> respuesta=new ArrayList<>();
         for(Materia mt:materias ){
            mt.setNombre(Model.ConsultarXML.InformacionEtiqueta(rutaMateria, null, i,null).trim()); 
            mt.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_ATRIBUTE, i,null).trim());
@@ -111,13 +141,18 @@ public class ControllerConsultar {
         return materias;
      
     }
-   
+   /**
+    * Método para cargar las lecciones asociadas a una materia en específico
+    * @param mt materia que contiene las lecciones a cargar
+    * @return listado de lecciónes asociadas a la materia consultada
+    * @throws JDOMException 
+    */
     private List<Leccion> cargarLeccion(Materia mt) throws JDOMException{
         
         int contHijo;
         String ruta=Util.ARCHIVOS_XML_PATH+mt.getHijoURL();
         contHijo=Model.ConsultarXML.ContarEtiquetas(ruta,"");
-        lecciones=new ArrayList<Leccion>();
+        lecciones=new ArrayList<>();
         for(int i=0;i<contHijo;i++ ){
             Leccion leccion=new Leccion();
             leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, null, i,null).trim());
@@ -128,9 +163,14 @@ public class ControllerConsultar {
         }
         return lecciones;
     }
-      
+    /**
+     * Método para cargar los ejercicios asociados a una lección en específico
+     * @param lc leccion que se consultará para cargar los ejercicios asociados
+     * @param Ruta ruta fisica donde recide el archivo de la lección
+     * @return listado con los ejercicios relacionados a la lección consultada
+     */
     private List<Ejercicio> cargarEjercicio(Leccion lc,String Ruta){
-        ejercicios=new ArrayList<Ejercicio>();
+        ejercicios=new ArrayList<>();
         try{
         int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,lc.getNombre());
         
@@ -152,11 +192,15 @@ public class ControllerConsultar {
         }
         return ejercicios;
     }
-    
+    /**
+     * Método para cargar el comboBox con las materias en el sistema
+     * @param cbRecrea Componente ComboBoxRecrea al cual se cargará las materias
+     * @return Componente ComboBoxRecrea con las matérias cargadas
+     */
     public ComboBoxRecrea CargarComboBoxMateria(ComboBoxRecrea cbRecrea){
         try{
             
-        List<Materia> materias= cargarMateria();
+        materias= cargarMateria();
         cbRecrea.RemoveAllRecrea();
         
         egMAT.setNombre(Util.COMBOBOX_SELECCIONAR);//coloca la palabra principal al comboBox
@@ -172,7 +216,12 @@ public class ControllerConsultar {
             return null;
         }
     }
-
+     /**
+     * Método para cargar el comboBox con las lecciones de una materia en particular
+     * @param cbRecrea Componente ComboBoxRecrea al cual se cargará las lecciones
+     * @param mt materia con la cual se filtrará solo las lecciones asociadas a esta
+     * @return Componente ComboBoxRecrea con las lecciones cargadas
+     */
     public ComboBoxRecrea CargarComboBoxLeccion(ComboBoxRecrea cbRecrea,Materia mt){
         try{
         List<Leccion> Leccion= mt.getAsignaturas();
@@ -191,12 +240,18 @@ public class ControllerConsultar {
             return null;
         }
     }
-     
+     /**
+      * Método para cargar los tipos de ejercicios disponibles en la aplicación
+      * donde cada uno cumple una función distinta y brinda al usuario mayor 
+      * fácilidad de construir sus lecciones y responder las mismas
+      * @param cbRecrea comboBoxRecrea donde se cargar los tipos de ejercicios
+      * @return ComboBoxRecrea con los tipos de ejercicios ya cargados
+      */
     public ComboBoxRecrea CargarComboBoxTipoEjercicio(ComboBoxRecrea cbRecrea){
         try{
         cbRecrea.RemoveAllRecrea();
         int cantEjer;
-        String subRuta="";
+        String subRuta;
         String rutaXML=Util.ARCHIVOS_XML_PATH+Util.CONFIGURACION_XML;
         cantEjer=ConsultarXML.ContarEtiquetas(rutaXML,Util.CONFIGURACION_TIPO_EJERCICIO);
         
@@ -218,15 +273,24 @@ public class ControllerConsultar {
             return null;
         }
     }
-
-    public String EtiquetaXMLMateria(String Materia){
+    /**
+     *ELIMINAR METODO
+     * @param Materia materia a consultar 
+     * @return 
+     */
+   /* private String EtiquetaXMLMateria(String Materia){
         String doc=Util.RUTA_MATERIA_XML;
         String etiqueta=Util.XML_ATRIBUTE;
         return Model.ConsultarXML.InformacionEtiquetaRec(doc, etiqueta, Materia);
-    }
-
+    }*/
+    
+    
+    /**
+     * Método para cargar las actividades asociadas a un usuario en particular
+     * @return listado con las actividades realizadas por el usuario
+     */
     public List<Actividad> CargarActividades(){
-        actividades=new ArrayList<Actividad>();
+        actividades=new ArrayList<>();
         String Ruta=Util.RUTA_PERSONA_XML;
         String etiqueta=Util.PERSONA_ACTIVIDADES_TAG;
         Actividad actividad=new Actividad();
@@ -253,16 +317,17 @@ public class ControllerConsultar {
         }
         return actividades;
     }
-
+   /**
+    * Método para cargar el usuario del sistema
+    * @return usuario del sistema con toda su información
+    */
     public Persona CargarPersona(){
         persona=new Persona();
          String Ruta=Util.RUTA_PERSONA_XML;
-        Actividad actividad=new Actividad();
          try{
         int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,"");
         
         for(int i=0;i<contHijo;i++ ){
-            actividad=new Actividad();
             String resp=Model.ConsultarXML.InformacionEtiqueta(Ruta, null, i,null).trim();
             String nombreEtiqueta=Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.ETIQUETA_NOMBRE, i,null).trim();
             switch(nombreEtiqueta){
@@ -282,6 +347,11 @@ public class ControllerConsultar {
         return persona;
     }
     
+    /**
+     * Método para validar si la ruta del archivo Matéria existe ya que es escencial 
+     * su existencia para el correcto funcionamiento de la aplicación
+     * si no existe se creará la ruta y el archivo.
+     */
     public static void ExisteArchivoMateria(){
         File file=new File(Util.RUTA_MATERIA_XML);
         if(!file.exists())

@@ -20,8 +20,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- *
- * @author Manuel
+ * Clase que agrupa los métodos para agregar información a un archivo XML
+ * @author Manuel Goncalves L.
  * @version %I%, %G%
  * @since 1.0.0
  */
@@ -36,7 +36,8 @@ public class AgregarXML {
  * @param hora hora en que fue realizada la actividad
  * @param dia  dia de la semana en que se realizo la prueba ejemplo "Miercoles"
  * @param calf calificacion optenida en la actividad
- * @param Curso tema o curso que se realizo 
+ * @param leccion leccion que realizó el usuario 
+ * @param total total de puntos posibles en la lección
  * @since 1.0.0
  */
 public static void XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total){

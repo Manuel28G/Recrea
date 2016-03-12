@@ -8,7 +8,7 @@ package Componentes;
 import javax.swing.JTextField;
 
 /**
- *
+ * Clase que define un componente de entrada de puro número
  * @author Manuel Goncalves L.
  */
 public class NumberBoxRecrea extends  JTextField{

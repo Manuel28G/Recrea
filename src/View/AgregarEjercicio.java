@@ -23,11 +23,11 @@ import java.awt.event.ActionEvent;
  */
 public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrato.ContratoBotones{
 
-    private Componentes.PanelRecrea pnRecrea;
-    private Controller.ControllerConsultar  cc=new Controller.ControllerConsultar();
-    private Controller.ControllerAgregar ca=new Controller.ControllerAgregar();
-    private Point pt;
-    private Dimension tamañoComp;
+    private final Componentes.PanelRecrea pnRecrea;
+    private final Controller.ControllerConsultar  cc=new Controller.ControllerConsultar();
+    private final Controller.ControllerAgregar ca=new Controller.ControllerAgregar();
+    private final Point pt;
+    private final Dimension tamañoComp;
     private String tipo;
     private String puntos;
     private String pregunta;
@@ -38,7 +38,7 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     private Component compEnUso;
     private VFRecrea PN_Respuesta;
     private NumberBoxRecrea NB_Respuesta;
-    private Validaciones valid=new Validaciones();
+    private final Validaciones valid=new Validaciones();
     private boolean sinRespuesta=false;
     /**
      * Creates new form AgregarEjercicio
@@ -55,6 +55,7 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
         //Carga el tipo de ejercicio al comboBox, como para este caso no es 
         //dependiente de la lección se carga directamente.
         CB_Tipo=cc.CargarComboBoxTipoEjercicio(CB_Tipo);  
+        this.TA_Pregunta.SetConfigText();
     }
 
     /**
@@ -79,10 +80,10 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
         BT_Crear = new Componentes.BotonRecrea(Util.BOTON_TIPO_SEGUIR,this);
         BT_Cancelar = new Componentes.BotonRecrea(Util.BOTON_TIPO_SALIR,this);
         CB_Leccion = new Componentes.ComboBoxRecrea(Util.COMBOBOX_SELECCIONAR);
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TA_Pregunta = new Componentes.TAreaRecrea();
         PN_ContentR = new Componentes.PanelRecrea();
         TB_Respuesta = new Componentes.TextBoxRecrea();
+        jScrollPane2 = new Componentes.ScrollPaneRecrea();
+        TA_Pregunta = new Componentes.TAreaRecrea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -137,10 +138,6 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
             }
         });
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane1.setViewportView(TA_Pregunta);
-
         TB_Respuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TB_RespuestaActionPerformed(evt);
@@ -162,53 +159,50 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
+        jScrollPane2.setViewportView(TA_Pregunta);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(34, 56, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LB_Respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(LB_Puntos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PN_ContentR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 33, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 32, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LB_Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(LB_Leccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                                    .addComponent(LB_Materia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(LB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CB_Materia, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                                    .addComponent(CB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CB_Leccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(LB_Respuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                        .addComponent(LB_Puntos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(TB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(PN_ContentR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(LB_Leccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(LB_Materia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(LB_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(CB_Materia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CB_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CB_Leccion, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(13, 13, 13)
                 .addComponent(LB_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -222,11 +216,11 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LB_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CB_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addComponent(LB_Pregunta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LB_Respuesta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PN_ContentR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -235,11 +229,14 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
                     .addComponent(LB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_Puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
+
+        jScrollPane2.setViewportView(TA_Pregunta);
+        jScrollPane2.getViewport().setOpaque(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -297,25 +294,7 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
                                 TB_Puntos.setVisible(false);
                                 sinRespuesta=true; break;
              
-     }/*
-      if(resp[resp.length-1].equals("Verdadero-Falso"))
-      {
-        PN_Respuesta=new VFRecrea();
-        compEnUso=PN_Respuesta;
-        
-      }else
-        if(resp[resp.length-1].equals("Número"))
-        {
-        NB_Respuesta=new NumberBoxRecrea();
-        compEnUso=NB_Respuesta;
-      }
-      else
-      if(resp[resp.length-1].equals("Letras"))
-      {
-        TB_Respuesta=new TextBoxRecrea();
-        compEnUso=TB_Respuesta;
-      }*/
-        
+     }
 
         PN_ContentR.add(compEnUso);
         compEnUso.setSize(tamañoComp);
@@ -379,36 +358,36 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     private Componentes.TAreaRecrea TA_Pregunta;
     private Componentes.NumberBoxRecrea TB_Puntos;
     private Componentes.TextBoxRecrea TB_Respuesta;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void ActionSiguiente(ActionEvent e) {
-    if(valid.ValidarRespuestaVacia(CB_Tipo)&&
-       valid.ValidarRespuestaVacia(CB_Materia)&&
-       valid.ValidarRespuestaVacia(CB_Leccion) &&
-       valid.ValidarRespuestaVacia(TA_Pregunta)&&((sinRespuesta )||(
-       valid.ValidarRespuestaVacia(TB_Puntos) &&
-       valid.ValidarRespuestaVacia(compEnUso)))){
-    tipo=CB_Tipo.getSelectedItem().toString();
-    if(sinRespuesta){
-        puntos="0";
-        respuesta=" ";
-        
-    }
-    else{
-    puntos=TB_Puntos.getText();
-    respuesta=cc.ObtenerRespuesta(compEnUso);
-    }
-    pregunta=TA_Pregunta.getText();
-    materiaObj=(Materia)CB_Materia.GetItemRecrea();
-    xmlFile=materiaObj.getHijoURL();
-    leccion=CB_Leccion.GetItemRecrea().getNombre();
-    ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,xmlFile,leccion);
-    this.dispose();
-    }
-    else
-     System.out.println("Error falta agregar un campo");
+        if(valid.ValidarRespuestaVacia(CB_Tipo)&&
+           valid.ValidarRespuestaVacia(CB_Materia)&&
+           valid.ValidarRespuestaVacia(CB_Leccion) &&
+           valid.ValidarRespuestaVacia(TA_Pregunta)&&((sinRespuesta )||(
+           valid.ValidarRespuestaVacia(TB_Puntos) &&
+           valid.ValidarRespuestaVacia(compEnUso)))){
+            tipo=CB_Tipo.getSelectedItem().toString();
+            if(sinRespuesta){
+                puntos="0";
+                respuesta=" ";
+
+            }
+            else{
+                puntos=TB_Puntos.getText();
+                respuesta=cc.ObtenerRespuesta(compEnUso);
+            }
+            pregunta=TA_Pregunta.getText();
+            materiaObj=(Materia)CB_Materia.GetItemRecrea();
+            xmlFile=materiaObj.getHijoURL();
+            leccion=CB_Leccion.GetItemRecrea().getNombre();
+            ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,xmlFile,leccion);
+            this.dispose();
+        }
+        else
+         System.out.println("Error falta agregar un campo");
     }
 
     @Override

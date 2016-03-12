@@ -15,28 +15,34 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**
- *
- * @author Manuel
+ * Clase que define el Panel Recrea 
+ * @author Manuel Goncalves L.
  */
 public class PanelRecrea extends JPanel {
     
-    public Component compEnUso;
+    private final String fondo=Util.IMAGE_PATH+"Pizarra.png";
+    public Component compEnUso;//componente que está siendo usado en la actualidad
+    //en el area de los ejercicios con esto podremos saber si la respuesta es un
+    //textbox, numberBox, VF  o botones
   
     public PanelRecrea(){
         super();
     }
-   //JPanel PN_Botones= new JPanel(new GridLayout(10, 3,10,10));
+    
     public PanelRecrea(GridLayout gL){
       this.setLayout(gL);
     }
     public PanelRecrea(GridBagLayout gBL){
       this.setLayout(gBL);
     }
-    
+    /**
+     * Este método pinta el fondo del panel
+     * @param g el objeto grafica del panel
+     */
    @Override
     public void paintComponent(Graphics g)
     { 
-      Image imagenFondo=new ImageIcon(Util.IMAGE_PATH+"Pizarra.png").getImage();
+      Image imagenFondo=new ImageIcon(fondo).getImage();
      g.drawImage(imagenFondo, 0,0,getWidth(),getHeight(),null);
 
     }

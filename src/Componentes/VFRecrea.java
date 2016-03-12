@@ -11,24 +11,26 @@ import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
 /**
- *
+ * Componente que contiene dos radiobutton para responder Verdadero o Falso
  * @author Manuel Goncalves L.
  */
 public class VFRecrea extends PanelRecrea{
-    private int dimX=145;
-    private int dimY=23;
-    private ButtonGroup btGroup=new ButtonGroup();
+    private final int dimX=145;
+    private final int dimY=23;
+    private final ButtonGroup btGroup=new ButtonGroup();
     public JRadioButton rbVerdad;
     public JRadioButton rbFalso;
     private int size=12;
-    private String tipografia="Tahoma";
-    private Color colorTexto=Color.WHITE;
+    private final String tipografia="Tahoma";
+    private final Color colorTexto=Color.WHITE;
     private java.awt.Font tipoTexto=new java.awt.Font(tipografia, 0, size);
+    private final String verdadero="Verdadero";
+    private final String falso="Falso";
     
     public VFRecrea(){
         super();
-        rbVerdad=new JRadioButton("Verdadero");
-        rbFalso=new JRadioButton("Falso");
+        rbVerdad=new JRadioButton(verdadero);
+        rbFalso=new JRadioButton(falso);
         rbVerdad.setFont(tipoTexto);
         rbVerdad.setForeground(colorTexto);
         rbFalso.setFont(tipoTexto);

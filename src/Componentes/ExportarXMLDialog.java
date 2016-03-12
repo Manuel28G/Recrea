@@ -28,19 +28,20 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /**
- *
+ * Clase que crea el dialogo para Exportar los archivos XML previamente creados
+ * en la aplicación
  * @author Manuel Goncalves L.
  */
 public class ExportarXMLDialog extends javax.swing.JFileChooser {
-    int seleccion;
-    File DirDestino;// directorio donde se copiaran los archivos 
-    File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
-    File DirOrigen;//Donde reciden los archivos XML de recrea
-    File ArchOrigen;//archivo XML origen
-    File ArchDestino;//Archivo XML destino
-    FileNameExtensionFilter filtro = new FileNameExtensionFilter(".xml","xml");
-    String archivoNombre;
-    String strDestino;
+    private final int seleccion;
+    private File DirDestino;// directorio donde se copiaran los archivos 
+    private File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
+    private File DirOrigen;//Donde reciden los archivos XML de recrea
+    private File ArchOrigen;//archivo XML origen
+    private File ArchDestino;//Archivo XML destino
+    private final FileNameExtensionFilter filtro = new FileNameExtensionFilter(".xml","xml");
+    private String archivoNombre;
+   // private String strDestino;
     
     public ExportarXMLDialog(){
         
@@ -51,8 +52,8 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
     }
     
     /**
-     * 
-     * @param cG 
+     * Constructor
+     * @param cG componente donde se va a desplegar el ExpotarXMLDialog
      */
    public ExportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
@@ -60,9 +61,16 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(cG);//puede ser new JFrame()
    }
+   /**
+    * obtiene la ruta seleccionada 
+    * @return retorna la ruta seleccionada
+    */
     private int getStatus(){
         return seleccion;
     }
+    /**
+     * Método que ejecuta el guardado de los archivos en la ruta que se especificará
+     */
    public void Guardar(){
       try{
        if(this.getStatus()==JFileChooser.APPROVE_OPTION){
@@ -88,10 +96,20 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
            }
     }
     }
-    catch(Exception e){}
+    catch(Exception e){
+    System.out.println("Error encontrado en ExportarXMLDialog.Guardar: "+e);}
      
    }
-
+/**
+ * Método que crea los archivos en la dirección seleccionada 
+ * @param fileOrigen archivo origen 
+ * @param rutaArchivo ruta del archivo destino
+ * @throws ParserConfigurationException 
+ * @throws SAXException
+ * @throws IOException
+ * @throws TransformerConfigurationException
+ * @throws TransformerException 
+ */
 private static void CrearXML(File fileOrigen,String rutaArchivo) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException{
    try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

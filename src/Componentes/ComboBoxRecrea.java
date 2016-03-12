@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 /**
- *
+ * Clase que define el componente Combo Box en la aplicación
  * @author Manuel Goncalves L.
  */
-public class ComboBoxRecrea extends JComboBox {
-    private List<EntidadGeneral> entidades =new ArrayList<EntidadGeneral>();
+public final class ComboBoxRecrea extends JComboBox {
+    private List<EntidadGeneral> entidades =new ArrayList<>();
     private String selecNombre ="";  
     private EntidadGeneral eG=new EntidadGeneral();
     public ComboBoxRecrea(){
@@ -44,15 +44,17 @@ public class ComboBoxRecrea extends JComboBox {
     public EntidadGeneral GetItemRecrea(){
       selecNombre= this.getSelectedItem().toString();
       for(EntidadGeneral eg:entidades){
-          if(eg.getNombre()==selecNombre)
+          if(eg.getNombre().equals(selecNombre))
               return eg;
       }
       return null;
     }
-    
+    /**
+     * Metodo para remover todo el contenido en el comboBoxRecrea
+     */
     public void RemoveAllRecrea(){
         
-        entidades=new ArrayList<EntidadGeneral>();
+        entidades=new ArrayList<>();
         selecNombre="";
         eG=new EntidadGeneral();
         System.out.println(this.getItemCount());

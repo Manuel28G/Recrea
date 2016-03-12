@@ -21,12 +21,12 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Manuel
+ * Clase que contiene las opciones de las lecciones que hay en una matéria
+ * @author Manuel Goncalves L.
  */
 public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBotones {
 
-       PanelRecrea PN_Botones;//=new JPanel(new GridLayout(3, 3, 10, 10));
+       PanelRecrea PN_Botones;
        String rutaModulo;
        List<Leccion> leccion;
        private Persona usuario=new Persona();
@@ -41,7 +41,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
            leccion=g.getAsignaturas();
            rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
            WindowsCreate wc=new WindowsCreate(g.getAsignaturas().size(),this);
-           PN_Botones=wc.mostrarBotEj(g.getAsignaturas(), PN_Botones);
+           PN_Botones=wc.mostrarBotEj(g.getAsignaturas());
            this.configuracion(PN_Botones);
            this.fullScreen();
            
@@ -59,15 +59,10 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     private void initComponents() {
 
         MB_Recrea = new Componentes.MenuBarRecrea(this);
-        jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("File");
-        MB_Recrea.add(jMenu1);
-
-        jMenu2.setText("Edit");
         MB_Recrea.add(jMenu2);
 
         setJMenuBar(MB_Recrea);
@@ -125,7 +120,6 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Componentes.MenuBarRecrea MB_Recrea;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     // End of variables declaration//GEN-END:variables
 
@@ -153,7 +147,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     public void ActionOpciones(ActionEvent ae) {
 
         for (int i=0;i<leccion.size();i++){
-          if( ae.getActionCommand()==leccion.get(i).getNombre()){
+          if( ae.getActionCommand().equals(leccion.get(i).getNombre())){
               
                 if(leccion.get(i).getEjercicios().size()==0)
                     JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYEJERCICIOS, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);

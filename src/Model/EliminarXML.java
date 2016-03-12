@@ -28,7 +28,12 @@ public class EliminarXML {
     public static void BorrarPersona(){
         BorrarArchivo(Util.ARCHIVOS_XML_PATH+Util.PERSONA_XML+Util.ARCHIVO_XML);
     }
-    
+    /**
+     * Método para borrar un ejercicio específico en recrea
+     * @param leccion leccion donde se encuentra el ejercicio a eliminar
+     * @param ejercicioFecha fecha única que identifica el ejercicio a eliminar
+     * @param xmlFile  archivo donde se encuentra el ejercicio a eliminar
+     */
     public static void BorrarEjercicio(String leccion,String ejercicioFecha,String xmlFile){
          try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -45,7 +50,6 @@ public class EliminarXML {
        elemtn=lsNode.item(i).getFirstChild();
        if(leccion.equals(elemtn.getTextContent().trim())){
            subNode=lsNode.item(i).getChildNodes();
-           System.out.println(subNode.getLength());
            for(int cont=1;i<subNode.getLength();cont+=2)
            {
                sNode=subNode.item(cont);
@@ -90,8 +94,6 @@ public class EliminarXML {
         for(int i=0;i<lsNode.getLength();i++){
 
            elemtn=lsNode.item(i).getFirstChild();
-           System.out.println(elemtn.getTextContent().trim());
-           System.out.println(leccion);
            if(leccion.equals(elemtn.getTextContent().trim())){
                elemtn=lsNode.item(i);
               elemtn.getParentNode().removeChild(elemtn);

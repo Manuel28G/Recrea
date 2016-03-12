@@ -30,11 +30,10 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Manuel
+ * @author Manuel Goncalves L.
  */
 public class CrearXML {
     
-private static final Logger logger= Logger.getLogger("Model.CrearXML");
 /***
  * Se crea un archivo XML con la estructura básica
  * @param archivoNombre Nombre del archivo a crear 
@@ -51,7 +50,7 @@ public static void XMLBasic(String archivoNombre){
     catch (Exception e){}
 }
 /**
- * Metodo para crear un XM
+ * Metodo para crear un XML
  * @param docmt documento que contiene la estructura del XML
  * @param nombreArchivo nombre del archivo a guardar XML
  * @throws ParserConfigurationException

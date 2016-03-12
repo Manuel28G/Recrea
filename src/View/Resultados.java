@@ -6,37 +6,42 @@
 
 package View;
 
+import Componentes.Audio;
 import Componentes.FrameRecrea;
-import Componentes.PanelRecrea;
 import Controller.Util;
 import Model.Objetos.Actividad;
 import Model.Objetos.Persona;
 import Model.Objetos.Respuesta;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 /**
- *
+ * Clase que contiene los resultados obtenidos tras realizar los ejercicios previamente
+ * muestra la respuesta realizada y el resultado de aprobacio o no del ejercicio
  * @author Manuel Goncalves L.
  */
 public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
 
     private final Persona persona;
     private final int contador;
-    //private final PanelRecrea pnRecrea=new PanelRecrea();
     private final Respuesta respuesta;
     private final Modulos modulos;
     private final Actividad actividad;//actividad realizada
     
     /**
-     * Creates new form Resultados
-     * @param pers
-     * @param cont
+     * Constructor
+     * @param md Interfaz Módulo para poder retornar a ella
+     * @param pers usuario que está realizando el ejercicio
+     * @param cont contador para controlar cual es el resultado que se esta mostrando
      */
-    public Resultados(Modulos md,Persona pers,int cont) {
+    public Resultados(Modulos md,Persona pers,int cont)  {
         initComponents();
         modulos=md;
         contador=cont;
         persona=pers;
+        TA_Pregunta.setEditable(false);
+        TA_Pregunta.SetConfigText();
+       
         //se obtiene la ultima actividad la cual es la que se acabo de realizar
         int ultimaActividad=persona.getActividades().size()-1;
         actividad=persona.getActividades().get(ultimaActividad);
@@ -49,16 +54,27 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
         this.TA_Pregunta.setText(respuesta.GetPregunta());
         this.LB_RespuestaRealizada.setText(respuesta.GetRespuestaRealizada());
         this.LB_RespuestaCorrecta.setText(respuesta.GetRespuestaCorrecta());
-        if(respuesta.EsCorrecta()){
-            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_APROBADA);
-        this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA, 0, 0);}
-        else{
-            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_FALLIDO);
-            this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_TRISTE,Util.BOTON_TIPO_CARITA, 0, 0);}
+        try{
+            
         if(respuesta.GetRespuestaCorrecta().trim().equals("")){
             this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_NOAPLICA);
-            this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA, 0, 0);
+            this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA);
+        }else
+        if(respuesta.EsCorrecta()){
+            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_APROBADA);
+            this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA);
+            Audio sonido=new Audio(Util.RUTA_SONIDO_CORRECTO);
+            sonido.Play();
+            
         }
+        else{
+            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_FALLIDO);
+            this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_TRISTE,Util.BOTON_TIPO_CARITA);
+            Audio sonido=new Audio(Util.RUTA_SONIDO_EQUIVOCADO);
+            sonido.Play();
+        }
+        }
+        catch(Exception ex){}
     }
 
     /**
@@ -192,6 +208,9 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
                     .addComponent(BT_Salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        jScrollPane1.setViewportView(TA_Pregunta);
+        jScrollPane1.getViewport().setOpaque(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

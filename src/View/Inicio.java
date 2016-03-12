@@ -20,12 +20,12 @@ import org.jdom2.JDOMException;
 
 
 /**
- *
- * @author Manuel
+ * Clase que contiene la interfaz incial con las materias disponibles 
+ * @author Manuel Goncalves L.
  */
 public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBotones{
 
-    private PanelRecrea PN_Botones;
+    private final PanelRecrea PN_Botones;
     private final List<Materia> materias;
     private final String ruta=Controller.Util.ARCHIVOS_XML_PATH+Util.MATERIAS_TAG+Util.ARCHIVO_XML;
     private Persona usuario=new Persona();
@@ -40,7 +40,7 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
         initComponents();  
         materias=info.cargarMateria();
         WindowsCreate wc=new WindowsCreate(materias.size(),this);
-        PN_Botones=wc.mostrarBot(materias, PN_Botones);
+        PN_Botones=wc.mostrarBot(materias);
         this.configuracion(PN_Botones);
         this.fullScreen();
         MB_Recrea.setContrato(this); //para aseignar los ActionListener
@@ -56,15 +56,10 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
     private void initComponents() {
 
         MB_Recrea = new Componentes.MenuBarRecrea(this);
-        jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu3.setText("File");
-        MB_Recrea.add(jMenu3);
-
-        jMenu4.setText("Edit");
         MB_Recrea.add(jMenu4);
 
         setJMenuBar(MB_Recrea);
@@ -130,7 +125,6 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Componentes.MenuBarRecrea MB_Recrea;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     // End of variables declaration//GEN-END:variables
 
@@ -152,8 +146,8 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
         System.out.println(ae.getActionCommand());
        // Modulos Child= new Modulos();
         for(int i=0;i<materias.size();i++){
-            if(ae.getActionCommand()==materias.get(i).getNombre()){
-                if(materias.get(i).getAsignaturas().size()==0)
+            if(ae.getActionCommand().equals(materias.get(i).getNombre())){
+                if(materias.get(i).getAsignaturas().size() == 0)
                      JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYLECCION, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
                 else{
                 Child= new Modulos(materias.get(i).getHijoURL(),materias.get(i), usuario);

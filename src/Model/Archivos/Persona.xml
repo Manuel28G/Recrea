@@ -3,33 +3,85 @@
     <Apellido>Goncalves</Apellido>
     <Identificador>16</Identificador>
     <Actividades>
-        <Actividad Dia="miercoles" Fecha="01/01/2016" Hora="02:54:05" Nota="1" NotaTotal="1">Conociendolos</Actividad>
-        <Actividad Dia="miercoles" Fecha="01/02/2016" Hora="03:05:20" Nota="1" NotaTotal="1">Conociendolos</Actividad>
-        <Actividad Dia="miercoles" Fecha="03/03/2016" Hora="03:22:43" Nota="99" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miercoles" Fecha="01/03/2016" Hora="03:30:04" Nota="0" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miercoles" Fecha="01/03/2016" Hora="03:31:38" Nota="99" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miercoles" Fecha="01/03/2016" Hora="03:43:47" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="domingo" Fecha="01/03/2016" Hora="03:47:21" Nota="94" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="03:52:06" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="03:52:32" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="04:03:23" Nota="99" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="04:04:00" Nota="94" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="14:40:47" Nota="94" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="14:48:09" Nota="95" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miercoles" Fecha="01/03/2016" Hora="14:51:40" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miercoles" Fecha="01/03/2016" Hora="15:00:42" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="jueves" Fecha="01/03/2016" Hora="15:01:10" Nota="99" NotaTotal="198">Conociendolos</Actividad>
-    <Actividad Dia="viernes" Fecha="01/03/2016" Hora="15:05:11" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="viernes" Fecha="01/03/2016" Hora="15:05:36" Nota="99" NotaTotal="198">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="15:15:03" Nota="45" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="lunes" Fecha="01/03/2016" Hora="15:15:27" Nota="99" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:19:00" Nota="99" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:19:40" Nota="95" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:22:33" Nota="92" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="17:52:24" Nota="91" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="17:52:50" Nota="2" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="18:45:23" Nota="95" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="01/03/2016" Hora="18:50:16" Nota="05" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="martes" Fecha="10/03/2016" Hora="18:51:07" Nota="90" NotaTotal="99">Conociendolos</Actividad>
-    <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:02:23" Nota="50" NotaTotal="99">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:02:47" Nota="45" NotaTotal="99">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:45:04" Nota="45" NotaTotal="99">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:45:47" Nota="90" NotaTotal="99">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:50:35" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:03:03" Nota="52" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:13:56" Nota="0" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:18:15" Nota="0" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:20:52" Nota="45" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:26:26" Nota="5" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:27:24" Nota="50" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:20:30" Nota="52" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:44:55" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:57:21" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:58:54" Nota="2" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:59:59" Nota="2" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:02:39" Nota="2" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:14:55" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:39:38" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="02:15:17" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="02:16:39" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:00:05" Nota="47" NotaTotal="101">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:01:41" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:03:56" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:04:55" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:09:07" Nota="0" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:12:57" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:40:40" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:40:55" Nota="45" NotaTotal="90">Conociendolos</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="05:22:20" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad><Actividad Dia="jueves" Fecha="03/03/2016" Hora="05:24:16" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad><Actividad Dia="viernes" Fecha="04/03/2016" Hora="19:50:54" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad><Actividad Dia="viernes" Fecha="04/03/2016" Hora="19:51:14" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad><Actividad Dia="sábado" Fecha="05/03/2016" Hora="02:55:49" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad><Actividad Dia="sábado" Fecha="05/03/2016" Hora="03:29:36" Nota="12" NotaTotal="18">Sumando con cero</Actividad><Actividad Dia="sábado" Fecha="05/03/2016" Hora="03:32:50" Nota="6" NotaTotal="18">Sumando con cero</Actividad><Actividad Dia="domingo" Fecha="06/03/2016" Hora="10:39:28" Nota="0" NotaTotal="0">¿Qué son números?</Actividad></Actividades>
+        <Actividad Dia="miércoles" Fecha="01/01/2016" Hora="02:54:05" Nota="1" NotaTotal="1">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/02/2016" Hora="03:05:20" Nota="1" NotaTotal="1">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="03/03/2016" Hora="03:22:43" Nota="99" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/03/2016" Hora="03:30:04" Nota="0" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/03/2016" Hora="03:31:38" Nota="99" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/03/2016" Hora="03:43:47" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="03:52:06" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="03:52:32" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="04:03:23" Nota="99" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="04:04:00" Nota="94" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="14:40:47" Nota="94" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="14:48:09" Nota="95" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/03/2016" Hora="14:51:40" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="01/03/2016" Hora="15:00:42" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="01/03/2016" Hora="15:01:10" Nota="99" NotaTotal="198">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="15:15:03" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="lunes" Fecha="01/03/2016" Hora="15:15:27" Nota="99" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:19:00" Nota="99" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:19:40" Nota="95" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="15:22:33" Nota="92" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="17:52:24" Nota="91" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="17:52:50" Nota="2" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="18:45:23" Nota="95" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="01/03/2016" Hora="18:50:16" Nota="05" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="martes" Fecha="10/03/2016" Hora="18:51:07" Nota="90" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:02:23" Nota="50" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:02:47" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:45:04" Nota="45" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:45:47" Nota="90" NotaTotal="99">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="03:50:35" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:03:03" Nota="52" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:13:56" Nota="0" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:18:15" Nota="0" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:20:52" Nota="45" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:26:26" Nota="5" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="miércoles" Fecha="02/03/2016" Hora="04:27:24" Nota="50" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:20:30" Nota="52" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:44:55" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:57:21" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:58:54" Nota="2" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="00:59:59" Nota="2" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:02:39" Nota="2" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:14:55" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="01:39:38" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="02:15:17" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="02:16:39" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:00:05" Nota="47" NotaTotal="101">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:01:41" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:03:56" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:04:55" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:09:07" Nota="0" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:12:57" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:40:40" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="04:40:55" Nota="45" NotaTotal="90">Conociendolos</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="05:22:20" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad>
+        <Actividad Dia="jueves" Fecha="03/03/2016" Hora="05:24:16" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad>
+        <Actividad Dia="sábado" Fecha="05/03/2016" Hora="02:55:49" Nota="0" NotaTotal="0">Conociendolo al cero</Actividad>
+        <Actividad Dia="sábado" Fecha="05/03/2016" Hora="03:29:36" Nota="12" NotaTotal="18">Sumando con cero</Actividad>
+        <Actividad Dia="sábado" Fecha="05/03/2016" Hora="03:32:50" Nota="6" NotaTotal="18">Sumando con cero</Actividad>
+        <Actividad Dia="lunes" Fecha="07/03/2016" Hora="02:51:36" Nota="0" NotaTotal="2">Conociendolo al cero</Actividad>
+        <Actividad Dia="lunes" Fecha="07/03/2016" Hora="02:53:56" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="lunes" Fecha="07/03/2016" Hora="03:09:35" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="lunes" Fecha="07/03/2016" Hora="17:20:14" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="00:43:21" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:09:22" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:11:20" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:13:53" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:17:32" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:23:00" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:30:30" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:37:46" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="03:38:22" Nota="0" NotaTotal="0">¿Qué son números?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="15:16:59" Nota="0" NotaTotal="0">¿Qué son cantidades?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="15:22:15" Nota="0" NotaTotal="0">¿Qué son cantidades?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="16:24:37" Nota="0" NotaTotal="0">¿Qué es la suma?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="17:08:41" Nota="0" NotaTotal="0">¿Qué es la suma?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="17:55:46" Nota="0" NotaTotal="0">¿Qué son cantidades?</Actividad>
+        <Actividad Dia="martes" Fecha="08/03/2016" Hora="17:56:40" Nota="0" NotaTotal="0">¿Qué es la suma?</Actividad>
+        <Actividad Dia="miércoles" Fecha="09/03/2016" Hora="01:26:24" Nota="0" NotaTotal="0">¿Qué son pares?</Actividad>
+        <Actividad Dia="miércoles" Fecha="09/03/2016" Hora="03:52:22" Nota="10" NotaTotal="20">¡Repasemos!</Actividad>
+      <Actividad Dia="viernes" Fecha="11/03/2016" Hora="22:05:02" Nota="2" NotaTotal="18">¿Es verdadero?</Actividad><Actividad Dia="sábado" Fecha="12/03/2016" Hora="02:40:14" Nota="6" NotaTotal="18">¿Es verdadero?</Actividad><Actividad Dia="sábado" Fecha="12/03/2016" Hora="02:47:54" Nota="14" NotaTotal="18">¿Es verdadero?</Actividad><Actividad Dia="sábado" Fecha="12/03/2016" Hora="02:51:09" Nota="6" NotaTotal="22">Sumando con cero</Actividad><Actividad Dia="sábado" Fecha="12/03/2016" Hora="02:53:10" Nota="0" NotaTotal="2">Conociendolo al cero</Actividad></Actividades>
 </Persona>

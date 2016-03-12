@@ -8,7 +8,7 @@ package Componentes;
 
 import javax.swing.JTextField;
 /**
- *
+ * componente que limita la entrada de caracteres a puras letras
  * @author Manuel Goncalves L.
  */
 public class TextBoxRecrea extends JTextField {

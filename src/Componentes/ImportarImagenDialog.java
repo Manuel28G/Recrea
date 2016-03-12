@@ -18,18 +18,19 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
+ * Clase que crea el dialogo para Importar los archivos(Imagenes)  
  * @author Manuel Goncalves L.
  */
 public class ImportarImagenDialog extends javax.swing.JFileChooser {
      int seleccion;
-    File DirDestino;// directorio donde se copiaran los archivos 
-    File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
-    File DirOrigen;//Donde reciden los archivos XML de recrea
-    File ArchOrigen;//archivo XML origen
-    File ArchDestino;//Archivo XML destino
-    FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagenes",new String []{"png","jpg","jpeg"});
-    String archivoNombre;
-    String strDestino;
+    private File DirDestino;// directorio donde se copiaran los archivos 
+   // private File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
+    private File DirOrigen;//Donde reciden los archivos XML de recrea
+    //private File ArchOrigen;//archivo XML origen
+    private File ArchDestino;//Archivo XML destino
+    private final FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagenes",new String []{"png","jpg","jpeg"});
+   // private String archivoNombre;
+   // private String strDestino;
     
     public ImportarImagenDialog(){
         
@@ -38,7 +39,10 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showOpenDialog(new JFrame());
     }
-    
+    /**
+     * Constructor
+     * @param cG componente donde se va a desplegar el importarImagenDialog
+     */
     public ImportarImagenDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
        this.setFileFilter(filtro);
@@ -46,6 +50,9 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
        seleccion = this.showOpenDialog(cG);
     }
     
+    /**
+     * Método que ejecuta el cargar los archivos de la ruta que se especificará
+     */
  public void Cargar()
  {
     if(this.getStatus()==JFileChooser.APPROVE_OPTION){
@@ -63,12 +70,19 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
                   
  }
                
-           
+    /**
+    * obtiene la ruta seleccionada 
+    * @return retorna la ruta seleccionada
+    */    
      public int getStatus(){
          return seleccion;
      }
      
- 
+ /**
+  * Metodo que importa las imagenes al sistema
+  * @param fileOrigen archivo a importar
+  * @param rutaArchivo ruta del archivo donde se guardará
+  */
 private void ImportarImagen(File fileOrigen,String rutaArchivo) {
  try{
     FileInputStream fis = new FileInputStream(fileOrigen); //inFile -> Archivo a copiar

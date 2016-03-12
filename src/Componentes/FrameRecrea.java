@@ -13,19 +13,22 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
- *
- * @author Manuel
+ * Clase que define el componente FrameRecrea
+ * @author Manuel Goncalves L.
  */
 public class FrameRecrea extends JFrame {
     
-    JScrollPane SP_Materias;
+    private JScrollPane SP_Materias;
    
-    JPanel Marco=new JPanel();
-    JPanel Marco2=new JPanel();
-    JPanel Marco3=new JPanel();
-    JPanel Marco4=new JPanel();
+    private final JPanel Marco=new JPanel();
+    private final JPanel Marco2=new JPanel();
+    private final JPanel Marco3=new JPanel();
+    private final JPanel Marco4=new JPanel();
     
-    
+    /**
+     * Método que realiza la configuracion General del Frame
+     * @param pR Panel que contendrá todos los componentes que se añadirán
+     */
      public void configuracion(PanelRecrea pR){
         SP_Materias = new JScrollPane(pR);
         this.setLayout(new BorderLayout(0,0));
@@ -44,15 +47,14 @@ public class FrameRecrea extends JFrame {
         this.setResizable(false);
     
     }
+     /**
+      * Método que ajusta el frame a su tamaño maximo (Ventana completa)
+      */
      public void fullScreen(){
-       // GraphicsDevice grafica=GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-       // grafica.setFullScreenWindow(this); 
-        
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().getWidth());
         int ySize = ((int) tk.getScreenSize().getHeight());
         this.setSize(xSize,ySize);
-         //this.setExtendedState( JFrame.MAXIMIZED_BOTH);
          
      }
 }

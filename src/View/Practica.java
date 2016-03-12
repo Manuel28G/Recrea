@@ -29,8 +29,8 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 /**
- *
- * @author Manuel
+ * Clase que contiene los ejercicios prácticos a realizar
+ * @author Manuel Goncalves L.
  */
 public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBotones {
 
@@ -52,9 +52,9 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
     private String respTexto="";
     private final Controller.WindowsEjercicio Weje;
     private ControllerAgregar cAgregar;
-    private Actividad actividad;//Objeto para la actividad que se esta realizando
-    private List<Respuesta> respuestas;//lista de objetos Respuesta
-    private boolean sinRespuesta=false;//para los ejercicios que no tienen respuesta (es teoría)
+    private final Actividad actividad;//Objeto para la actividad que se esta realizando
+    private final List<Respuesta> respuestas;//lista de objetos Respuesta
+   // private final boolean sinRespuesta=false;//para los ejercicios que no tienen respuesta (es teoría)
     
     public Practica(Leccion lcn,Persona usr,Modulos modulos,int cont) {
         initComponents();
@@ -71,7 +71,7 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
         ejercicio=lcn.getEjercicios().get(contador);
         cantEjer=leccion.getEjercicios().size();
         Weje=new Controller.WindowsEjercicio(this);
-        PanelRecrea pR=Weje.ConfigurarWindows(ejercicio,(contador+1)+" de "+cantEjer,usuario.getNombre()+" "+usuario.getApellido());
+        PanelRecrea pR=Weje.ConfigurarWindows(ejercicio,(contador+1)+Util.SEPARADOR_DE+cantEjer,usuario.getNombre()+" "+usuario.getApellido());
         respuesta=Weje.getComponenteRespuesta();//Obtenemos el componente de la respuesta
         this.fullScreen();
         this.configuracion(pR);

@@ -6,11 +6,9 @@
 
 package View;
 
-import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import javax.swing.JFileChooser;
 
 /**
@@ -18,10 +16,9 @@ import javax.swing.JFileChooser;
  * @author Manuel Goncalves L.
  */
 public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.ContratoBotones {
-    private Componentes.PanelRecrea pnRecrea;
+    private final Componentes.PanelRecrea pnRecrea;
     private Componentes.ImportarImagenDialog imgDialog;
-    private ContratoGeneral ctoGeneral;
-    private Validaciones valid=new Validaciones();
+    private final Validaciones valid=new Validaciones();
     private String imagen;
     /**
      * Creates new form AgregarMateria
@@ -84,9 +81,9 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
                     .addComponent(LB_Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

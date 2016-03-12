@@ -10,30 +10,82 @@ import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
-import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 
 /**
- *
- * @author Manuel
+ * Clase que contiene las acciones correspondientes de cada componente
+ * @author Manuel Goncalves L.
  */
 public class ActionsListener {
  
   
     private static final Validaciones valid= new Validaciones();
     
- ///Action Botones
-   /**
-    * 
-    * @param Ej
-    * @return 
-    */ 
+  
+    ///Action Botones
+/**
+ * Método para asociar las acciones de los botones con respecto al Mouse
+ * en el mouseEntered se asocia el sonido para identificar cuando pase sobre un boton
+ * en el mouseClicked se asocia el sonido para identificar cuando el usuario realiza el click sobre un componente
+ * @return El MouseListener con todas las acciones asociadas
+ * @throws IOException si no puede abrir el archivo de sonido 
+ */
+  public static MouseListener ActionSonidoBoton () throws IOException  {
+     return new MouseListener() 
+        {
+            private Audio sonidoBoton;
+            private Audio clicked;
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+                
+                try{
+                sonidoBoton=new Audio(Util.RUTA_SONIDO_SOBREBOTON);
+                sonidoBoton.Play();
+                }catch(Exception ex){
+                System.out.println("Error encontrado en reproducir sonido: "+ex);
+                }
+            }
+
+                @Override
+                public void mouseClicked(MouseEvent me) {
+           
+                }
+
+                @Override
+                public void mousePressed(MouseEvent me) {
+                 try{
+                    clicked=new Audio(Util.RUTA_SONIDO_CLICK);
+                    clicked.Play();
+                }
+                catch(Exception ex){
+                     System.out.println("Error encontrado en reproducir sonido CLICK: "+ex);
+                    }
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent me) { }
+
+                @Override
+                public void mouseExited(MouseEvent me) { }
+            
+        };  
+  }
+    
+
+/**
+ * Método que asocia el actionperfomed para los botones tipo OPCIONEs
+ * @param cntGen contrato General de la interfaz
+ * @return ActionListener 
+ */
   public static ActionListener ActionOpciones (final ContratoBotones cntGen)  {
      return new ActionListener() 
         {
@@ -44,11 +96,11 @@ public class ActionsListener {
             }
         };  
   }
-   /**
-    * 
-    * @param Ej
-    * @return 
-    */ 
+/**
+ * Método que asocia el actionperfomed para los botones tipo SIGUIENTE
+ * @param cntGen contrato General de la interfaz
+ * @return ActionListener 
+ */
   public static ActionListener ActionSiguiente (final ContratoBotones cntGen)  {
      return new ActionListener() 
         {
@@ -59,11 +111,11 @@ public class ActionsListener {
             }
         };  
   }
-   /**
-    * 
-    * @param Ej
-    * @return 
-    */ 
+/**
+ * Método que asocia el actionperfomed para los botones tipo SALIR
+ * @param cntGen contrato General de la interfaz
+ * @return ActionListener 
+ */
   public static ActionListener ActionSalir (final ContratoBotones cntGen)  {
      return new ActionListener() 
         {
@@ -74,11 +126,11 @@ public class ActionsListener {
             }
         };  
   }
-   /**
-    * 
-    * @param Ej
-    * @return 
-    */ 
+/**
+ * Método que asocia el actionperfomed para los botones tipo SONIDO
+ * @param cntGen contrato General de la interfaz
+ * @return ActionListener 
+ */
   public static ActionListener ActionSonido (final ContratoBotones cntGen)  {
      return new ActionListener() 
         {
@@ -93,7 +145,10 @@ public class ActionsListener {
   
   ///Action MenuBar
   
-
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion CargarMateria
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionCargarXML ()  {
      return new ActionListener() 
         {
@@ -106,7 +161,11 @@ public class ActionsListener {
             }
         };  
   }  
-   
+     
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion GuardarMateria
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionGuardarXML ()  {
      return new ActionListener() 
         {
@@ -119,7 +178,11 @@ public class ActionsListener {
             }
         };  
   }  
-
+  
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Materia
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionAgregarMateria ()  {
      return new ActionListener() 
         {
@@ -131,7 +194,11 @@ public class ActionsListener {
             }
         };  
   }  
-    
+      
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Lección
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionAgregarLeccion ()  {
      return new ActionListener() 
         {
@@ -143,7 +210,11 @@ public class ActionsListener {
             }
         };  
   }  
-      
+        
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Ejercicio
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionAgregarEjercicio ()  {
      return new ActionListener() 
         {
@@ -155,6 +226,12 @@ public class ActionsListener {
             }
         };  
   }  
+     
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion Avance
+ * donde se muestra el avance del alumno
+ * @return ActionListener con el ActionPerfomed asociado
+ */
     public static ActionListener ActionCargarAvance (final ContratoGeneral pers)  {
      return new ActionListener() 
         {
@@ -170,18 +247,13 @@ public class ActionsListener {
             }
         };  
   }  
-        
-   public static ActionListener ActionAvance ()  {
-     return new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                
-            }
-        };  
-  }  
-  
+
+    
+    
+/**
+ * Método que asocia el actionPerfomed al menuBar en la opcion Ayuda
+ * @return ActionListener con el ActionPerfomed asociado
+ */
    public static ActionListener ActionAyuda ()  {
      return new ActionListener() 
         {
@@ -196,6 +268,14 @@ public class ActionsListener {
   ///FIN MenuBar
    
    //TextBox
+   
+   /**
+    * Método que asocia el keyTyped al TextBoxRecrea
+    * con el cual se registra cada vez que se escribe un caracter en el 
+    * componente
+    * @param tb componente TextBoxRecrea 
+    * @return KeyAdapter
+    */
 public static KeyAdapter ActionTextBox (final TextBoxRecrea tb)  {
      return new KeyAdapter() 
         {
@@ -210,13 +290,22 @@ public static KeyAdapter ActionTextBox (final TextBoxRecrea tb)  {
              }
              
             }
-            catch(Exception ex){}
+            catch(Exception ex){
+            
+            System.out.println("Error encontrado en ActionTextBox: "+ex);}
             }
         };  
   } 
    //Fin TextBox
    
    //NumberBox
+   /**
+    * Método que asocia el keyTyped al NumberBoxRecrea
+    * con el cual se registra cada vez que se escribe un caracter en el 
+    * componente
+    * @param nb componente NumberBoxRecrea 
+    * @return KeyAdapter
+    */
    public static KeyAdapter ActionNumberBox(final NumberBoxRecrea nb)  {
      return new KeyAdapter() 
         {
@@ -231,7 +320,9 @@ public static KeyAdapter ActionTextBox (final TextBoxRecrea tb)  {
              }
              
             }
-            catch(Exception ex){}
+            catch(Exception ex){
+            System.out.println("Error encontrado en ActionNumberbox: "+ex);
+            }
             }
         };  
   } 

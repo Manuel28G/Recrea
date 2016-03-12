@@ -8,6 +8,7 @@ package View;
 
 import Componentes.PanelRecrea;
 import Controller.ControllerCrear;
+import Controller.Util;
 import Controller.Validaciones;
 import java.awt.Color;
 
@@ -17,11 +18,8 @@ import java.awt.Color;
  */
 public class AgregarUsuario extends Componentes.FrameRecrea {
 
-    private Validaciones valid=new Validaciones();
-    /**
-     * Creates new form AgregarUsuario
-     */
-    private PanelRecrea panelP =new PanelRecrea();
+    private final Validaciones valid=new Validaciones();
+    private final PanelRecrea panelP =new PanelRecrea();
     
     public AgregarUsuario() {
         
@@ -40,7 +38,6 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        numberBoxRecrea1 = new Componentes.NumberBoxRecrea();
         LB_Bienvenida1 = new Componentes.LabelRecrea();
         LB_Bienvenida2 = new Componentes.LabelRecrea();
         LB_Bienvenida3 = new Componentes.LabelRecrea();
@@ -52,15 +49,15 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        LB_Bienvenida1.setText("Bienvenido a Recrea el lugar donde");
+        LB_Bienvenida1.setText("¡Bienvenido a Recrea! el lugar donde");
 
         LB_Bienvenida2.setText("tu y yo practicaremos matemáticas");
 
         LB_Bienvenida3.setText("¡Empezemos!");
 
-        LB_Nombre.setText("¿Como te llamas?");
+        LB_Nombre.setText("¿Cómo te llamas?");
 
-        LB_Apellido.setText("¿Cual es tu apellido?");
+        LB_Apellido.setText("¿Cuál es tu apellido?");
 
         BT_Comenzar.setText("Comenzar");
         BT_Comenzar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +91,7 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
                             .addComponent(LB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(TB_Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BT_Comenzar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,11 +129,11 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
       ini.setVisible(true);
       }
       else{
-          this.LB_Bienvenida3.setText("Debes colocar tus datos para comenzar");
+          this.LB_Bienvenida3.setText(Util.DIALOG_MENSAJE_COLOCAR_DATOS);
           this.LB_Bienvenida3.setForeground(Color.RED);}
       }
       catch(Exception ex){
-          
+          System.out.println("Error encontrado en Agregar Usuario: "+ex);
       }
     }//GEN-LAST:event_BT_ComenzarActionPerformed
 
@@ -184,6 +181,5 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
     private Componentes.LabelRecrea LB_Nombre;
     private Componentes.TextBoxRecrea TB_Apellido;
     private Componentes.TextBoxRecrea TB_Nombre;
-    private Componentes.NumberBoxRecrea numberBoxRecrea1;
     // End of variables declaration//GEN-END:variables
 }

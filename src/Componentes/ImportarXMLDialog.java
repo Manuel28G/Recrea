@@ -24,6 +24,8 @@ import org.w3c.dom.Document;
 
 /**
  *
+ * Clase que crea el dialogo para importar los archivos XML previamente creados
+ * en la aplicación
  * @author Manuel Goncalves L.
  */
 public class ImportarXMLDialog extends javax.swing.JFileChooser {
@@ -45,17 +47,28 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showOpenDialog(new JFrame());
     }
-    
+    /**
+     * Constructor
+     * @param cG componente donde se va a desplegar el ImpotarXMLDialog
+     */
     public ImportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        this.setFileFilter(filtro);
        seleccion = this.showOpenDialog(cG);
     }
+    
+   /**
+    * obtiene la ruta seleccionada 
+    * @return retorna la ruta seleccionada
+    */
     private int getStatus(){
         return seleccion;
     }
     
+    /**
+     * Método que ejecuta el cargar  los archivos en la ruta que se especificará
+     */
  public void Cargar()
  {
       if(this.getStatus()==JFileChooser.APPROVE_OPTION){
@@ -77,7 +90,11 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
            
      
      
- 
+ /**
+ * Método que crea los archivos en la dirección seleccionada 
+ * @param fileOrigen archivo origen 
+ * @param rutaArchivo ruta del archivo destino
+ */
 private static void CrearXML(File fileOrigen,String rutaArchivo) {
    try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

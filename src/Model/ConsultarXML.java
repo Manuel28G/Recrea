@@ -20,13 +20,13 @@ import org.w3c.dom.NodeList;
 
 
 /**
- *
- * @author Manuel
+ * clase que agrupa los métodos para consultar información en los archivos XML
+ * @author Manuel Goncalves L.
  */
 public class ConsultarXML {
 
     /***
-     * 
+     * método para contar las etiquetas o nodos principales de un archivo XML
      * @param Documento ruta del documento que se leera, usar MateriasPath
      * @return cantidad de etiquetas hijo que tiene el documento
      */
@@ -53,9 +53,9 @@ public static int ContarEtiquetas(String Documento,String nivel){
 
 /***
  * Retorna un elemento de "elementos" que coincida con el nombre "texto"
- * @param texto
- * @param elementos
- * @return
+ * @param texto  Informacion a consultar 
+ * @param elementos elementos a consular ara buscar coincidencia
+ * @return si se coincide la información se retorna el elemento sinó se retorna Null
  * @throws Exception 
  */
 public static Element elementoNodo(String texto,List<Element> elementos) throws Exception{
@@ -73,11 +73,11 @@ public static Element elementoNodo(String texto,List<Element> elementos) throws 
       
       }
 /***
- * 
- * @param Documento
- * @param Variable
- * @param indice
- * @param Ruta
+ * Metodo para solicitar la informacion de una etiqueta en específico
+ * @param Documento documento que se inspecionará
+ * @param Variable variabel dentro de la etiqueta que se buscará si se desea el texto entre la etiqueta se coloca Null
+ * @param indice indice donde se encuentra la informacion
+ * @param Ruta si se requiere se coloca la ruta para llegar a la información requerida sino se coloca null
  * @return
  * @throws JDOMException 
  */
@@ -120,6 +120,9 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
    }
     
 }
+/*
+ELIMINAR METODO
+
 public static String InformacionEtiquetaRec(String Documento,String Variable,String nombre){
      //Se crea un SAXBuilder para poder parsear el archivo
     String Respuesta="";
@@ -145,7 +148,7 @@ public static String InformacionEtiquetaRec(String Documento,String Variable,Str
        return "";
    }
     
-}
+}*/
 
 /**
  * Metodo para saber si un archivo existe 

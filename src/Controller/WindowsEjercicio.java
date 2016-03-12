@@ -16,7 +16,6 @@ import Componentes.ActionsListener;
 import Componentes.BotonRecrea;
 import Componentes.BotonSalirRecrea;
 import Componentes.BotonSeguirRecrea;
-import Componentes.Configuracion;
 import Componentes.LabelRecrea;
 import Componentes.NumberBoxRecrea;
 import Componentes.PanelRecrea;
@@ -35,8 +34,8 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 /**
- * se creara la ventan de ejercicios
- * @author Manuel
+ * Clase para crear las ventanas de los ejercicios
+ * @author Manuel Goncalves L.
  */
 public class WindowsEjercicio {
     
@@ -45,21 +44,17 @@ public class WindowsEjercicio {
     
     private final Border blackline = BorderFactory.createLineBorder(Color.white,2);
     private final Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-    
-   // private final LabelRecrea lb=new LabelRecrea();
     private final Configuracion config =new Configuracion();
-    private final  Border bordeRespuesta=BorderFactory.createTitledBorder(loweredbevel,"Respuesta",TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
-    private final Border bordePregunta= BorderFactory.createTitledBorder( blackline, "Pregunta",TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+    private final  Border bordeRespuesta=BorderFactory.createTitledBorder(loweredbevel,Util.RESPUESTA,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+    private final Border bordePregunta= BorderFactory.createTitledBorder( blackline, Util.PREGUNTA,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
 
-    
     private final PanelRecrea PN_Ejercicio= new PanelRecrea(GridBL);
     private final PanelRecrea PN_OpcionesEjer=new PanelRecrea(GridL1y3x);
     
     private Component compResp;
     
-    private LabelRecrea a1= new LabelRecrea(),a2= new LabelRecrea(),a3= new LabelRecrea(),b= new LabelRecrea(),c1= new LabelRecrea(),c2= new LabelRecrea(),c3= new LabelRecrea();
-    //private PanelRecrea respuesta=new PanelRecrea();
-    private TAreaRecrea contenido=new TAreaRecrea();
+    private final LabelRecrea a1= new LabelRecrea(),a2= new LabelRecrea();
+    private final TAreaRecrea contenido=new TAreaRecrea();
     private final BotonSeguirRecrea seguir;
     private final BotonSalirRecrea salir;
     
@@ -67,21 +62,34 @@ public class WindowsEjercicio {
     private final ContratoBotones ctoEjercicio;
     
     private BotonRecrea b1, b2, b3;
-    private Random rm;
+    private final Random rm;
     private BotonRecrea sonidoBt;
     
+    /**
+     * Metodo para obtener el componente con la respuesta
+     * @return Componente con la respuesta (Boton,TextBox, NumberBox, VF)
+     */
     public Component getComponenteRespuesta(){
         return compResp;
     }
+    /**
+     * Método para obtener el listado con los botones de la respuesta
+     * @return lista con botones de posibles respuesta
+     */
     public List<BotonRecrea> getBotones(){
-      List<BotonRecrea> lsBtones=  new ArrayList<BotonRecrea>();
+      List<BotonRecrea> lsBtones=  new ArrayList<>();
       lsBtones.add(b1);
       lsBtones.add(b2);
       lsBtones.add(b3);
         return lsBtones;
     }
 
+    //CONFIGURACION DE LA VENTANA
     
+    /**
+     * Constructor
+     * @param ctoGen Contrato general de la ventana donde se construira el ejercicio
+     */
     public  WindowsEjercicio(ContratoBotones ctoGen){
         ctoEjercicio=ctoGen;
         seguir=new BotonSeguirRecrea(ctoEjercicio);
@@ -90,13 +98,19 @@ public class WindowsEjercicio {
         GridBC = new GridBagConstraints();
         rm=new Random();
         GridBC.ipady = 0; 
-        GridBC.insets = new Insets(0,10,0,10);  //top padding
+        GridBC.insets = new Insets(0,10,0,10);  //Margenes (Arriba,izquierda,abajo,derecha)
         GridBC.weightx = 0.5;
-        GridBC.weighty = 0;   //request any extra vertical space
+        GridBC.weighty = 0;   //si requiere un espacio extra 
         
             }
     
-    
+    /**
+     * Método para definir como se reajustara el componente y su posición 
+     * @param PosX posición con respecto al eje X
+     * @param PosY posición con respecto al eje Y
+     * @param FHorizontal true: se ajustara horizontal; False: se ajustara en ambos sentidos
+     * @param PageStart  True: se posicionará al inicio del recuadro; False: se posicionará al final del recuadro
+     */
     private void ConstraintConfig(int PosX, int PosY,boolean FHorizontal,boolean PageStart){
         GridBC.gridx=PosX;
         GridBC.gridy=PosY;
@@ -109,17 +123,26 @@ public class WindowsEjercicio {
         else
             GridBC.anchor=GridBagConstraints.PAGE_END;
     }
+    
+    /**
+     * Método principal que realiza la configuración de la ventana
+     * @param ejc ejercicio a mostrar
+     * @param CantEjer Cantidad de ejercicios totales, para desplegar por pantalla
+     * @param persona persona que realiza el ejercicio
+     * @return PanelRecrea con la configuración de todos los componentes
+     */
     public PanelRecrea ConfigurarWindows(Ejercicio ejc,String CantEjer,String persona){
 
+        //texto que va en la esquina superior izquierda con la cantidad de ejer.
         a1.setText(CantEjer);
         a1.setHorizontalAlignment(SwingConstants.LEFT);
         
-
+        //texto que va en el centro con el nombre de la persona.
         a2.setText(persona);
         a2.setHorizontalAlignment(SwingConstants.CENTER);
         
         sonidoBt=new BotonRecrea(Util.BOTON_TIPO_SONIDO,this.ctoEjercicio);
-        sonidoBt.BotonConfig("sonido.png", Util.BOTON_TIPO_SONIDO, 0, 0);
+        sonidoBt.BotonConfig("sonido.png", Util.BOTON_TIPO_SONIDO);
         
         configGeneral();
         
@@ -130,7 +153,9 @@ public class WindowsEjercicio {
         configContenido(ejc);
         return PN_Ejercicio;
     }
-    
+    /**
+     * Método que realiza la configuracion general para la ventana
+     */
     private void configGeneral(){
         
         ConstraintConfig(0,0,true,true);
@@ -152,7 +177,10 @@ public class WindowsEjercicio {
         PN_Ejercicio.add(seguir,GridBC);
         
     }
-    
+    /**
+     * Método para la configuracion básica de los componentes
+     * @param ejc ejercicio que se presentará por pantalla
+     */
     private void configContenido(Ejercicio ejc){
         ConstraintConfig(0,1,false,false);
         GridBC.weighty=1;
@@ -165,16 +193,17 @@ public class WindowsEjercicio {
         sp.setViewportView(contenido);
         sp.getViewport().setOpaque(false);
         sp.setBorder(bordePregunta);
-        
         PN_Ejercicio.add(sp,GridBC);
-        
         sp.getVerticalScrollBar().setValue(sp.getVerticalScrollBar().getMaximum());
     }
     
+    //FIN DE CONFIGURACIÓN DE VENTANA
+    
+    
     /***
-     * 
-     * @param ejc
-     * @param panel 
+     * Método para la configuracion de la respuesta dependiendo al tipo
+     * @param ejc ejercicio que se va a resolver
+     * @param panel panel que contendrá los componentes para el ejercicio
      */
     private void configRespuesta(Ejercicio ejc,PanelRecrea panel){
         ConstraintConfig(0,2,true,false);    
@@ -190,7 +219,7 @@ public class WindowsEjercicio {
      * Metodo para crear los botones en la zona de respuesta
      * @param ejc el Objeto ejercicio
      * @param panel el panel contenedor que se colocará en la zona de resp.
-     * @param tipoBoton cn esto sabremos el tipo de boton(Letras,Números)
+     * @param tipoBoton cn esto sabremos el tipo de boton(Letras,Números): TOMAR EN CUENTA PARA FUTURO DESARROLLO
      */
     private void RespBotones(Ejercicio ejc, PanelRecrea panel,String tipoBoton){
             b1=new BotonRecrea(Util.BOTON_TIPO_OPCION,ctoEjercicio);
@@ -205,18 +234,27 @@ public class WindowsEjercicio {
             this.valorRespuesta(b1, b2, b3, val);
             
             //agregamos de manera aleatoria la respuesta correcta
-            int random=(int)(rm.nextDouble() * 2 + 0);//con esto tenemos un rango del random del [0,2]
+            int random=(int)(rm.nextDouble() * 3 + 0);//con esto tenemos un rango del random del [0,3]
             switch (random){
                 case 0: panel=agregarBotones(b1,b3,b2,panel); break;
                 case 1: panel=agregarBotones(b2,b1,b3,panel); break;
                 case 2: panel=agregarBotones(b3,b2,b1,panel); break;
+                case 3: panel=agregarBotones(b2,b3,b1,panel); break;
             }
             
             PN_Ejercicio.add(panel,GridBC); 
             PN_Ejercicio.compEnUso=panel;
             this.compResp=new BotonRecrea();
     }
-    
+    /**
+     * Método para agregar los botones rotando la posición de los mismos 
+     * dependiendo como se pase por parámetro
+     * @param b1 BotonRecrea1
+     * @param b2 BotonRecrea2
+     * @param b3 BotonRecrea3
+     * @param panel PanelRecrea donde se agregaran los botones
+     * @return PanelRecrea que contiene los botones agregados
+     */
     private PanelRecrea agregarBotones(BotonRecrea b1,BotonRecrea b2,BotonRecrea b3,PanelRecrea panel){
         
        panel.add(b1);
@@ -225,16 +263,29 @@ public class WindowsEjercicio {
        return panel;
     }
     
+    
+    /**
+     * Método para asignar los valores de manera aleatoria a las posibles respuestas
+     * @param b1 boton que contendrá la respuesta correcta
+     * @param b2 botonRecrea2
+     * @param b3 botonRecrea3 
+     * @param resp respuesta correcta al ejercicio
+     */
     private void valorRespuesta(BotonRecrea b1,BotonRecrea b2,BotonRecrea b3,int resp){
         b1.setText(Integer.toString(resp));
         b1.setName(Integer.toString(resp));
         int random;
         if(resp%10==0){
-            random=(int)(rm.nextDouble() * 4 + 1);//con esto tenemos un rango del random del [1,4]
-            b3.setText(Integer.toString(resp-10));
-            b2.setText(Integer.toString(resp*random));
-            b3.setName(Integer.toString(resp-10));
+            
+            //se crean dos random ya que para la multiplicación no puede ser el rango desde uno 
+            //porque daria habrían dos respuestas iguales
+            random=(int)(rm.nextDouble() * 5 + 2);//con esto tenemos un rango del random del [2,7]
             b2.setName(Integer.toString(resp*random));
+            b2.setText(Integer.toString(resp*random));   
+            
+            random=(int)(rm.nextDouble() * 4 + 1);//con esto tenemos un rango del random del [1,5]
+            b3.setName(Integer.toString(resp-random));
+            b3.setText(Integer.toString(resp-random));
         }else
             if(resp%2==0){
 
@@ -245,20 +296,24 @@ public class WindowsEjercicio {
                 b3.setName(Integer.toString(resp+random));
             }else
                 if(resp%5==0){
-                     random=(int)(rm.nextDouble() * 3 + 1);//con esto tenemos un rango del random del [1,3]
+                    //se crean dos random ya que para la multiplicación no puede ser el rango desde uno 
+                    //porque daria habrían dos respuestas iguales
+                    random=(int)(rm.nextDouble() * 4 + 2);//con esto tenemos un rango del random del [2,4]
                     b2.setText(Integer.toString(resp*random));
-                    b3.setText(Integer.toString(resp + 5));
                     b2.setName(Integer.toString(resp*random));
-                    b3.setName(Integer.toString(resp + 5));
+                    
+                    random=(int)(rm.nextDouble() * 3 + 1);//con esto tenemos un rango del random del [1,3]
+
+                    b3.setText(Integer.toString(resp + random));
+                    b3.setName(Integer.toString(resp + random));
                 }
                     else
                     {
-                    random=(int)(rm.nextDouble() * 25 + 1);//con esto tenemos un rango del random del [1,25]
-                    b3.setText(Integer.toString(resp+random));
                     random=(int)(rm.nextDouble() * (resp-1) + 1);//con esto tenemos un rango del random del [1,resp-1]
                     b2.setText(Integer.toString(resp-random));
                     b2.setName(Integer.toString(resp-random));
-                    b3.setName(Integer.toString(resp+random));
+                    b3.setName(Integer.toString(resp+random));            
+                    b3.setText(Integer.toString(resp+random));
                     }
     }
   
@@ -273,7 +328,6 @@ public class WindowsEjercicio {
         panel.add(vfRecrea);
         PN_Ejercicio.add(panel,GridBC); 
         PN_Ejercicio.compEnUso=vfRecrea;
-        
         compResp=vfRecrea;//agregamos el VFRecrea al at que se pasara a la ventana "Practica"
     }
     
@@ -284,24 +338,22 @@ public class WindowsEjercicio {
      * @param tipoBoton cn esto sabremos el tipo de TextField(Letras,Números)
      */
     private void RespTextField(Ejercicio ejc,PanelRecrea panel,String tipoTF){
-        
-        if(Util.EJERCICIO_TIPO_RESP_NUMERO.equals(tipoTF)){
-            NumberBoxRecrea nbRecrea=new NumberBoxRecrea();
-            nbRecrea.setHorizontalAlignment(NumberBoxRecrea.CENTER);
-            panel.add(nbRecrea); 
-            PN_Ejercicio.compEnUso=nbRecrea;
+        switch(tipoTF){
+            case Util.EJERCICIO_TIPO_RESP_NUMERO: 
+                NumberBoxRecrea nbRecrea=new NumberBoxRecrea();
+                nbRecrea.setHorizontalAlignment(NumberBoxRecrea.CENTER);
+                panel.add(nbRecrea); 
+                PN_Ejercicio.compEnUso=nbRecrea;
+                compResp=nbRecrea;//agregamos el NumberBox al at que se pasara a la ventana "Practica"
+                break;
+            case Util.EJERCICIO_TIPO_RESP_LETRA: 
+                TextBoxRecrea tbRecrea=new TextBoxRecrea();
+                tbRecrea.setHorizontalAlignment(TextBoxRecrea.CENTER);
+                panel.add(tbRecrea);
+                PN_Ejercicio.compEnUso=tbRecrea;
+                compResp=tbRecrea;//agregamos el TextBox al at que se pasara a la ventana "Practica"
+                break;
             
-            compResp=nbRecrea;//agregamos el NumberBox al at que se pasara a la ventana "Practica"
-        }
-        else
-        if(Util.EJERCICIO_TIPO_RESP_LETRA.equals(tipoTF))
-        {
-            TextBoxRecrea tbRecrea=new TextBoxRecrea();
-            tbRecrea.setHorizontalAlignment(TextBoxRecrea.CENTER);
-            panel.add(tbRecrea);
-            PN_Ejercicio.compEnUso=tbRecrea;
-            
-            compResp=tbRecrea;//agregamos el TextBox al at que se pasara a la ventana "Practica"
         }
         
             PN_Ejercicio.add(panel,GridBC);

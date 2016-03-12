@@ -4,10 +4,47 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 --><Reconum>
     <Leccion Imagen="explicacion.png" Nivel="1">¿Qué son números?
-        <Ejercicio Fecha="10:32:23 06/03/2016" Pregunta="¡Hola! &#10;en esta sección aprenderemos sobre los números, veras que es fácil y divertido " Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
-        <Ejercicio Fecha="10:38:39 06/03/2016" Pregunta="&#10;&#10;&#10;&#10;                                                                     UNO&#10;&#10;                                                                        1&#10;&#10;&#10;                                                        _________&#10;                                                        |____           |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                                   |         |&#10;                                                       _____|         |____&#10;                                                       |_____________|" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
-        </Leccion>
-    <Leccion Imagen="vf.png" Nivel="1">¿Es verdadero?</Leccion>
-    <Leccion Imagen="ABC.png" Nivel="1">Escribelo en letra</Leccion>
-    <Leccion Imagen="123.png" Nivel="1">Escribelo en número</Leccion>
+        <Ejercicio Fecha="10:32:23 06/02/2016" Pregunta="¡Hola! &#10;en esta sección aprenderemos sobre los números, veras que es fácil y divertido " Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="21:34:40 07/02/2016" Pregunta="Comencemos nombrando los números en voz alta y repitamo:&#10;&#10;UNO         DOS          TRES         CUATRO            CINCO            SEIS       &#10;&#10;&#10;SIETE     OCHO        NUEVE      DIEZ" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="03:06:20 08/02/2016" Pregunta="Ahora escribamos los numeros:&#10;&#10;&#10;UNO     DOS      TRES        CUATRO         CINCO          SEIS      &#10;  1           2         3              4                   5                6        &#10;&#10;SIETE   OCHO       NUEVE        DIEZ&#10;   7         8            9                10" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="03:47:13 08/02/2016" Pregunta="Repasemos:&#10;&#10;&#9;Escribe el número que se pide a continuacion:&#10;&#9;&#9;     &#10;&#9;&#9;     UNO" Puntos="0" Tipo="Botones:Número">1</Ejercicio>
+        <Ejercicio Fecha="03:47:40 08/03/2016" Pregunta="Repasemos:&#10;&#10;&#9;Escribe el número que se pide a continuacion:&#10;&#9;&#9;     &#10;&#9;&#9;     TRES" Puntos="0" Tipo="Escribir:Número">3</Ejercicio>
+        <Ejercicio Fecha="03:49:28 08/03/2016" Pregunta="Repasemos:&#10;&#10;&#9;Cómo se escribe el siguiente número:&#10;&#9;&#9;     &#10;&#9;&#9;    6" Puntos="0" Tipo="Escribir:Letras">SEIS</Ejercicio>
+        <Ejercicio Fecha="03:51:55 08/03/2016" Pregunta=".&#10;&#10;&#9;Selecciona el número CUATRO" Puntos="0" Tipo="Botones:Número">4</Ejercicio>
+    </Leccion>
+    <Leccion Imagen="vf.png" Nivel="1">¿Es verdadero?
+        <Ejercicio Fecha="01:08:48 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 1 se escribe UNO?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="01:09:21 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 2 se escribe CUATRO?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="01:09:55 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 3 se escribe SEIS?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="01:10:17 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 4 se escribe DOS?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="01:10:46 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 5 se escribe CINCO?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="01:11:10 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 6 se escribe SEIS?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="01:11:55 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 7 se escribe SEIS?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="01:12:19 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 8 se escribe OCHO?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="01:12:40 10/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#10;&#9;&#9;¿ el número 9 se escribe SEIS ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+    </Leccion>
+    <Leccion Imagen="ABC.png" Nivel="1">Escribelo en letra
+        <Ejercicio Fecha="01:17:25 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 1" Puntos="2" Tipo="Escribir:Letras">UNO</Ejercicio>
+        <Ejercicio Fecha="01:17:43 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 6" Puntos="2" Tipo="Escribir:Letras">SEIS</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 3" Puntos="2" Tipo="Escribir:Letras">TRES</Ejercicio>
+        <Ejercicio Fecha="01:17:43 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 2" Puntos="2" Tipo="Escribir:Letras">DOS</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 7" Puntos="2" Tipo="Escribir:Letras">SIETE</Ejercicio>
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 8" Puntos="2" Tipo="Escribir:Letras">OCHO</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 9" Puntos="2" Tipo="Escribir:Letras">NUEVE</Ejercicio>
+        <Ejercicio Fecha="01:17:25 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 5" Puntos="2" Tipo="Escribir:Letras">CINCO</Ejercicio>
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 4" Puntos="2" Tipo="Escribir:Letras">CUATRO</Ejercicio>
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;&#9;Cómo se escribe el número 0" Puntos="2" Tipo="Escribir:Letras">CERO</Ejercicio>
+    </Leccion>
+    <Leccion Imagen="123.png" Nivel="1">Escribelo en número
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número CUATRO" Puntos="2" Tipo="Escribir:Número">4</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número TRES" Puntos="2" Tipo="Escribir:Número">3</Ejercicio>
+        <Ejercicio Fecha="01:17:43 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número SEIS" Puntos="2" Tipo="Escribir:Número">6</Ejercicio>
+        <Ejercicio Fecha="01:17:25 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número UNO" Puntos="2" Tipo="Escribir:Número">1</Ejercicio>
+        <Ejercicio Fecha="01:17:25 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número CINCO" Puntos="2" Tipo="Escribir:Número">5</Ejercicio>
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número OCHO" Puntos="2" Tipo="Escribir:Número">8</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número NUEVE" Puntos="2" Tipo="Escribir:Número">9</Ejercicio>
+        <Ejercicio Fecha="01:18:26 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número CERO" Puntos="2" Tipo="Escribir:Número">0</Ejercicio>
+        <Ejercicio Fecha="01:17:43 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número DOS" Puntos="2" Tipo="Escribir:Número">2</Ejercicio>
+        <Ejercicio Fecha="01:18:03 10/02/2016" Pregunta="Escribe la respuesta en número:&#10;&#10;&#9;&#9;Cómo se escribe el número SIETE" Puntos="2" Tipo="Escribir:Número">7</Ejercicio>
+   </Leccion>
 </Reconum>

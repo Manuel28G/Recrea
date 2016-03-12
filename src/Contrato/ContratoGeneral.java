@@ -6,15 +6,16 @@
 
 package Contrato;
 import Model.Objetos.Persona;
-import java.awt.event.ActionEvent;
 
 /**
- *
+ * Este contrato sirve para la mayória de las ventanas y cumple la finalidad 
+ * de otorgar el manejo de ciertas funciones en la capa Model
  * @author Manuel
  */
 public interface ContratoGeneral {
-    public void SetEnable(boolean bol);
+    
+    public void SetEnable(boolean bol); //Recarga los componentes si sucede algun cambio
     public void Reaload();
     public Persona GetPersona();
-    public void avisoMensaje(String mensaje);
+    public void avisoMensaje(String mensaje); //método para enviar un mensaje al usuario, bien sea de alerta, error o información
 }

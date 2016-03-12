@@ -21,12 +21,13 @@ import java.util.List;
  */
 public class Avance extends FrameRecrea implements ContratoBotones {
 
-    private ControllerConsultar cc;
-    private List<Actividad> actividades;
-    private Estadistica estadistica;
+    private final ControllerConsultar cc;
+    private final List<Actividad> actividades;
+    private final Estadistica estadistica;
     //private Persona persona;
     /**
      * Creates new form Avance
+     * @param persona usuario que se examinará para dar los resultados del avance obtenido
      */
     public Avance(Persona persona) {
         initComponents();
@@ -40,7 +41,6 @@ public class Avance extends FrameRecrea implements ContratoBotones {
         this.LB_NotaGeneral.setText(Integer.toString(estadistica.GetNota()));
         this.LB_PromEjercicios.setText(estadistica.GetPromPracticaDiaria());
         this.configuracion(PN_Contenedor);
-       // persona=contGen.GetPersona();
         cc=new ControllerConsultar();
         actividades=cc.CargarActividades();
         this.LB_Usuario.setText(persona.getNombre()+" "+persona.getApellido());

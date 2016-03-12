@@ -23,13 +23,30 @@ public class MenuBarRecrea extends JMenuBar{
     private JMenu subMenu;
     private String[][] opcSub;
     private ContratoGeneral contGen;
+    private final String materiaStr="Materia";
+    private final String materiasStr="Materias";
+    private final String leccionStr="Leccion";
+    private final String ejercicioStr="Ejercicio";
+    private final String vistaStr="Vista";
+    private final String ayudaStr="Ayuda";
+    private final String avanceStr="Avance";
+    private final String espacioStr=" ";
+    
+    private final String cargarStr="Cargar";
+    private final String guardarStr="Guardar";
+    private final String archivoStr="Archivo";
+    private final String agregarStr="Agregar";
+    private final String modificarStr="Modificar";
+    private final String eliminarStr="Eliminar";
+    private final String edicionStr="Edicion";
+    
     
     public MenuBarRecrea() throws JDOMException{
-      super.removeAll();
+      this.removeAll();
       menuRecrea();
     }
     public MenuBarRecrea(ContratoGeneral cont){
-      super.removeAll();
+      this.removeAll();
       contGen=cont;
       menuRecrea();
     }
@@ -39,19 +56,23 @@ public class MenuBarRecrea extends JMenuBar{
     
     
     private void menuRecrea(){
-        opcSub=new String[][]{{"Cargar Materias"},
-                           {"Guardar Materias"}};
-        CrearMenu("Archivo",opcSub);
-        opcSub=new String[][]{{"Agregar","Materia","Leccion","Ejercicio"},
-               {"Modificar","Materia","Leccion","Ejercicio"},
-               {"Eliminar","Materia","Leccion","Ejercicio"}};
-        CrearMenu("Edición",opcSub);
-        opcSub=new String[][]{{"Avance"}};
-        CrearMenu("Vista",opcSub);
+        opcSub=new String[][]{{cargarStr+espacioStr+materiasStr},
+                           {guardarStr+espacioStr+materiasStr}};
+        CrearMenu(archivoStr,opcSub);
+        opcSub=new String[][]{{agregarStr,materiaStr,leccionStr,ejercicioStr},
+               {modificarStr,materiaStr,leccionStr,ejercicioStr},
+               {eliminarStr,materiaStr,leccionStr,ejercicioStr}};
+        CrearMenu(edicionStr,opcSub);
+        opcSub=new String[][]{{avanceStr}};
+        CrearMenu(vistaStr,opcSub);
         opcSub=new String[][]{};
-        CrearMenu("Ayuda",opcSub);
+        CrearMenu(ayudaStr,opcSub);
     }
-    
+    /**
+     * Metodo para crear el menuBarRecrea
+     * @param nombre nombre que saldrá en la opción
+     * @param subOpciones lista con las subopciones que se desplegarán
+     */
     private void CrearMenu(String nombre, String[][] subOpciones){
       menu=new JMenu(nombre); 
      // menu.setMnemonic(KeyEvent.VK_A);//atajo de teclado alt + A
@@ -64,9 +85,9 @@ public class MenuBarRecrea extends JMenuBar{
      this.add(menu);
     }
     /**
-     * 
-     * @param menu
-     * @param nombre 
+     * método para crear el menú de una opción 
+     * @param menu opcion que se añadirá
+     * @param nombre nombre de la opcion
      */
     private void SubMenu(JMenu menu,String nombre){
         menu.addSeparator();
@@ -75,10 +96,10 @@ public class MenuBarRecrea extends JMenuBar{
         menu.add(menuItem);
     }
     /**
-     * 
-     * @param menu
-     * @param nombre
-     * @param opciones 
+     * si la opcion contiene subOpciones se creará con todas estas
+     * @param menu opcion que se añadirá
+     * @param nombre nombre de la opcion
+     * @param opciones subOpciones que contendrá el menu
      */
     private void SubMenuOpciones(JMenu menu,String nombre,String[] opciones){
             menu.addSeparator();
@@ -102,18 +123,20 @@ public class MenuBarRecrea extends JMenuBar{
         
         menu.add(subMenu);
     }
-        
+        /**
+         * Método que añade los actions a cada opcion u subOpcion del menuBar
+         * @param nombreMenu nombre de la opcion o subOpcion
+         * @return actionListener
+         */
   private ActionListener ActionsLis(String nombreMenu){
       switch(nombreMenu)
       {
-          case "Cargar Materias":return Componentes.ActionsListener.ActionCargarXML(); 
-          case "Guardar Materias":return Componentes.ActionsListener.ActionGuardarXML();
-          case "Agregar"+"Materia":return Componentes.ActionsListener.ActionAgregarMateria();
-          case "Agregar"+"Leccion":return Componentes.ActionsListener.ActionAgregarLeccion();
-          case "Agregar"+"Ejercicio":return Componentes.ActionsListener.ActionAgregarEjercicio();
-              
-              
-          case "Avance": return Componentes.ActionsListener.ActionCargarAvance(contGen);
+          case cargarStr+espacioStr+materiasStr:return Componentes.ActionsListener.ActionCargarXML(); 
+          case guardarStr+espacioStr+materiasStr:return Componentes.ActionsListener.ActionGuardarXML();
+          case agregarStr+materiaStr:return Componentes.ActionsListener.ActionAgregarMateria();
+          case agregarStr+leccionStr:return Componentes.ActionsListener.ActionAgregarLeccion();
+          case agregarStr+ejercicioStr:return Componentes.ActionsListener.ActionAgregarEjercicio();
+          case avanceStr: return Componentes.ActionsListener.ActionCargarAvance(contGen);
        
       }
          return null;

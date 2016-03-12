@@ -6,26 +6,28 @@
 
 package Componentes;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 /**
- *
+ * Clase para la reproducción de sonido en la aplicación
  * @author Manuel Goncalves L.
  */
    public class Audio {
-    private InputStream inputStm;
-    private AudioStream audioStm;
+    private Clip clip;
     public Audio(String audio) throws FileNotFoundException, IOException {
-        inputStm=new FileInputStream(audio);
-        audioStm=new AudioStream(inputStm);
+        try{
+        clip= AudioSystem.getClip();
+        clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(audio)));
+        }
+        catch(Exception ex){
+        System.out.println("Error encontrado en constructor Sonido: "+ex);
+        }
     }
     
     public void Play(){
-        AudioPlayer.player.start(audioStm);
+        clip.start();
     }
 }

@@ -6,20 +6,26 @@
 
 package Componentes;
 
+import Controller.Configuracion;
 import javax.swing.JLabel;
 
 /**
  *
- * @author Manuel
+ * @author Manuel Goncalves L.
  */
 public class LabelRecrea extends JLabel {
     
-    private String tamañoTxt="INTERMEDIO";
-    private String colorTxt="BLANCO";
-    private int size=0;
-    private String tipografia="Tahoma";
-    private Configuracion config=new Configuracion();
-    
+    private final String tamañoTxt="INTERMEDIO";
+    private final String colorTxt="BLANCO";
+    private final int size=0;
+    private final String tipografia="Tahoma";
+    private final Configuracion config=new Configuracion();
+    /**
+     * Constructor
+     * @param msj mensaje que contendrá el Label
+     * @param tmño tamaño del mensaje "GRANDE","INTERMEDIO","MEDIANO","PEQUEÑO"
+     * @param clr color del mensaje "BLANCO","NEGRO","ROJO","AZUL"
+     */
     public LabelRecrea(String msj,String tmño, String clr){
         Texto(msj, tmño, clr);
     }
@@ -32,33 +38,6 @@ public class LabelRecrea extends JLabel {
      public LabelRecrea(String msj){
         Texto(msj,tamañoTxt,colorTxt);
     }
- /*    public void setTamaño(String tamaño){
-          switch(tamaño){
-             case "GRANDE":
-                 size=24; break;
-             case "INTERMEDIO":
-                 size=18; break;
-             case "MEDIANO": 
-                 size=12;break;
-             case "PEQUEÑO": 
-                 size=6;break;
-         }
-     }
-     public void setColor(String color){
-          
-        
-         switch(color){
-             case "NEGRO":
-         this.setForeground(Color.BLACK); break;
-             case "ROJO":
-         this.setForeground(Color.RED); break;
-             case "AZUL":
-         this.setForeground(Color.BLUE); break;  
-             case "BLANCO": 
-         this.setForeground(Color.WHITE);break;
-            
-         }
-     }*/
      
     /**
      * Se creará el texto de acuerdo a cierta configuracion

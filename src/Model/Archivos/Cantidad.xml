@@ -6,8 +6,57 @@ and open the template in the editor.
 Se utiliza el punto y coma (;) para hacer el split
 --><Cantidad>
  
-    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué son cantidades?</Leccion>
-    <Leccion Imagen="vf.png" Nivel="1">¿Es mayor?</Leccion>
-    <Leccion Imagen="123.png" Nivel="1">Escribe la respuesta</Leccion>
-    <Leccion Imagen="default.png" Nivel="1">¡Repasemos!</Leccion>
+    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué son cantidades?
+        <Ejercicio Fecha="04:02:51 08/03/2016" Pregunta="¡Hola!&#10;En esta sección te explicaré a identificar las cantidades, es muy fácil ya veras&#10;&#10;                              Comenzemos." Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:05:56 08/03/2016" Pregunta="&#10;María tiene tres mangos y Juan tiene dos mangos&#10;&#10;María tiene MÁS mangos que juan" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:07:35 08/03/2016" Pregunta="&#10;Pedro compro 5 galletas y Ana compro 7 galletas&#10;&#10;Ana tiene MÁS galletas que Pedro" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:09:00 08/03/2016" Pregunta="&#10;Luis tiene OCHO cuadernos y Elena tiene SIETE cuadernos&#10;&#10;Luis tiene MÁS cuadernos que Elena" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:10:29 08/03/2016" Pregunta="Pregunta:&#10;&#10;Si Jorge tiene dos lápices y Gabriela tiene un lápiz&#10;&#10;¿Jorge tiene más lápices que Gabriela?" Puntos="0" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="04:11:44 08/03/2016" Pregunta="&#10;Oscar tiene 2 reglas y Ana tiene 3 reglas&#10;&#10;Oscar tiene MENOS reglas que Ana" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:13:37 08/03/2016" Pregunta="&#10;Ana compró 4 chocolates y Enrique compró 5 chocolates&#10;&#10;Ana tiene MENOS chocolates que Enrique :    4&lt;5&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="04:14:59 08/03/2016" Pregunta="Pregunta:&#10;&#10;Si Ana tiene dos lápices y Juan tiene un lápiz&#10;&#10;¿Ana tiene MENOS lápices que Juan?" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="15:40:19 08/03/2016" Pregunta="Ahora identifiquemos como escribir MAYOR QUE o MENOR QUE&#10;&#10;se hace de la siguiente forma:&#10;&#10;                    MENOR QUE    &lt; &#10;&#9;MAYOR QUE     &gt;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="15:40:35 08/03/2016" Pregunta="&#10;por ejemplo:&#10;&#9;tres es menor que cuatro &#10;&#9;tres &lt; cuatro&#10;&#9;  3  &lt;  4&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="15:41:44 08/03/2016" Pregunta="&#10;por ejemplo:&#10;&#9;seis ES MAYOR QUE cinco&#10;&#9;seis &gt; cinco&#10;&#9;  6  &gt;  5&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="15:42:52 08/03/2016" Pregunta="Ahora respondamos:&#10;&#10;&#9;siete es MENOR QUE  ocho" Puntos="0" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="15:43:55 08/03/2016" Pregunta="Ahora respondamos&#10;&#10;&#9;nueve es MAYOR QUE cuatro" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="15:44:51 08/03/2016" Pregunta="Ahora respondamos:&#10;&#10;&#9;Siete &gt; Cinco" Puntos="0" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="15:45:19 08/03/2016" Pregunta="Ahora respondamos:&#10;&#10;&#9;6 &gt; 9" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="15:45:52 08/03/2016" Pregunta="Ahora respondamos:&#10;&#10;&#9;4 &lt; 3" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio>
+    </Leccion>
+    <Leccion Imagen="vf.png" Nivel="1">¿Es mayor?
+        <Ejercicio Fecha="22:29:22 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Tres es mayor que cuatro?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:30:03 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿Cuatro es mayor que uno?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:30:57 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 7 &gt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:31:52 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 8 &gt; 4 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:32:58 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;Juan tiene 5 manzanas y Ana tiene 4 manzanas&#10;&#10;&#9;¿ Ana tiene mas manzanas que Juan ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:10:06 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Seis es mayor que siete?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:19:05 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;María compró cuatro galletas y Ramon compró nueve galletas&#10;&#9;&#9;&#10;&#9;                 ¿Ramon tiene mas galletas que María?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="23:50:56 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 12 &gt; 10 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="23:51:32 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 15 &gt; 9 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="23:52:21 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿Uno es mayor que dos?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio></Leccion>
+    <Leccion Imagen="vf.png" Nivel="1">¿Es menor?
+        <Ejercicio Fecha="22:29:22 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Tres es menor que cinco?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:30:03 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿Cuatro es menor que tres?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:30:57 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 9 &lt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:31:52 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 8 &lt; 4 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:32:58 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;Juan tiene 7 manzanas y Ana tiene 8 manzanas&#10;&#10;&#9;¿ Ana tiene menos manzanas que Juan ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:10:06 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Seis es menor que siete?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="23:19:05 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;María compró cinco galletas y Ramon compró ocho galletas&#10;&#9;&#9;&#10;&#9;                 ¿Ramon tiene menos galletas que María?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:50:56 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 13 &lt; 11 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:51:32 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 16 &lt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:52:21 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿Uno es menor que dos?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+   </Leccion>
+    <Leccion Imagen="default.png" Nivel="1">¡Repasemos!
+        <Ejercicio Fecha="22:29:22 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Tres es mayor que cuatro?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:51:32 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 16 &lt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:30:57 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 7 &gt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="23:19:05 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;María compró cinco galletas y Ramon compró ocho galletas&#10;&#9;&#9;&#10;&#9;                 ¿Ramon tiene menos galletas que María?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:10:06 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Seis es mayor que siete?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="22:32:58 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;Juan tiene 7 manzanas y Ana tiene 8 manzanas&#10;&#10;&#9;¿ Ana tiene menos manzanas que Juan ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:19:05 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;María compró cuatro galletas y Ramon compró nueve galletas&#10;&#9;&#9;&#10;&#9;                 ¿Ramon tiene mas galletas que María?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:30:57 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 9 &lt; 6 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="23:51:32 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ 15 &gt; 9 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
+        <Ejercicio Fecha="22:29:22 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;&#9;¿ Tres es menor que cinco?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio> 
+    </Leccion>
 </Cantidad>
