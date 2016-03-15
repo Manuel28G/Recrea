@@ -6,7 +6,18 @@ and open the template in the editor.
 Se utiliza el punto y coma (;) para hacer el split
 --><Suma>
  
-    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué es la suma?<Ejercicio Fecha="15:59:12 08/03/2016" Pregunta="¡Hola! Bienvenido al curso de la suma donde aprenderemos lo que es sumar números y cosas&#10;&#10;&#9;&#9;Comencemos." Puntos="0" Tipo="Sin respuesta"> </Ejercicio><Ejercicio Fecha="16:01:49 08/03/2016" Pregunta="La suma es cuando agrupamos las cosas iguales, por ejemplo:&#10;&#10;si Juan pone en una mesa CINCO carritos y Maria pone en esa misma mesa DOS carritos ¿Cuantos carritos hay en la mesa?&#10;&#10;Bueno sumemos  CINCO mas DOS es SIETE " Puntos="0" Tipo="Sin respuesta"> </Ejercicio><Ejercicio Fecha="16:04:08 08/03/2016" Pregunta="Si en una colección tenemos 6 hojas y en la otra tenemos 4, veamos cuál es la suma de ambos números.&#10;&#10;&#9;Seis mas Cuatro es igual a diez &#10;                       6   +       4          =       10" Puntos="0" Tipo="Sin respuesta"> </Ejercicio><Ejercicio Fecha="16:07:58 08/03/2016" Pregunta="Hablemos un poco mas de la suma&#10;&#10;El símbolo que se utiliza en la adición es:  +&#10;y se lee:    &quot;MÁS&quot;&#10;&#10;por ejemplo:   TRES MÁS SEIS ES IGUAL A NUEVE&#10;&#9;  3      +      6        =          9&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio><Ejercicio Fecha="17:50:08 08/03/2016" Pregunta="Completemos la suma:&#10;&#10;&#10;                            TRES +[  ] = CUATRO&#10;¿Que número debe colocarse en el recuadro paraque sumado con TRES sea igual a CUATRO?&#10;&#10;&#9;¡Correcto! la resuesta es UNO &#10;&#9;TRES + UNO = CUATRO" Puntos="0" Tipo="Sin respuesta"> </Ejercicio><Ejercicio Fecha="17:52:01 08/03/2016" Pregunta="Completemos la ecuación:&#10;&#10;&#9;3 + [  ] =  6" Puntos="0" Tipo="Botones:Número">3</Ejercicio><Ejercicio Fecha="17:53:24 08/03/2016" Pregunta="Escribe la respuesta&#10;&#10;&#9;CINCO + [   ] = SIETE" Puntos="0" Tipo="Escribir:Letras">DOS</Ejercicio><Ejercicio Fecha="17:54:40 08/03/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;¿   3 + 5 es igual a 9  ?" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio><Ejercicio Fecha="17:58:00 08/03/2016" Pregunta="Escribamos la respuesta:&#10;&#10;&#9;5 + 4 = [  ]" Puntos="0" Tipo="Escribir:Número">9</Ejercicio><Ejercicio Fecha="17:58:50 08/03/2016" Pregunta="¿Cual es la respuesta correcto?&#10;&#10;&#9;2 + 5= [  ]" Puntos="0" Tipo="Botones:Número">7</Ejercicio></Leccion>
+    <Leccion Imagen="explicacion.png" Nivel="1">¿Qué es la 
+        <Ejercicio Fecha="15:59:12 08/03/2016" Pregunta="¡Hola! Bienvenido al curso de la suma donde aprenderemos lo que es sumar números y cosas&#10;&#10;&#9;&#9;Comencemos." Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="16:01:49 08/03/2016" Pregunta="La suma es la agrupación de las cosas iguales, por ejemplo:&#10;&#10;si Juan pone en una mesa CINCO carritos y María pone en esa misma mesa DOS carritos ¿Cuántos carritos hay en la mesa?&#10;&#10;Bueno sumemos  CINCO más DOS es SIETE " Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="16:04:08 08/03/2016" Pregunta="Si en una colección tenemos 6 hojas y en la otra tenemos 4, veamos cuál es la suma de ambos números.&#10;&#10;&#9;Seis más Cuatro es igual a diez &#10;                       6   +       4          =       10" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="16:07:58 08/03/2016" Pregunta="Hablemos un poco más de la suma&#10;&#10;El símbolo que se utiliza en la adición es:  +&#10;y se lee:    &quot;MÁS&quot;&#10;&#10;por ejemplo:   TRES MÁS SEIS ES IGUAL A NUEVE&#10;&#9;  3      +      6        =          9&#10;" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="17:50:08 08/03/2016" Pregunta="Completemos la suma:&#10;&#10;&#10;                            TRES +[  ] = CUATRO&#10;¿Que número debe colocarse en el recuadro para que sumado con TRES sea igual a CUATRO?&#10;&#10;&#9;¡Correcto! la respuesta es UNO &#10;&#9;TRES + UNO = CUATRO" Puntos="0" Tipo="Sin respuesta"> </Ejercicio>
+        <Ejercicio Fecha="17:52:01 08/03/2016" Pregunta="Completemos la ecuación:&#10;&#10;&#9;3 + [  ] =  6" Puntos="0" Tipo="Botones:Número">3</Ejercicio>
+        <Ejercicio Fecha="17:53:24 08/03/2016" Pregunta="Escribe la respuesta&#10;&#10;&#9;CINCO + [   ] = SIETE" Puntos="0" Tipo="Escribir:Letras">DOS</Ejercicio>
+        <Ejercicio Fecha="17:54:40 08/03/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;¿   3 + 5 es igual a 9  ?" Puntos="0" Tipo="Verdadero-Falso">Falso</Ejercicio>
+        <Ejercicio Fecha="17:58:00 08/03/2016" Pregunta="Escribamos la respuesta:&#10;&#10;&#9;5 + 4 = [  ]" Puntos="0" Tipo="Escribir:Número">9</Ejercicio>
+        <Ejercicio Fecha="17:58:50 08/03/2016" Pregunta="¿Cuál es la respuesta correcto?&#10;&#10;&#9;2 + 5= [  ]" Puntos="0" Tipo="Botones:Número">7</Ejercicio>
+    </Leccion>
     <Leccion Imagen="vf.png" Nivel="1">¿Es correcto?
         <Ejercicio Fecha="04:32:38 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;         ¿ 5 + 3 = 8 ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
         <Ejercicio Fecha="04:33:20 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;                            ¿ Dos más dos es igual a tres ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
@@ -22,14 +33,14 @@ Se utiliza el punto y coma (;) para hacer el split
     <Leccion Imagen="123.png" Nivel="1">Escribe la respuesta
         <Ejercicio Fecha="04:40:01 09/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 3 + 2?" Puntos="2" Tipo="Escribir:Número">5</Ejercicio>
         <Ejercicio Fecha="04:40:37 09/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 6 + 3?" Puntos="2" Tipo="Escribir:Número">9</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es seis mas una?" Puntos="2" Tipo="Escribir:Letras">SIETE</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es seis más una?" Puntos="2" Tipo="Escribir:Letras">SIETE</Ejercicio>
         <Ejercicio Fecha="04:40:01 09/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 8 + 1?" Puntos="2" Tipo="Escribir:Número">9</Ejercicio>
         <Ejercicio Fecha="04:40:37 09/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 9 + 2?" Puntos="2" Tipo="Escribir:Número">11</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es ocho mas dos?" Puntos="2" Tipo="Escribir:Letras">DIEZ</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es ocho más dos?" Puntos="2" Tipo="Escribir:Letras">DIEZ</Ejercicio>
         <Ejercicio Fecha="04:40:01 09/03/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 7 + 2?" Puntos="2" Tipo="Escribir:Número">9</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es siete mas una?" Puntos="2" Tipo="Escribir:Letras">OCHO</Ejercicio>
-        <Ejercicio Fecha="04:40:37 09/03/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 5 + 3?" Puntos="2" Tipo="Escribir:Número">2</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es ocho mas una?" Puntos="2" Tipo="Escribir:Letras">NUEVE</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es siete más una?" Puntos="2" Tipo="Escribir:Letras">OCHO</Ejercicio>
+        <Ejercicio Fecha="04:40:37 09/03/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 5 + 3?" Puntos="2" Tipo="Escribir:Número">8</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es ocho más una?" Puntos="2" Tipo="Escribir:Letras">NUEVE</Ejercicio>
   
     </Leccion>
     <Leccion Imagen="default.png" Nivel="1">¡Repasemos!
@@ -37,9 +48,9 @@ Se utiliza el punto y coma (;) para hacer el split
         <Ejercicio Fecha="04:40:01 09/02/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 3 + 2?" Puntos="2" Tipo="Escribir:Número">5</Ejercicio>
         <Ejercicio Fecha="04:35:01 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;         ¿ 9 + 1 = 9 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
         <Ejercicio Fecha="04:40:01 09/03/2016" Pregunta="Escribe la respuesta:&#10;&#10;&#9;         ¿ Cuánto es 7 + 2?" Puntos="2" Tipo="Escribir:Número">9</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es seis mas una?" Puntos="2" Tipo="Escribir:Letras">SIETE</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/02/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es seis más una?" Puntos="2" Tipo="Escribir:Letras">SIETE</Ejercicio>
         <Ejercicio Fecha="04:34:02 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;         ¿ 4 + 1= 6 ?" Puntos="2" Tipo="Verdadero-Falso">Falso</Ejercicio>
-        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es siete mas una?" Puntos="2" Tipo="Escribir:Letras">OCHO</Ejercicio>
+        <Ejercicio Fecha="04:41:33 09/03/2016" Pregunta="Escribe la respuesta en letras:&#10;&#10;&#9;         ¿ Cuánto es siete más una?" Puntos="2" Tipo="Escribir:Letras">OCHO</Ejercicio>
         <Ejercicio Fecha="04:37:53 09/02/2016" Pregunta="Verdadero o falso:&#10;&#10;&#9;         ¿ Seis más cinco es igual a once ?" Puntos="2" Tipo="Verdadero-Falso">Verdadero</Ejercicio>
         <Ejercicio Fecha="04:56:49 09/03/2016" Pregunta="Selecciona la respuesta correcta:&#10;&#10;&#9;         ¿ Cuánto es 8 + 1?" Puntos="2" Tipo="Botones:Número">9</Ejercicio>
         <Ejercicio Fecha="04:57:26 09/03/2016" Pregunta="Selecciona la respuesta correcta:&#10;&#10;&#9;         ¿ Cuánto es 2 + 2?" Puntos="2" Tipo="Botones:Número">4</Ejercicio>
