@@ -6,6 +6,7 @@
 
 package Componentes;
 
+import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.sound.sampled.AudioSystem;
@@ -17,10 +18,12 @@ import javax.sound.sampled.Clip;
  */
    public class Audio {
     private Clip clip;
+    private BufferedInputStream buffer;
     public Audio(String audio) throws FileNotFoundException, IOException {
         try{
+        buffer= new BufferedInputStream(getClass().getResourceAsStream(audio));
         clip= AudioSystem.getClip();
-        clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(audio)));
+        clip.open(AudioSystem.getAudioInputStream(buffer));
         }
         catch(Exception ex){
         System.out.println("Error encontrado en constructor Sonido: "+ex);
