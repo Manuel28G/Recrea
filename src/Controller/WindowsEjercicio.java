@@ -45,8 +45,8 @@ public class WindowsEjercicio {
     private final Border blackline = BorderFactory.createLineBorder(Color.white,2);
     private final Border loweredbevel = BorderFactory.createLoweredBevelBorder();
     private final Configuracion config =new Configuracion();
-    private final  Border bordeRespuesta=BorderFactory.createTitledBorder(loweredbevel,Util.RESPUESTA,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
-    private final Border bordePregunta= BorderFactory.createTitledBorder( blackline, Util.PREGUNTA,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+    private final  Border bordeRespuesta=BorderFactory.createTitledBorder(loweredbevel,Util.TITULO_RESPUESTA,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+    private Border bordePregunta= BorderFactory.createTitledBorder( blackline, Util.TITULO_PREG_CONTENIDO,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
 
     private final PanelRecrea PN_Ejercicio= new PanelRecrea(GridBL);
     private final PanelRecrea PN_OpcionesEjer=new PanelRecrea(GridL1y3x);
@@ -64,6 +64,7 @@ public class WindowsEjercicio {
     private BotonRecrea b1, b2, b3;
     private final Random rm;
     private BotonRecrea sonidoBt;
+    private final String sonidoImg="sonido.png";
     
     /**
      * Metodo para obtener el componente con la respuesta
@@ -142,7 +143,7 @@ public class WindowsEjercicio {
         a2.setHorizontalAlignment(SwingConstants.CENTER);
         
         sonidoBt=new BotonRecrea(Util.BOTON_TIPO_SONIDO,this.ctoEjercicio);
-        sonidoBt.BotonConfig("sonido.png", Util.BOTON_TIPO_SONIDO);
+        sonidoBt.BotonConfig(sonidoImg, Util.BOTON_TIPO_SONIDO);
         
         configGeneral();
         
@@ -210,10 +211,30 @@ public class WindowsEjercicio {
         String[] resp=ejc.getTipo().split(":");
         PN_OpcionesEjer.setBorder(bordeRespuesta);
         switch(resp[0]){
-            case Util.EJERCICIO_TIPO_BOTON:RespBotones(ejc,panel,resp[1]); break;
-            case Util.EJERCICIO_TIPO_ESCRIBIR:RespTextField(ejc,panel,resp[1]); break;
-            case Util.EJERCICIO_TIPO_VF:RespVF(ejc,panel);break;
+            case Util.EJERCICIO_TIPO_BOTON:RespBotones(ejc,panel,resp[1]);
+            bordePregunta= BorderFactory.createTitledBorder( blackline, Util.TITULO_PREG_BOTONES,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+            break;
+            case Util.EJERCICIO_TIPO_ESCRIBIR:RespTextField(ejc,panel,resp[1]);
+            tituloBorderEscribir(resp[1]);
+            break;
+            case Util.EJERCICIO_TIPO_VF:RespVF(ejc,panel);
+            bordePregunta= BorderFactory.createTitledBorder( blackline, Util.TITULO_PREG_VERDADERO_FALSO,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+            break;
         }
+    }
+    
+    private void tituloBorderEscribir(String tipo){
+        switch(tipo){
+            case Util.EJERCICIO_TIPO_RESP_LETRA:
+                bordePregunta= BorderFactory.createTitledBorder( blackline, Util.TITULO_PREG_TEXTBOX_LETRAS,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+                break;
+                
+            case Util.EJERCICIO_TIPO_RESP_NUMERO:
+                bordePregunta= BorderFactory.createTitledBorder( blackline, Util.TITULO_PREG_TEXTBOX_NUMEROS,TitledBorder.LEFT,TitledBorder.TOP,config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED),config.SetColor(Util.CONFIG_COLOR_LETRA_BLANCO));
+                break;
+            
+        }
+        
     }
     /**
      * Metodo para crear los botones en la zona de respuesta
@@ -275,6 +296,18 @@ public class WindowsEjercicio {
         b1.setText(Integer.toString(resp));
         b1.setName(Integer.toString(resp));
         int random;
+        
+        
+        if(resp==0){
+            random=(int)(rm.nextDouble() * (5) + 1);//con esto tenemos un rango del random del [1,6]
+            b2.setText(Integer.toString(random));
+            b2.setName(Integer.toString(random));
+
+            random=(int)(rm.nextDouble() * (10) + 10);//con esto tenemos un rango del random del [10,20]
+            b3.setName(Integer.toString(random));            
+            b3.setText(Integer.toString(random));
+        }
+        else
         if(resp%10==0){
             
             //se crean dos random ya que para la multiplicación no puede ser el rango desde uno 
@@ -306,8 +339,7 @@ public class WindowsEjercicio {
 
                     b3.setText(Integer.toString(resp + random));
                     b3.setName(Integer.toString(resp + random));
-                }
-                    else
+                }else
                     {
                     random=(int)(rm.nextDouble() * (resp-1) + 1);//con esto tenemos un rango del random del [1,resp-1]
                     b2.setText(Integer.toString(resp-random));

@@ -38,9 +38,10 @@ public class AgregarXML {
  * @param calf calificacion optenida en la actividad
  * @param leccion leccion que realizó el usuario 
  * @param total total de puntos posibles en la lección
+     * @return true: Agrego la persona; false: no agrego la persona
  * @since 1.0.0
  */
-public static void XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total){
+public static boolean XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total){
     try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
@@ -59,10 +60,13 @@ public static void XMLPersonaActAdd(String fecha,String hora,String dia,String c
     pr.appendChild(actAdd);
     document.normalize();  
     CrearXML.CrearXML(document,Util.PERSONA_XML+Util.ARCHIVO_XML);
+    return true;
+
     }
     catch(Exception e)
     {
         System.out.println(e.getMessage()+" "+e);
+        return false;
     }
     
 }
@@ -74,9 +78,10 @@ public static void XMLPersonaActAdd(String fecha,String hora,String dia,String c
  * @param nivl nivel de dificultad de la materia (se puede colocar por grado del colegio)
  * @param xml Nombre con que se guardará el archivo XML
  * @param materia  nombre de la materia a agregar
+ * @return true: Agrego la materia; false: no agrego la materia
  * @since 1.0.0
  */
-public static void XMLMateriasAdd(String img,String nivl,String xml,String materia){
+public static boolean XMLMateriasAdd(String img,String nivl,String xml,String materia){
    try{
     String archivo=Util.MATERIAS_TAG+Util.ARCHIVO_XML;
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -92,13 +97,14 @@ public static void XMLMateriasAdd(String img,String nivl,String xml,String mater
     document.normalize();  
     CrearXML.CrearXML(document,archivo);
     XMLBasic(xml);
+    return true;
     }
     catch(Exception e)
     {
         System.out.println(e.getMessage()+" "+e);
+        return false;
 
     }
-    
 }
 
 /**
@@ -107,9 +113,10 @@ public static void XMLMateriasAdd(String img,String nivl,String xml,String mater
  * @param imagen nombre de la imagen que se encuentra entre los archivos de recrea: puede usar "default.jpg" si no conoce
  * @param leccion Nombre de la leccion que se agregará
  * @param archivoXML Archivo XML de la la materia que se le agregara la lecció ejemplo "Numeros.xml"
+     * @return true: Agrego la lección; false: no agrego la lección
  * @since 1.0.0
  */
-public static void XMLLeccionAdd(String nivel,String imagen,String leccion,String archivoXML){
+public static boolean XMLLeccionAdd(String nivel,String imagen,String leccion,String archivoXML){
      try{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
@@ -122,10 +129,13 @@ public static void XMLLeccionAdd(String nivel,String imagen,String leccion,Strin
     root.appendChild(actAdd);
     document.normalize();  
     CrearXML.CrearXML(document,archivoXML);
+    
+     return true;
     }
     catch(Exception e)
     {
         System.out.println(e.getMessage()+" "+e);
+        return false;
     }
 }
 
@@ -140,7 +150,7 @@ public static void XMLLeccionAdd(String nivel,String imagen,String leccion,Strin
  * @since 1.0.0
  * @author Manuel Goncalves L.
  */
-public static void XMLEjercicioAdd(String tipo,String pts,String pregunta,String resp,String xmlFile,String nombreLeccion){
+public static boolean XMLEjercicioAdd(String tipo,String pts,String pregunta,String resp,String xmlFile,String nombreLeccion){
       try{
     DateFormat fechaActual = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");//formato que queremos para guardar en el xml
     Date date=new Date(); //fecha actual
@@ -169,13 +179,15 @@ public static void XMLEjercicioAdd(String tipo,String pts,String pregunta,String
     
     document.normalize();  
     CrearXML.CrearXML(document,xmlFile);
+    
+    return true;
     }
     catch(Exception e)
     {
         System.out.println(e.getMessage()+" "+e);
+        return false;
      
     }
-    
     
 }
 }
