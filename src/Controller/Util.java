@@ -13,13 +13,28 @@ package Controller;
  */
 public class Util {
     
+    public static final String COMPONENTE_TEXTBOX_RECREA="TextBoxRecrea";
+    public static final String COMPONENTE_NUMBERBOX_RECREA="NumberBoxRecrea";
+    public static final String COMPONENTE_BOTON_RECREA="BotonRecrea";
+    public static final String COMPONENTE_BOTONSALIR_RECREA="BotonSalirRecrea";
+    public static final String COMPONENTE_BOTONSEGUIR_RECREA="BotonSeguirRecrea";
+    public static final String COMPONENTE_VF_RECREA="VFRecrea";
+    public static final String COMPONENTE_TEXTAREA_RECREA="TAreaRecrea";
+    public static final String COMPONENTE_COMBOBOX_RECREA="ComboBoxRecrea";
+    
+    public static final String TITULO_PREG_BOTONES="Selecciona la respuesta correcta";
+    public static final String TITULO_PREG_TEXTBOX_NUMEROS="Escribe tu respuesta en números";
+    public static final String TITULO_PREG_TEXTBOX_LETRAS="Escribe tu respuesta en letras";
+    public static final String TITULO_PREG_VERDADERO_FALSO="¿Verdadero o falso?";
+    public static final String TITULO_PREG_PREGUNTA="Pregúnta";
+    public static final String TITULO_PREG_CONTENIDO="Contenido";
+    public static final String TITULO_RESPUESTA="Respuesta";
+    
     public static final String RUTA_SONIDO_CLICK="/Model/Sonido/Click1.wav";
     public static final String RUTA_SONIDO_SOBREBOTON="/Model/Sonido/Boton1.wav";
     public static final String RUTA_SONIDO_CORRECTO="/Model/Sonido/Win.wav";
     public static final String RUTA_SONIDO_EQUIVOCADO="/Model/Sonido/Fail.wav";
     
-    public static final String RESPUESTA="Respuesta";
-    public static final String PREGUNTA="Pregunta";
     
     public static final String LETRA_TIPO_TAHOMA="Tahoma";
     

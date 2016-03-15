@@ -78,9 +78,9 @@ public class ControllerConsultar {
     public String ObtenerRespuesta(Component comp){
       try{
        switch(comp.getClass().getSimpleName()){
-           case "TextBoxRecrea": return RespTextField((TextBoxRecrea)comp);
-           case "NumberBoxRecrea":return RespTextField((NumberBoxRecrea)comp);
-           case "VFRecrea":return RespRadioButton((VFRecrea)comp);
+           case Util.COMPONENTE_TEXTBOX_RECREA: return RespTextField((TextBoxRecrea)comp);
+           case Util.COMPONENTE_NUMBERBOX_RECREA:return RespTextField((NumberBoxRecrea)comp);
+           case Util.COMPONENTE_VF_RECREA:return RespRadioButton((VFRecrea)comp);
        }}
       catch(Exception ex){
           
@@ -124,10 +124,11 @@ public class ControllerConsultar {
      * @return listado de materias totales en la aplicación
      * @throws JDOMException 
      */
-    public List<Materia> cargarMateria() throws JDOMException{
+    public List<Materia> cargarMateria(){
+        try{
         int i=0;
-        consultarMaterias();
         List<Materia> respuesta=new ArrayList<>();
+        consultarMaterias();
         for(Materia mt:materias ){
            mt.setNombre(Model.ConsultarXML.InformacionEtiqueta(rutaMateria, null, i,null).trim()); 
            mt.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_ATRIBUTE, i,null).trim());
@@ -139,6 +140,16 @@ public class ControllerConsultar {
          }
         materias=respuesta;
         return materias;
+        }
+        catch(JDOMException ex){
+            System.out.println("Error encontrado en ControllerConsultar.CargarMateria: "+ex);
+            return null;
+        }
+        
+        catch(Exception ex){
+            System.out.println("Error encontrado en ControllerConsultar.CargarMateria: "+ex);
+            return null;
+        }
      
     }
    /**
@@ -147,12 +158,13 @@ public class ControllerConsultar {
     * @return listado de lecciónes asociadas a la materia consultada
     * @throws JDOMException 
     */
-    private List<Leccion> cargarLeccion(Materia mt) throws JDOMException{
+    private List<Leccion> cargarLeccion(Materia mt) {
         
         int contHijo;
+        lecciones=new ArrayList<>();
+        try{
         String ruta=Util.ARCHIVOS_XML_PATH+mt.getHijoURL();
         contHijo=Model.ConsultarXML.ContarEtiquetas(ruta,"");
-        lecciones=new ArrayList<>();
         for(int i=0;i<contHijo;i++ ){
             Leccion leccion=new Leccion();
             leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, null, i,null).trim());
@@ -161,7 +173,14 @@ public class ControllerConsultar {
             leccion.setEjercicios(cargarEjercicio(leccion,ruta));
             lecciones.add(leccion);
         }
+        
         return lecciones;
+        }
+        catch(Exception ex){
+            System.out.println("Error encontrado en ControllerConsultar.cargarLeccion: "+ex);
+            return lecciones;
+        }
+        
     }
     /**
      * Método para cargar los ejercicios asociados a una lección en específico
@@ -170,7 +189,7 @@ public class ControllerConsultar {
      * @return listado con los ejercicios relacionados a la lección consultada
      */
     private List<Ejercicio> cargarEjercicio(Leccion lc,String Ruta){
-        ejercicios=new ArrayList<>();
+        ejercicios=new ArrayList<Ejercicio>();
         try{
         int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,lc.getNombre());
         
@@ -352,10 +371,18 @@ public class ControllerConsultar {
      * su existencia para el correcto funcionamiento de la aplicación
      * si no existe se creará la ruta y el archivo.
      */
-    public static void ExisteArchivoMateria(){
+    public static boolean ExisteArchivoMateria(){
+        try{
         File file=new File(Util.RUTA_MATERIA_XML);
         if(!file.exists())
             CrearXML.XMLBasic(Util.MATERIAS_TAG);
+        
+        return true;
+        }
+        catch(Exception ex){
+            System.out.println("Error encontrado en ControllerConsultar.ExisteArchivoMateria: "+ex);
+            return false;
+        }
     }
 }
 

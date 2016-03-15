@@ -72,11 +72,11 @@ public class Validaciones {
     public boolean ValidarRespuestaVacia(Component cpnt){
      try{
        switch(cpnt.getClass().getSimpleName()){
-           case "TextBoxRecrea": return this.ValidarTextField((TextBoxRecrea)cpnt);
-           case "NumberBoxRecrea":return this.ValidarTextField((NumberBoxRecrea)cpnt);
-           case "VFRecrea":return this.ValidarVFRecrea((VFRecrea)cpnt);
-           case "TAreaRecrea":return this.ValidarTextArea((TAreaRecrea)cpnt);
-           case "ComboBoxRecrea":return this.ValidarComboBox((ComboBoxRecrea)cpnt);
+           case Util.COMPONENTE_TEXTBOX_RECREA: return this.ValidarTextField((TextBoxRecrea)cpnt);
+           case Util.COMPONENTE_NUMBERBOX_RECREA:return this.ValidarTextField((NumberBoxRecrea)cpnt);
+           case Util.COMPONENTE_VF_RECREA:return this.ValidarVFRecrea((VFRecrea)cpnt);
+           case Util.COMPONENTE_TEXTAREA_RECREA:return this.ValidarTextArea((TAreaRecrea)cpnt);
+           case Util.COMPONENTE_COMBOBOX_RECREA:return this.ValidarComboBox((ComboBoxRecrea)cpnt);
        }
      }catch(Exception ex){
      System.out.println("Error encontrado en validaciones.validarRespuestaVacia: ");
