@@ -213,7 +213,7 @@ public class AgregarLeccion extends Componentes.FrameRecrea implements Contrato.
           else{
               imagen=Util.IMAGEN_DEFAULT;}
         Materia mt=(Materia)CB_Materia.GetItemRecrea();    
-        agregarEjerc.AgregarLeccion(TB_Nivel.getText(), imagen,TB_Nombre.getText(), mt.getHijoURL());
+        agregarEjerc.AgregarLeccion(TB_Nivel.getText(), imagen,TB_Nombre.getText(), mt);
         this.dispose();}
         //poner mensaje alerta
     }

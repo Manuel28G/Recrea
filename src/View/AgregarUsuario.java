@@ -51,7 +51,7 @@ public class AgregarUsuario extends Componentes.FrameRecrea {
 
         LB_Bienvenida1.setText("¡Bienvenido a Recrea! el lugar donde");
 
-        LB_Bienvenida2.setText("tu y yo practicaremos matemáticas");
+        LB_Bienvenida2.setText("tú y yo practicaremos matemáticas");
 
         LB_Bienvenida3.setText("¡Empezemos!");
 

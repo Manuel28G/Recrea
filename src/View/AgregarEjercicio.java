@@ -11,6 +11,7 @@ import Componentes.TextBoxRecrea;
 import Componentes.VFRecrea;
 import Controller.Util;
 import Controller.Validaciones;
+import Model.Objetos.Leccion;
 import Model.Objetos.Materia;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -34,6 +35,7 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
     private String respuesta;
     private String xmlFile;
     private String leccion;
+    private Leccion leccionObj;
     private Materia materiaObj;
     private Component compEnUso;
     private VFRecrea PN_Respuesta;
@@ -382,8 +384,8 @@ public class AgregarEjercicio extends Componentes.FrameRecrea implements Contrat
             pregunta=TA_Pregunta.getText();
             materiaObj=(Materia)CB_Materia.GetItemRecrea();
             xmlFile=materiaObj.getHijoURL();
-            leccion=CB_Leccion.GetItemRecrea().getNombre();
-            ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,xmlFile,leccion);
+            leccionObj=(Leccion)CB_Leccion.GetItemRecrea();
+            ca.AgregarEjercicio(tipo,puntos,pregunta,respuesta,materiaObj,leccionObj);
             this.dispose();
         }
         else

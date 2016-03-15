@@ -10,7 +10,6 @@ import Controller.Util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,16 +37,15 @@ public class CrearXML {
  * Se crea un archivo XML con la estructura básica
  * @param archivoNombre Nombre del archivo a crear 
  */
-public static void XMLBasic(String archivoNombre){
-    try{
+public static void XMLBasic(String archivoNombre) throws ParserConfigurationException, SAXException, IOException, TransformerException{
+
         DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();  
        // Creamos el documento XML  
         DOMImplementation implementation = docBuilder.getDOMImplementation();
         Document document = implementation.createDocument(null,archivoNombre, null);
         //Indicamos donde lo queremos almacenar
         CrearXML(document,archivoNombre+".xml");
-    }
-    catch (Exception e){}
+    
 }
 /**
  * Metodo para crear un XML
