@@ -115,14 +115,12 @@ public class Validaciones {
  * @return cantidad de puntos totales
  */
     public int totalPuntos(List<Respuesta> result){
-    if(this.totalPuntos<0){
         totalPuntosObtenidos=0;
         totalPuntos=0;
         for(Respuesta re:result){
             totalPuntosObtenidos+=re.GetPuntosObtenido();
             totalPuntos+=re.GetPuntoTotal();
         }
-    }
     return totalPuntos;
     }
     /**
@@ -131,15 +129,41 @@ public class Validaciones {
  * @return cantidad de puntos obtenidos
  */
     public int totalPuntosObtenidos(List<Respuesta> result){
-     if(this.totalPuntosObtenidos<0){
         totalPuntosObtenidos=0;
         totalPuntos=0;
         for(Respuesta re:result){
             totalPuntosObtenidos+=re.GetPuntosObtenido();
             this.totalPuntos+=re.GetPuntoTotal();
         }
-       }
     return totalPuntosObtenidos;
+    }
+    /**
+     * Metodo para validar si la respuesta es correcta 
+     * @param respReal respuesta real
+     * @param respObt respuesta realizada
+     * @param tipo Respuesta tipo numero u otra (Util.respuesta_tip_numero)
+     * @return true: si es correcta, false: si no lo es
+     */
+    public boolean EsCorrecta(String respReal,String respObt,String tipo){
+     try{
+         if(tipo.equals(Util.RESPUESTA_TIPO_NUMERO)) 
+             return compararNumeros(Integer.parseInt(respReal),Integer.parseInt(respObt));
+         else
+             return compararString(respReal,respObt);
+         
+     }catch(Exception ex){
+     System.out.println("Error encontrado en validaciones.validarRespuestaVacia: ");
+     System.out.println(ex);
+     System.out.println(ex.getStackTrace());
+     return false;
+     }
+    }
+    
+    private boolean compararNumeros(int respReal,int respObt){
+        if(respReal==respObt)
+            return true;
+        else
+            return false;
     }
     /**
      * Método para verificar si la respuesta esta correcta comparando de 
@@ -150,7 +174,7 @@ public class Validaciones {
      * @param respObt respuesta realizada por el usuario
      * @return  true: la respuesta es correcta; false:respuesta es incorrecta.
      */
-    public boolean EsCorrecta(String respReal,String respObt){
+    private boolean compararString(String respReal,String respObt){
         int errores=0;
         respReal=respReal.trim();
         respObt=respObt.trim();
@@ -159,17 +183,19 @@ public class Validaciones {
         config=new Configuracion();
         if(respObt.length()>5){
             int i;
-          for(i=0; (i<respObt.length()-1)&&(i<respReal.length()-1)&&errores<config.GetMaxErrores();i++)
+           System.out.println(respObt.length());
+           System.out.println(respReal.length());
+          for(i=0; (i<respObt.length()-1)&&(i<respReal.length()-1)&&errores<=config.GetMaxErrores();i++)
                 if(!respObt.substring(i, i+1).toUpperCase().equals(respReal.substring(i, i+1).toUpperCase()))
                     errores++;
           
           //si la respuesta correcta es menor en tamaño que la respesta hecha
           //se le agregara tanta cantidad de errores desde el contador hasta
           //la longitud de dicha cadena
-          if(!(i<respReal.length()-1))
-              errores+=(i-respObt.length()-1);
+          if((i==respReal.length()-1))
+              errores+=(respObt.length()-respReal.length());
           
-          if(errores<config.GetMaxErrores())
+          if(errores<=config.GetMaxErrores())
               return true;
           
         }

@@ -19,10 +19,16 @@ public class Configuracion {
  private int Size=6;
  private int maximoErrores=2;//maximo de errores encontrado entre palabras
  private final String tipografia=Util.LETRA_TIPO_TAHOMA;
-//Longitud maxima para los TextBox Recrea
-public static final int maxCaracteresTb= 8;
-//Longitud máxima para los númberBox Recrea porque int solo reconoce 2^31
-public static final int maxCaracteresNb =25; 
+ //Longitud maxima para los TextBox Recrea
+ public static final int maxCaracteresTb= 25;
+ //Longitud máxima para los númberBox Recrea porque int solo reconoce 2^31
+ public static final int maxCaracteresNb =8; 
+ private final String claveAcceso="recrea2016";
+ 
+ public final int textoGrand=24;
+ public final int textoInter=18;
+ public final int textoMed=12;
+ public final int textoPeque=6;
  
     /***
      * Metodo para la configuracion del color y el tamaño de los textos
@@ -59,13 +65,13 @@ public static final int maxCaracteresNb =25;
      public Font SetTamaño(String tamaño){
           switch(tamaño){
              case Util.CONFIG_TAMAÑO_LETRA_GRANDE:
-                 Size=24; break;
+                 Size=textoGrand; break;
              case Util.CONFIG_TAMAÑO_LETRA_INTERMED:
-                 Size=18; break;
+                 Size=textoInter; break;
              case Util.CONFIG_TAMAÑO_LETRA_MED: 
-                 Size=12;break;
+                 Size=textoMed;break;
              case Util.CONFIG_TAMAÑO_LETRA_PEQUE: 
-                 Size=6;break;
+                 Size=textoPeque;break;
          }
           return new java.awt.Font(tipografia, 0, Size);
      }
@@ -86,6 +92,14 @@ public static final int maxCaracteresNb =25;
       */
      public int GetMaxErrores(){
          return this.maximoErrores;
+     }
+     /**
+      * Retorna la clave de acceso para las secciones de administración de la aplicación
+      * como lo es agregar/eliminar/modificar materia, leccion , ejercicio o usuario
+      * @return clave para el acceso a la sección correspondiente
+      */
+     public String GetClave(){
+         return this.claveAcceso;
      }
              
 }
