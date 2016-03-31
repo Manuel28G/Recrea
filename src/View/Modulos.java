@@ -10,6 +10,7 @@ import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
 import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
+import Controller.ControllerConsultar;
 import Controller.Util;
 import Controller.WindowsCreate;
 import Model.Objetos.Actividad;
@@ -18,7 +19,10 @@ import Model.Objetos.Materia;
 import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.jdom2.JDOMException;
 
 /**
  * Clase que contiene las opciones de las lecciones que hay en una matéria
@@ -26,27 +30,34 @@ import javax.swing.JOptionPane;
  */
 public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBotones {
 
-       PanelRecrea PN_Botones;
-       String rutaModulo;
-       List<Leccion> leccion;
+       private PanelRecrea PN_Botones;
+       private final String rutaModulo;
+       private List<Leccion> leccion;
        private Persona usuario=new Persona();
        private Actividad actividad;
+       private final Inicio inicio;
+       private final Materia materia;
+       private final ControllerConsultar info;
        
-       public Modulos(String ruta,Materia g, Persona usr){
-           
+       public Modulos(String ruta,Materia g, Persona usr,Inicio ini){
            initComponents();
-           
-           MB_Recrea.setContrato(this);
-           usuario=usr;
-           leccion=g.getAsignaturas();
+           info=new ControllerConsultar();
            rutaModulo=ruta;//se guarda en memoria la ruta del archivo en que estoy
-           WindowsCreate wc=new WindowsCreate(g.getAsignaturas().size(),this);
-           PN_Botones=wc.mostrarBotEj(g.getAsignaturas());
-           this.configuracion(PN_Botones);
+           materia=g;
+           usuario=usr;
+           inicio=ini;
+           cargarInfo();
            this.fullScreen();
            
        }
-       
+       private void cargarInfo(){
+           
+           MB_Recrea.setContrato(this);
+           leccion=materia.getAsignaturas();
+           WindowsCreate wc=new WindowsCreate(materia.getAsignaturas().size(),this);
+           PN_Botones=wc.mostrarBotEj(materia.getAsignaturas());
+           this.configuracion(PN_Botones);
+       }
  
 
     /**
@@ -112,7 +123,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modulos("",null,null).setVisible(true);
+                new Modulos("",null,null,null).setVisible(true);
             }
         });
     }
@@ -132,8 +143,8 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     public void ActionSalir(ActionEvent e) {
       try{
             //poner gif de cargando
-                Inicio init=new Inicio();
-                init.setVisible(true);
+                
+                inicio.setVisible(true);
                 this.setVisible(false);
                 this.dispose();
 
@@ -150,7 +161,7 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
           if( ae.getActionCommand().equals(leccion.get(i).getNombre())){
               
                 if(leccion.get(i).getEjercicios().size()==0)
-                    JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYEJERCICIOS, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this,Util.MENSAJE_NOHAYEJERCICIOS, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
                 else{
                     
                   actividad=new Actividad();
@@ -173,17 +184,24 @@ public class Modulos extends FrameRecrea implements ContratoGeneral,ContratoBoto
     
     @Override
     public void SetEnable(boolean bol){
-       this.SetEnable(bol);
+       this.setEnabled(bol);
     }
 
     @Override
     public void Reaload() {
-     this.paintAll(this.getGraphics());  
+    try {
+        inicio.IniciarVentana();
+        this.setVisible(false);
+        this.dispose();
+        
+    } catch (JDOMException ex) {
+        Logger.getLogger(Modulos.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
     
     @Override
     public Persona GetPersona() {
-      return this.usuario;
+      return info.CargarPersona();
     }
     
     @Override

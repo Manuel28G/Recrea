@@ -1,5 +1,6 @@
 package View;
 
+import View.Agregar.AgregarUsuario;
 import Componentes.FrameRecrea;
 import Componentes.PanelRecrea;
 import Contrato.ContratoBotones;
@@ -25,27 +26,53 @@ import org.jdom2.JDOMException;
  */
 public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBotones{
 
-    private final PanelRecrea PN_Botones;
-    private final List<Materia> materias;
+    private PanelRecrea PN_Botones;
+    private List<Materia> materias;
     private final String ruta=Controller.Util.ARCHIVOS_XML_PATH+Util.MATERIAS_TAG+Util.ARCHIVO_XML;
     private Persona usuario=new Persona();
     private Modulos Child;
+    private final ControllerConsultar info;
     
     public Inicio() throws JDOMException {
-        
-        ControllerConsultar info=new ControllerConsultar(ruta);
-        usuario=info.CargarPersona();
-        //se inician aca los componentes para que de tiempo
+        info=new ControllerConsultar(ruta);
+       //se inician aca los componentes para que de tiempo
         //a que se cargue la persona y sus actividades
-        initComponents();  
+        initComponents(); 
+        cargarInfo();
+        this.fullScreen();
+    }
+    
+    private void cargarInfo(){
+        usuario=info.CargarPersona();
         materias=info.cargarMateria();
         WindowsCreate wc=new WindowsCreate(materias.size(),this);
         PN_Botones=wc.mostrarBot(materias);
         this.configuracion(PN_Botones);
-        this.fullScreen();
         MB_Recrea.setContrato(this); //para aseignar los ActionListener
+        
+        //Hacer que estas lineas funcionen para que sea mas eficiente
+       // this.paintAll(this.getGraphics());  
+        //this.validate();
+        //this.repaint();
     }
-
+    /**
+     * Método donde se evalua si existe un usuario registrado para abrir la
+     * ventana principal de lo contrario se desplega la ventana de registro 
+     * de usuario
+   */
+    protected void IniciarVentana() throws JDOMException{
+        Controller.ControllerCrear.archivoMateria();
+        if(!Controller.ControllerConsultar.consultarUsuario()){
+               new AgregarUsuario().setVisible(true);
+               
+           }
+        else{
+            new Inicio().setVisible(true);
+        }
+               this.setVisible(false);
+               this.dispose();
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,18 +134,17 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                try {
-                    Controller.ControllerConsultar.ExisteArchivoMateria();
-                   if(Controller.ControllerCrear.consultarUsuario())
-                       new Inicio().setVisible(true);
-                else{
-                       new AgregarUsuario().setVisible(true);
-                   }
+                try {  
+                     Controller.ControllerCrear.archivoMateria();
+                     if(!Controller.ControllerConsultar.consultarUsuario())
+                        new AgregarUsuario().setVisible(true);
+                      else
+                        new Inicio().setVisible(true);
                 } catch (JDOMException ex) {
                     Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
                 }
-              
             }
         });
     }
@@ -148,12 +174,11 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
         for(int i=0;i<materias.size();i++){
             if(ae.getActionCommand().equals(materias.get(i).getNombre())){
                 if(materias.get(i).getAsignaturas().size() == 0)
-                     JOptionPane.showMessageDialog(this,Util.DIALOG_MENSAJE_NOHAYLECCION, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
+                     JOptionPane.showMessageDialog(this,Util.MENSAJE_NOHAYLECCION, Util.DIALOG_TITULO_MENSAJE, JOptionPane.INFORMATION_MESSAGE);
                 else{
-                Child= new Modulos(materias.get(i).getHijoURL(),materias.get(i), usuario);
+                Child= new Modulos(materias.get(i).getHijoURL(),materias.get(i), usuario, this);
                 Child.setVisible(true);
                 this.setVisible(false);
-                this.dispose();
                 }
                 break;
             }
@@ -168,18 +193,23 @@ public class Inicio extends FrameRecrea implements ContratoGeneral,ContratoBoton
 
     @Override
     public void SetEnable(boolean bol){
-       this.SetEnable(bol);
+       this.setEnabled(bol);
     }
 
     @Override
     public void Reaload() {
-    this.paintAll(this.getGraphics());  
-    this.revalidate();
+   // cargarInfo(); cuando el repaint(); funcione quitar este comentario
+        try {
+            IniciarVentana();
+        } catch (JDOMException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
    }
 
     @Override
     public Persona GetPersona() {
-      return this.usuario;
+      return info.CargarPersona();
     }
 
     @Override
