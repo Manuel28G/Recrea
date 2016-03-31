@@ -39,14 +39,14 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
     private File DirOrigen;//Donde reciden los archivos XML de recrea
     private File ArchOrigen;//archivo XML origen
     private File ArchDestino;//Archivo XML destino
-    private final FileNameExtensionFilter filtro = new FileNameExtensionFilter(".xml","xml");
+    private final FileNameExtensionFilter filtro = new FileNameExtensionFilter("Directorio","");
     private String archivoNombre;
    // private String strDestino;
     
     public ExportarXMLDialog(){
         
        this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
-       this.setFileFilter(filtro);
+       //this.setFileFilter(filtro);
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(new JFrame());//puede ser new JFrame()
     }
@@ -57,7 +57,7 @@ public class ExportarXMLDialog extends javax.swing.JFileChooser {
      */
    public ExportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY);
-       this.setFileFilter(filtro);
+//       this.setFileFilter(filtro);
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showSaveDialog(cG);//puede ser new JFrame()
    }

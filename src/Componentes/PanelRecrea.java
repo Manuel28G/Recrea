@@ -12,6 +12,8 @@ import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.File;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**
@@ -42,7 +44,8 @@ public class PanelRecrea extends JPanel {
    @Override
     public void paintComponent(Graphics g)
     { 
-      Image imagenFondo=new ImageIcon(fondo).getImage();
+      URL urlImagen=getClass().getResource(fondo);
+      Image imagenFondo=new ImageIcon(urlImagen).getImage();
      g.drawImage(imagenFondo, 0,0,getWidth(),getHeight(),null);
 
     }

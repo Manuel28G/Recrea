@@ -7,12 +7,10 @@
 package Componentes;
 
 import Contrato.ContratoBotones;
-import Controller.Util;
+import Controller.ControllerAgregar;
 import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -23,7 +21,8 @@ public class BotonSalirRecrea extends JButton {
     private final String imagen="Regresar.png";
     private final String texto="Regresar";
     private final String salirTexto="Salir";
-    private final String salirImagen="salir.png";
+    private final String salirImagen="Salir.png";
+    private final ControllerAgregar ca;
 
     /**
      * Constructor
@@ -31,6 +30,7 @@ public class BotonSalirRecrea extends JButton {
      * @param salir si es boton de salir se colocará la palabra "Salir", sino será "Regresar"
      */
     public BotonSalirRecrea(ContratoBotones actGen,boolean salir) {
+        ca=new ControllerAgregar();
         try{
         this.addActionListener(ActionsListener.ActionSalir(actGen));
         this.addMouseListener(ActionsListener.ActionSonidoBoton());
@@ -45,8 +45,8 @@ public class BotonSalirRecrea extends JButton {
             this.BotonConfig(imagen,texto);
     }
         public BotonSalirRecrea(){
-            
-        this.BotonConfig(imagen,texto);
+            ca=new ControllerAgregar();
+            this.BotonConfig(imagen,texto);
     }
     /**
       * Método que define la configuración del boton 
@@ -56,17 +56,12 @@ public class BotonSalirRecrea extends JButton {
       */
     private void BotonConfig(String img,String name) {
         this.setText("");
-        ImageIcon imagenIcon=new ImageIcon(Util.IMAGE_PATH+img);
-        File resaltadoF=new File(Util.IMAGE_PATH+Util.IMAGEN_RESALTADO+img);
-        ImageIcon resaltado=new ImageIcon(resaltadoF.getPath());
+        ca.agregarImagenBoton(img, this);
         this.setActionCommand(name);
         this.setBorder(BorderFactory.createEmptyBorder());
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
-        this.setIcon(imagenIcon);
         this.setMargin(new Insets(0, 0, 0, 0));//(int top, int left, int bottom, int right)
-        if(resaltadoF.exists())
-            this.setRolloverIcon(resaltado); 
     }
     
     

@@ -35,7 +35,8 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
     File DirRecrea;//Donde se copiaran todos los archivos existentes en recrea
     File DirOrigen;//Donde reciden los archivos XML de recrea
     File ArchOrigen;//archivo XML origen
-    File ArchDestino;//Archivo XML destino
+    File[] ArchDestinos;//todos los archivos seleccionados
+   // File ArchDestino;//Archivo XML destino
     FileNameExtensionFilter filtro = new FileNameExtensionFilter(".xml","xml");
     String archivoNombre;
     String strDestino;
@@ -43,6 +44,7 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
     public ImportarXMLDialog(){
         
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
+       this.setMultiSelectionEnabled(true);
        this.setFileFilter(filtro);
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        seleccion = this.showOpenDialog(new JFrame());
@@ -53,6 +55,7 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
      */
     public ImportarXMLDialog(Component cG){
        this.setFileSelectionMode( JFileChooser.FILES_ONLY);
+       this.setMultiSelectionEnabled(true);
        this.setAcceptAllFileFilterUsed(false);//para solo aceptar los archivos puesto en los filtros
        this.setFileFilter(filtro);
        seleccion = this.showOpenDialog(cG);
@@ -72,17 +75,20 @@ public class ImportarXMLDialog extends javax.swing.JFileChooser {
  public void Cargar()
  {
       if(this.getStatus()==JFileChooser.APPROVE_OPTION){
-        ArchDestino=this.getSelectedFile();
+        ArchDestinos=this.getSelectedFiles();
         DirDestino=new File(Util.ARCHIVOS_XML_PATH);
         DirDestino.mkdir();
+        for(File ArchDestino:ArchDestinos)
+        {
         if(ArchDestino.isFile())
             DirOrigen=new File(ArchDestino.toString());
         else
             return;
-        DirDestino=new File(DirDestino+Util.SEPARADOR_DIRECTORIO+ArchDestino.getName());
+        DirDestino=new File(Util.ARCHIVOS_XML_PATH+Util.SEPARADOR_DIRECTORIO+ArchDestino.getName());
         System.out.println(DirOrigen);
         System.out.println(DirDestino);
         CrearXML(DirOrigen,DirDestino.toString());
+        }
       }
                   
  }

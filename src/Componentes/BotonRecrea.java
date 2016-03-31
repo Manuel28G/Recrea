@@ -8,13 +8,12 @@ package Componentes;
 
 import Controller.Configuracion;
 import Contrato.ContratoBotones;
+import Controller.ControllerAgregar;
 import Controller.Util;
 import java.awt.Color;
 import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -27,22 +26,15 @@ import javax.swing.JButton;
  * @author Manuel Goncalves L.
  */
 public class BotonRecrea extends JButton {
-    private Configuracion config=new Configuracion();
+    private final Configuracion config;
+    private final ControllerAgregar ca;
     
     public BotonRecrea(){
         super();
+        ca=new ControllerAgregar();
+        config=new Configuracion();
     }
-    /**
-     * Método que define la configuración básica del boton 
-     * como lo es su color, su fondo 
-     */
-    private void configuracion(){
         
-        this.setBackground(Color.LIGHT_GRAY);
-        this.setFont(config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED));
-        this.setForeground(config.SetColor(Util.CONFIG_COLOR_LETRA_NEGRO));
-    }
-    
     /**
      * Constructor de la clase BotonOpciones
      * @param tipo "Opciones" "Siguiente" "Regresar" "Sonido"
@@ -50,6 +42,8 @@ public class BotonRecrea extends JButton {
      */
     public BotonRecrea(String tipo,ContratoBotones actGen){
         super();
+        ca=new ControllerAgregar();
+        config=new Configuracion();
         TipoDeBoton(tipo,actGen);
       //  configuracion();
         }
@@ -60,9 +54,23 @@ public class BotonRecrea extends JButton {
      */
     public BotonRecrea(String texto){
         super();
+        ca=new ControllerAgregar();
+        config=new Configuracion();
         this.setText(texto);
         configuracion();
     }
+    /**
+     * Método que define la configuración básica del boton 
+     * como lo es su color, su fondo 
+     */
+    private void configuracion(){
+        
+        this.setBackground(Color.LIGHT_GRAY);
+        config.SetConfiguracion(Util.CONFIG_COLOR_LETRA_NEGRO,Util.CONFIG_TAMAÑO_LETRA_INTERMED, this);
+       // this.setFont(config.SetTamaño(Util.CONFIG_TAMAÑO_LETRA_INTERMED));
+       // this.setForeground(config.SetColor(Util.CONFIG_COLOR_LETRA_NEGRO));
+    }
+
     /**
       * Método que define la configuración del boton 
       * @param img  imagen que se le asignará al boton 
@@ -70,9 +78,7 @@ public class BotonRecrea extends JButton {
       * @return boton con las configuraciones necesarias
       */
     public JButton BotonConfig(String img,String name){
-        ImageIcon imagen=new ImageIcon(Util.IMAGE_PATH+img);
-        File resaltadoF=new File(Util.IMAGE_PATH+Util.IMAGEN_RESALTADO+img);
-        this.setIcon(imagen);
+         ca.agregarImagenBoton(img, this);
         this.setActionCommand(name);
         this.setName(name);
         this.setBorder(BorderFactory.createEmptyBorder());
@@ -80,8 +86,6 @@ public class BotonRecrea extends JButton {
         this.setFocusPainted(false);
         this.setMargin(new Insets(0, 0, 0, 0));//(int top, int left, int bottom, int right)
         this.addMouseListener(null);
-        if(resaltadoF.exists())
-             this.setRolloverIcon(new ImageIcon(resaltadoF.getPath()));  //cambia la imagen al poner el mouse sobre el boton
         return this;
     }
     /**

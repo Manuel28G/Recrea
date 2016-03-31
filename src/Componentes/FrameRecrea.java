@@ -5,9 +5,12 @@
  */
 
 package Componentes;
+import Controller.Util;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +27,14 @@ public class FrameRecrea extends JFrame {
     private final JPanel Marco2=new JPanel();
     private final JPanel Marco3=new JPanel();
     private final JPanel Marco4=new JPanel();
+    private final String rutaIcono=Util.IMAGE_PATH+Util.IMAGEN_ICONO;
+    private final Image imageIcon;
+    
+    public FrameRecrea(){
+        super(); //llamamos al construcutor del JFrame
+        imageIcon = new ImageIcon(getClass().getResource(rutaIcono)).getImage();
+        setIconImage(imageIcon); // cambiamos el icono de la aplicación
+    }
     
     /**
      * Método que realiza la configuracion General del Frame

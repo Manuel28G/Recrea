@@ -57,16 +57,14 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
  {
     if(this.getStatus()==JFileChooser.APPROVE_OPTION){
         ArchDestino=this.getSelectedFile();
-        DirDestino=new File(Util.IMAGE_PATH);
+        DirDestino=new File(Util.RUTA_SRC+Util.IMAGE_PATH);
         DirDestino.mkdir();
         if(ArchDestino.isFile())
             DirOrigen=new File(ArchDestino.toString());
         else
             return;
         DirDestino=new File(DirDestino+Util.SEPARADOR_DIRECTORIO+ArchDestino.getName());
-        System.out.println(DirOrigen);
-        System.out.println(DirDestino);
-        ImportarImagen(DirOrigen,DirDestino.toString());}
+        ImportarImagen(DirOrigen,DirDestino);}
                   
  }
                
@@ -83,7 +81,7 @@ public class ImportarImagenDialog extends javax.swing.JFileChooser {
   * @param fileOrigen archivo a importar
   * @param rutaArchivo ruta del archivo donde se guardará
   */
-private void ImportarImagen(File fileOrigen,String rutaArchivo) {
+private void ImportarImagen(File fileOrigen,File rutaArchivo) {
  try{
     FileInputStream fis = new FileInputStream(fileOrigen); //inFile -> Archivo a copiar
     FileOutputStream fos = new FileOutputStream(rutaArchivo); //outFile -> Copia del archivo

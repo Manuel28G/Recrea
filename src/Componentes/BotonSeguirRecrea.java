@@ -7,12 +7,10 @@
 package Componentes;
 
 import Contrato.ContratoBotones;
-import Controller.Util;
+import Controller.ControllerAgregar;
 import java.awt.Insets;
-import java.io.File;
 import java.io.IOException;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 
 /**
  * Clase que define el boton Seguir en Recrea
@@ -21,6 +19,7 @@ import javax.swing.ImageIcon;
 public class BotonSeguirRecrea extends javax.swing.JButton{
     private final String imagen="Seguir.png";
     private final String texto="Seguir";
+    private final ControllerAgregar ca;
     
 
     /***
@@ -28,6 +27,7 @@ public class BotonSeguirRecrea extends javax.swing.JButton{
      * @param actGen  contrato de la interface en que se desplegara el boton
      */
     public BotonSeguirRecrea(ContratoBotones actGen) {
+        ca=new ControllerAgregar();
         try{
         this.addActionListener(ActionsListener.ActionSiguiente(actGen));
         this.addMouseListener(ActionsListener.ActionSonidoBoton());
@@ -39,8 +39,8 @@ public class BotonSeguirRecrea extends javax.swing.JButton{
     }
     
         public BotonSeguirRecrea(){
-            
-        this.BotonConfig(imagen,texto);
+           ca=new ControllerAgregar();
+           this.BotonConfig(imagen,texto);
     }
     /**
       * Método que define la configuración del boton 
@@ -50,17 +50,13 @@ public class BotonSeguirRecrea extends javax.swing.JButton{
       */
     private void BotonConfig(String img,String name) {
         this.setText("");
-        ImageIcon imagen=new ImageIcon(Util.IMAGE_PATH+img);
-        File resaltadoF=new File(Util.IMAGE_PATH+Util.IMAGEN_RESALTADO+img);
-        ImageIcon resaltado=new ImageIcon(resaltadoF.getPath());
+        ca.agregarImagenBoton(img, this);
         this.setActionCommand(name);
         this.setBorder(BorderFactory.createEmptyBorder());
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
-        this.setIcon(imagen);
         this.setMargin(new Insets(0, 0, 0, 0));//(int top, int left, int bottom, int right)
-        if(resaltadoF.exists())
-            this.setRolloverIcon(resaltado); 
+        
     }
 
 }

@@ -27,9 +27,11 @@ public class MenuBarRecrea extends JMenuBar{
     private final String materiasStr="Materias";
     private final String leccionStr="Leccion";
     private final String ejercicioStr="Ejercicio";
+    private final String usuarioStr="Usuario";
     private final String vistaStr="Vista";
     private final String ayudaStr="Ayuda";
     private final String avanceStr="Avance";
+    private final String actualizarStr="Actualizar";
     private final String espacioStr=" ";
     
     private final String cargarStr="Cargar";
@@ -61,9 +63,9 @@ public class MenuBarRecrea extends JMenuBar{
         CrearMenu(archivoStr,opcSub);
         opcSub=new String[][]{{agregarStr,materiaStr,leccionStr,ejercicioStr},
                {modificarStr,materiaStr,leccionStr,ejercicioStr},
-               {eliminarStr,materiaStr,leccionStr,ejercicioStr}};
+               {eliminarStr,materiaStr,leccionStr,ejercicioStr,usuarioStr}};
         CrearMenu(edicionStr,opcSub);
-        opcSub=new String[][]{{avanceStr}};
+        opcSub=new String[][]{{avanceStr},{actualizarStr}};
         CrearMenu(vistaStr,opcSub);
         opcSub=new String[][]{};
         CrearMenu(ayudaStr,opcSub);
@@ -133,10 +135,15 @@ public class MenuBarRecrea extends JMenuBar{
       {
           case cargarStr+espacioStr+materiasStr:return Componentes.ActionsListener.ActionCargarXML(); 
           case guardarStr+espacioStr+materiasStr:return Componentes.ActionsListener.ActionGuardarXML();
-          case agregarStr+materiaStr:return Componentes.ActionsListener.ActionAgregarMateria();
-          case agregarStr+leccionStr:return Componentes.ActionsListener.ActionAgregarLeccion();
-          case agregarStr+ejercicioStr:return Componentes.ActionsListener.ActionAgregarEjercicio();
+          case agregarStr+materiaStr:return Componentes.ActionsListener.ActionAgregarMateria(contGen);
+          case agregarStr+leccionStr:return Componentes.ActionsListener.ActionAgregarLeccion(contGen);
+          case agregarStr+ejercicioStr:return Componentes.ActionsListener.ActionAgregarEjercicio(contGen);
           case avanceStr: return Componentes.ActionsListener.ActionCargarAvance(contGen);
+          case actualizarStr: return Componentes.ActionsListener.ActionActualizarPagina(contGen);
+          case eliminarStr+usuarioStr:return Componentes.ActionsListener.ActionEliminarUsuario(contGen);
+          case eliminarStr+materiaStr: return Componentes.ActionsListener.ActionEliminarMateria(contGen);
+          case eliminarStr+leccionStr: return Componentes.ActionsListener.ActionEliminarLeccion(contGen);
+          case eliminarStr+ejercicioStr: return Componentes.ActionsListener.ActionEliminarEjercicio(contGen);
        
       }
          return null;
