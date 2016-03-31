@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package View;
+package View.Agregar;
 
+import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
 import java.awt.event.ActionEvent;
@@ -20,12 +21,16 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
     private Componentes.ImportarImagenDialog imgDialog;
     private final Validaciones valid=new Validaciones();
     private String imagen;
+    private final ContratoGeneral contGen;
     /**
      * Creates new form AgregarMateria
+     * @param cg contrato general del Frame base
      */
-     public AgregarMateria() {
+     public AgregarMateria(ContratoGeneral cg) {
         pnRecrea=new Componentes.PanelRecrea();
         initComponents();
+        contGen=cg;
+        contGen.SetEnable(false);
         this.add(pnRecrea);
         this.configuracion(pnRecrea);
     }
@@ -51,10 +56,11 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
         LB_Nivel = new Componentes.LabelRecrea();
         BT_CargarImagen = new Componentes.BotonRecrea(Util.BOTON_TIPO_OPCION,this);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
 
-        LB_Titulo1.setText("A continuación se presentaran los campos");
+        LB_Titulo1.setText("A continuación se presentarán los campos");
 
         LB_Titulo2.setText("para la creación de una nueva materia");
 
@@ -107,7 +113,7 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LB_Nivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,8 +123,8 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
                     .addComponent(BT_CargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BT_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -155,7 +161,7 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarMateria().setVisible(true);
+                new AgregarMateria(null).setVisible(true);
             }
         });
     }
@@ -184,14 +190,19 @@ public class AgregarMateria extends Componentes.FrameRecrea implements Contrato.
               imagen=Util.IMAGEN_DEFAULT;}
             Controller.ControllerAgregar ctAgregar= new Controller.ControllerAgregar();
             ctAgregar.AgregarMateria(imagen,TB_Nivel.getText(),TB_Nombre.getText());
+                             
+            this.setVisible(false);
+            contGen.SetEnable(true);
             this.dispose();
         }
         //agregar alerta 
     }
 
     @Override
-    public void ActionSalir(ActionEvent e) {
-    this.dispose();
+    public void ActionSalir(ActionEvent e) {                 
+        this.setVisible(false);
+        contGen.SetEnable(true);
+        this.dispose();
     }
 
     @Override
