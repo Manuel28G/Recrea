@@ -17,6 +17,8 @@ public class Ejercicio extends EntidadGeneral {
     private String ejercicio;
     private String respuesta;
     private int puntos;
+    //se asignara la fecha en que fue creado el ejercicio en la variable nombre
+   // y cumple la función de ser el identificador único
     
 //Constructores    
     public void Ejercicio(){
@@ -29,7 +31,7 @@ public class Ejercicio extends EntidadGeneral {
      setTipo(tp);
      setEjercicio(ejc);  
      setRespuesta(rsp);
-     setPuntos(pts);    
+     setPuntos(pts);   
     }
 
 //Get's    
