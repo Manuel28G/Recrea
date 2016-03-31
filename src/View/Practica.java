@@ -52,7 +52,7 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
     private String respTexto="";
     private final Controller.WindowsEjercicio Weje;
     private ControllerAgregar cAgregar;
-    private final Actividad actividad;//Objeto para la actividad que se esta realizando
+    private Actividad actividad;//Objeto para la actividad que se esta realizando
     private final List<Respuesta> respuestas;//lista de objetos Respuesta
    // private final boolean sinRespuesta=false;//para los ejercicios que no tienen respuesta (es teoría)
     
@@ -130,10 +130,11 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
             else
                 resultado.SetRespuestaRealizada(cc.ObtenerRespuesta(respuesta));
             resultado.SetTiempoRespuesta(fechaActual.format(date));
-            
+            resultado.SetTipoRespuesta(cc.ObtenerTipoRespuesta(respuesta));
             resultado.SetPuntoTotal(ejercicio.getPuntos());
             if(resultado.EsCorrecta())
                 resultado.SetPuntosObtenido(ejercicio.getPuntos());
+            
             actividad.AddRespuesta(resultado);
             if(contador<leccion.getEjercicios().size()-1)
             {
@@ -146,7 +147,6 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
                 int totalP=valid.totalPuntos(respuestas);
                 int notaObt=valid.totalPuntosObtenidos(respuestas);
                 actividad.SetPuntosTotales(Integer.toString(totalP));
-              //  actividad.SetPtosObtenidos(Integer.toString(Estadistica.calculoDeNota(totalP, notaObt)));
                 actividad.SetPtosObtenidos(Integer.toString(notaObt));
                 cAgregar.AgregarActividadPersona(actividad);
                Resultados result=new Resultados(mod,usuario,0);
@@ -163,7 +163,7 @@ public class Practica extends FrameRecrea implements ContratoGeneral,ContratoBot
        try{
                if(JOptionPane.showConfirmDialog(this,Util.DIALOG_CONFIRMAR_SALIDA, Util.DIALOG_TITULO_SALIDA, JOptionPane.OK_CANCEL_OPTION)==JOptionPane.YES_OPTION){
                 mod.setVisible(true);
-              //  usuario.resetActividades();
+                this.usuario.resetActividades();
                 this.setVisible(false);
                 this.dispose();
                }

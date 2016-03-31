@@ -23,6 +23,7 @@ public class Avance extends FrameRecrea implements ContratoBotones {
 
     private final ControllerConsultar cc;
     private final List<Actividad> actividades;
+    private final Persona usuario;
     private final Estadistica estadistica;
     //private Persona persona;
     /**
@@ -31,6 +32,7 @@ public class Avance extends FrameRecrea implements ContratoBotones {
      */
     public Avance(Persona persona) {
         initComponents();
+        usuario=persona;
         estadistica=new Estadistica(persona.getActividades());
         this.LB_DiaMasProductivo.setText(estadistica.GetDiaMasProductivo());
         this.LB_DiaMenosProductivo.setText(estadistica.GetDiaMenosProductivo());
@@ -42,7 +44,7 @@ public class Avance extends FrameRecrea implements ContratoBotones {
         this.LB_PromEjercicios.setText(estadistica.GetPromPracticaDiaria());
         this.configuracion(PN_Contenedor);
         cc=new ControllerConsultar();
-        actividades=cc.CargarActividades();
+        actividades=usuario.getActividades();
         this.LB_Usuario.setText(persona.getNombre()+" "+persona.getApellido());
     }
 

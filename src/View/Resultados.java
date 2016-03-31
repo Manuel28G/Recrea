@@ -13,7 +13,6 @@ import Model.Objetos.Actividad;
 import Model.Objetos.Persona;
 import Model.Objetos.Respuesta;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 /**
  * Clase que contiene los resultados obtenidos tras realizar los ejercicios previamente
@@ -39,13 +38,17 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
         modulos=md;
         contador=cont;
         persona=pers;
-        TA_Pregunta.setEditable(false);
-        TA_Pregunta.SetConfigText();
-       
         //se obtiene la ultima actividad la cual es la que se acabo de realizar
         int ultimaActividad=persona.getActividades().size()-1;
         actividad=persona.getActividades().get(ultimaActividad);
-        respuesta=actividad.GetRespuesta().get(cont);
+        respuesta=actividad.GetRespuesta().get(contador);
+        configuracion(persona,contador);
+    }
+
+    private void configuracion(Persona pers,int cont){
+         TA_Pregunta.setEditable(false);
+        TA_Pregunta.SetConfigText();
+       
         this.fullScreen();
         this.configuracion(PN_Content);
         this.add(PN_Content);
@@ -57,26 +60,27 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
         try{
             
         if(respuesta.GetRespuestaCorrecta().trim().equals("")){
-            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_NOAPLICA);
+            this.LB_Aprobado.setText(Util.MENSAJE_NOAPLICA);
             this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA);
         }else
         if(respuesta.EsCorrecta()){
-            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_APROBADA);
+            this.LB_Aprobado.setText(Util.MENSAJE_APROBADA);
             this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_FELIZ,Util.BOTON_TIPO_CARITA);
             Audio sonido=new Audio(Util.RUTA_SONIDO_CORRECTO);
             sonido.Play();
             
         }
         else{
-            this.LB_Aprobado.setText(Util.DIALOG_MENSAJE_FALLIDO);
+            this.LB_Aprobado.setText(Util.MENSAJE_FALLIDO);
             this.BT_Calificacion.BotonConfig(Util.IMAGEN_CARITA_TRISTE,Util.BOTON_TIPO_CARITA);
             Audio sonido=new Audio(Util.RUTA_SONIDO_EQUIVOCADO);
             sonido.Play();
         }
         }
-        catch(Exception ex){}
+        catch(Exception ex){
+        
+        }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -294,7 +298,7 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
    }
     else{
      modulos.setVisible(true);
-    // persona.resetActividades();
+     persona.resetActividades();
     }
     this.setVisible(false);
      this.dispose();
@@ -304,7 +308,7 @@ public class Resultados extends FrameRecrea implements Contrato.ContratoBotones{
     public void ActionSalir(ActionEvent e) {
       this.setVisible(false);
       modulos.setVisible(true);
-    //  this.persona.resetActividades();
+      this.persona.resetActividades();
       this.dispose();
     }
 
