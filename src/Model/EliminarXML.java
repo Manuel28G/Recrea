@@ -8,12 +8,16 @@ package Model;
 
 import Controller.Util;
 import java.io.File;
+import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -33,9 +37,13 @@ public class EliminarXML {
      * @param leccion leccion donde se encuentra el ejercicio a eliminar
      * @param ejercicioFecha fecha única que identifica el ejercicio a eliminar
      * @param xmlFile  archivo donde se encuentra el ejercicio a eliminar
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws org.xml.sax.SAXException
+     * @throws java.io.IOException error al intentar abrir un archivo 
+     * @throws javax.xml.transform.TransformerException
      */
-    public static void BorrarEjercicio(String leccion,String ejercicioFecha,String xmlFile){
-         try{
+    public static void BorrarEjercicio(String leccion,String ejercicioFecha,String xmlFile) 
+            throws ParserConfigurationException, SAXException, IOException, TransformerException{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
     Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+xmlFile));  
@@ -64,28 +72,21 @@ public class EliminarXML {
     document.normalize();  
     CrearXML.CrearXML(document,xmlFile);
     }
-    catch(Exception e)
-    {
-        /*
-               System.out.println(sNode.getTextContent());
-               System.out.println(sNode.getNodeName());
-               System.out.println(sNode.getFirstChild());
-               System.out.println(sNode.getNodeValue());
-               System.out.println(sNode.getAttributes().getNamedItem(Util.FECHA_ATRIBUTE).getTextContent());
-               System.out.println(sNode.getAttributes().getNamedItem(Util.FECHA_ATRIBUTE).getTextContent());*/
-        System.out.println(e.getMessage()+" "+e);
-     
-    }
-    }
     /**
      * Metodo para eliminar una lección entera  Advertencia:si elimina una 
      * lección se eliminaran todos sus ejercicios asociados.
      * @param leccion nombre de la lección a eliminar
      * @param xmlFile documento donde se encuentra la lección
+     * @throws org.xml.sax.SAXException
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws java.io.IOException
+     * @throws javax.xml.transform.TransformerException
      */
-    public static void BorrarLeccion(String leccion,String xmlFile){
-    try{
+    public static void BorrarLeccion(String leccion,String xmlFile) 
+            throws SAXException, ParserConfigurationException, IOException, TransformerException{
+
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+xmlFile));  
         Element root=document.getDocumentElement();
@@ -103,20 +104,22 @@ public class EliminarXML {
          document.normalize();  
          CrearXML.CrearXML(document,xmlFile);
          }
-         catch(Exception e)
-         {
-         System.out.println("Error en EliminarXml.BorrarLeccion:"+e);
-         }
-    }
+
+    
     
     /**
      * Metodo para eliminar una materia de Recrea
      * Advertencia: al eliminar una materia se eliminar sus lecciones y 
      * ejercicios asignados a la misma.
      * @param materia 
+     * @throws javax.xml.parsers.ParserConfigurationException 
+     * @throws org.xml.sax.SAXException 
+     * @throws java.io.IOException 
+     * @throws javax.xml.transform.TransformerException 
      */
-    public static void BorrarMateria(String materia){
-     try{
+    public static void BorrarMateria(String materia) 
+            throws ParserConfigurationException, SAXException, IOException, TransformerException{
+ 
         String xmlFile=Util.MATERIA_XML+Util.ARCHIVO_XML;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -128,37 +131,25 @@ public class EliminarXML {
         for(int i=0;i<lsNode.getLength();i++){
 
            elemtn=lsNode.item(i).getFirstChild();
-           System.out.println(elemtn.getTextContent().trim());
-           System.out.println(materia);
            if(materia.equals(elemtn.getTextContent().trim())){
               xmlLeccion=elemtn.getParentNode().getAttributes().getNamedItem(Util.XML_ATRIBUTE).getTextContent();
               elemtn=lsNode.item(i);
-              BorrarArchivo(xmlLeccion);
+              BorrarArchivo(Util.ARCHIVOS_XML_PATH+xmlLeccion);
               elemtn.getParentNode().removeChild(elemtn);
                break;
            }
         }
          document.normalize();  
          CrearXML.CrearXML(document,xmlFile);
-         }
-         catch(Exception e)
-         {
-         System.out.println("Error en EliminarXml.BorrarMateria:"+e);
-         }
-    }
-    /**
-     * Metodo que elimina todo los archivos en Recrea
-     */
-    public static void BorrarTodo(){
-        
+
     }
     
     /**
      * Metodo para eliminar un archivo de Recrea
      * @param xmlFile archivo con la extension ".xml" que sera borrado
      */
-     private static void BorrarArchivo(String xmlFile){
-        File personaFile=new File(Util.ARCHIVOS_XML_PATH+xmlFile);
+     public static void BorrarArchivo(String xmlFile){
+        File personaFile=new File(xmlFile);
         if(personaFile.exists())
             personaFile.delete();
     }

@@ -10,6 +10,7 @@ import Contrato.ContratoBotones;
 import Contrato.ContratoGeneral;
 import Controller.Util;
 import Controller.Validaciones;
+import Model.Objetos.Persona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -19,6 +20,10 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import View.Agregar.*;
+import View.Eliminar.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * Clase que contiene las acciones correspondientes de cada componente
@@ -181,15 +186,16 @@ public class ActionsListener {
   
 /**
  * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Materia
+ * @param cg contrato general del frame que se este ejecutando 
  * @return ActionListener con el ActionPerfomed asociado
  */
-   public static ActionListener ActionAgregarMateria ()  {
+   public static ActionListener ActionAgregarMateria (final ContratoGeneral cg)  {
      return new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                View.AgregarMateria nuevaMat=new View.AgregarMateria();
+                AgregarMateria nuevaMat=new AgregarMateria(cg);
                 nuevaMat.setVisible(true);
             }
         };  
@@ -197,15 +203,16 @@ public class ActionsListener {
       
 /**
  * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Lección
+ * @param cg contrato general del frame que se este ejecutando 
  * @return ActionListener con el ActionPerfomed asociado
  */
-   public static ActionListener ActionAgregarLeccion ()  {
+   public static ActionListener ActionAgregarLeccion (final ContratoGeneral cg)  {
      return new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                View.AgregarLeccion nuevaLec=new View.AgregarLeccion();
+                AgregarLeccion nuevaLec=new AgregarLeccion(cg);
                 nuevaLec.setVisible(true);
             }
         };  
@@ -213,23 +220,92 @@ public class ActionsListener {
         
 /**
  * Método que asocia el actionPerfomed al menuBar en la opcion Agregar Ejercicio
+ * @param cg contrato general del frame que se este ejecutando 
  * @return ActionListener con el ActionPerfomed asociado
  */
-   public static ActionListener ActionAgregarEjercicio ()  {
+   public static ActionListener ActionAgregarEjercicio (final ContratoGeneral cg)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                AgregarEjercicio nuevaEjer=new AgregarEjercicio(cg);
+                nuevaEjer.setVisible(true);
+            }
+        };  
+  }  
+       /**
+ * Método que asocia el actionPerfomed al menuBar en la opcion de eliminar Usuario
+ * @param contGen contrato general del frame que se este ejecutando 
+ * @return ActionListener con el ActionPerfomed asociado
+ */
+   public static ActionListener ActionEliminarUsuario (final ContratoGeneral contGen)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            { 
+                int resp= JOptionPane.showConfirmDialog(new JFrame(),Util.DIALOG_CONFIRMAR_ELIMINAR_USUARIO, Util.DIALOG_TITULO_MENSAJE, JOptionPane.YES_NO_OPTION);
+                if(resp==JOptionPane.YES_OPTION){
+                         Controller.ControllerEliminar eliminar=new Controller.ControllerEliminar();
+                         eliminar.EliminarUsuario(null);
+                         contGen.avisoMensaje(Util.MENSAJE_PERSONA_BORRADA);
+                         contGen.Reaload();
+                }
+            }
+        };  
+  }  
+         /**
+ * Método que asocia el actionPerfomed al menuBar en la opcion de eliminar materia
+ * @param contGen contrato general del frame que se este ejecutando 
+ * @return ActionListener con el ActionPerfomed asociado
+ */
+   public static ActionListener ActionEliminarMateria (final ContratoGeneral contGen)  {
      return new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                View.AgregarEjercicio nuevaEjer=new View.AgregarEjercicio();
-                nuevaEjer.setVisible(true);
+               EliminarMateria elimMat=new  EliminarMateria(contGen);
+               elimMat.setVisible(true);
             }
         };  
   }  
-     
+         /**
+ * Método que asocia el actionPerfomed al menuBar en la opcion de eliminar lección
+ * @param contGen contrato general del frame que se este ejecutando 
+ * @return ActionListener con el ActionPerfomed asociado
+ */
+   public static ActionListener ActionEliminarLeccion (final ContratoGeneral contGen)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                EliminarLeccion elimLecc=new EliminarLeccion(contGen);
+                elimLecc.setVisible(true);
+            }
+        };  
+  }  
+         /**
+ * Método que asocia el actionPerfomed al menuBar en la opcion de eliminar ejercicio
+ * @param contGen contrato general del frame que se este ejecutando 
+ * @return ActionListener con el ActionPerfomed asociado
+ */
+   public static ActionListener ActionEliminarEjercicio (final ContratoGeneral contGen)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                EliminarEjercicio elimEjer=new EliminarEjercicio(contGen);
+                elimEjer.setVisible(true);
+            }
+        };  
+  }  
 /**
  * Método que asocia el actionPerfomed al menuBar en la opcion Avance
  * donde se muestra el avance del alumno
+ * @param pers contrato general del frame que se este ejecutando 
  * @return ActionListener con el ActionPerfomed asociado
  */
     public static ActionListener ActionCargarAvance (final ContratoGeneral pers)  {
@@ -238,16 +314,32 @@ public class ActionsListener {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-               if(pers.GetPersona().getActividades().size()>0){
-                View.Avance avance=new View.Avance(pers.GetPersona());
+               Persona usr=pers.GetPersona();
+               if(usr.getActividades().size()>0){
+                View.Avance avance=new View.Avance(usr);
                 avance.setVisible(true);}
                else
-                   pers.avisoMensaje(Util.DIALOG_MENSAJE_NOHAYREGISTRO);
+                   pers.avisoMensaje(Util.MENSAJE_NOHAYREGISTRO);
                //agregar alerta de que no hay actividades
             }
         };  
   }  
-
+/**
+ * Método recarga o actualiza el contenido luego de haber sido modificado
+ * (agregar/modificar/eliminar alguna leccion materia o ejercicio)
+ * @param cg contrato general del frame que se este ejecutando 
+ * @return ActionListener con el ActionPerfomed asociado
+ */
+   public static ActionListener ActionActualizarPagina (final ContratoGeneral cg)  {
+     return new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                cg.Reaload();
+            }
+        };  
+  }  
     
     
 /**
@@ -264,6 +356,7 @@ public class ActionsListener {
             }
         };  
   }  
+
   
   ///FIN MenuBar
    
