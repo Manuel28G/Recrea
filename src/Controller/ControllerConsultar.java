@@ -11,7 +11,6 @@ import Componentes.NumberBoxRecrea;
 import Componentes.TextBoxRecrea;
 import Componentes.VFRecrea;
 import Model.ConsultarXML;
-import Model.CrearXML;
 import Model.Objetos.Actividad;
 import Model.Objetos.Materia;
 import Model.Objetos.Ejercicio;
@@ -19,8 +18,10 @@ import Model.Objetos.EntidadGeneral;
 import Model.Objetos.Leccion;
 import Model.Objetos.Persona;
 import java.awt.Component;
-import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JTextField;
 import org.jdom2.JDOMException;
@@ -35,9 +36,9 @@ public class ControllerConsultar {
    private List<Leccion> lecciones;
    private List<Ejercicio> ejercicios;
    private List<Actividad> actividades;
-   private final EntidadGeneral egMAT=new EntidadGeneral();
-   private final EntidadGeneral egLEC=new EntidadGeneral();
-   private final EntidadGeneral egEJE=new EntidadGeneral();
+   private final EntidadGeneral egMAT=new Materia();
+   private final EntidadGeneral egLEC=new Leccion();
+   private final EntidadGeneral egEJE=new Ejercicio();
     private Persona persona;
     
    /**
@@ -63,11 +64,16 @@ public class ControllerConsultar {
      * preparar el entorno en base a esto
      */
     private void consultarMaterias(){
+        try{
         materias=new ArrayList<>();
         materiasCont=Model.ConsultarXML.ContarEtiquetas(rutaMateria,"");
         for(int i=0;i<materiasCont;i++){
             Materia materia= new Materia();
             materias.add(materia);
+        }
+        }
+        catch(Exception ex){
+            
         }
     }
    /**
@@ -82,6 +88,30 @@ public class ControllerConsultar {
            case Util.COMPONENTE_NUMBERBOX_RECREA:return RespTextField((NumberBoxRecrea)comp);
            case Util.COMPONENTE_VF_RECREA:return RespRadioButton((VFRecrea)comp);
        }}
+      catch(Exception ex){
+          
+          System.out.println("Error en Obtener Respuesta: ");
+          System.out.println(ex);
+          System.out.println("componente: "+comp);
+          System.out.println("StackTrace: "+ex.getStackTrace().toString());
+          System.out.println("Causa: "+ex.getCause());
+          System.out.println("Thread: "+ex.getSuppressed().toString());
+      }
+       return "";
+   }
+       /**
+    * Método para obtener el tipo de respuesta
+    * @param comp componente que contiene la respuesta
+    * @return "Número" si es de número o "Caracter" si es cualquier tipo(String)
+    */
+    public String ObtenerTipoRespuesta(Component comp){
+      try{
+       String respuesta=Util.RESPUESTA_TIPO_STRING;
+       switch(comp.getClass().getSimpleName()){
+           case Util.COMPONENTE_NUMBERBOX_RECREA: respuesta=Util.RESPUESTA_TIPO_NUMERO;
+       }
+      return respuesta;
+      }
       catch(Exception ex){
           
           System.out.println("Error en Obtener Respuesta: ");
@@ -122,7 +152,6 @@ public class ControllerConsultar {
     /**
      * Método para cargar las materias asociadas a la aplicación
      * @return listado de materias totales en la aplicación
-     * @throws JDOMException 
      */
     public List<Materia> cargarMateria(){
         try{
@@ -130,10 +159,10 @@ public class ControllerConsultar {
         List<Materia> respuesta=new ArrayList<>();
         consultarMaterias();
         for(Materia mt:materias ){
-           mt.setNombre(Model.ConsultarXML.InformacionEtiqueta(rutaMateria, null, i,null).trim()); 
-           mt.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_ATRIBUTE, i,null).trim());
-           mt.setHijoURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.XML_ATRIBUTE, i,null).trim());
-           mt.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_ATRIBUTE, i,null).trim()));
+           mt.setNombre(Model.ConsultarXML.InformacionEtiqueta(rutaMateria, "", i,"").trim()); 
+           mt.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.IMAGEN_ATRIBUTE, i,"").trim());
+           mt.setHijoURL(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.XML_ATRIBUTE, i,"").trim());
+           mt.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(rutaMateria,Util.NIVEL_ATRIBUTE, i,"").trim()));
            mt.setAsignaturas(cargarLeccion(mt)); 
            i++;
            respuesta.add(mt);
@@ -167,9 +196,9 @@ public class ControllerConsultar {
         contHijo=Model.ConsultarXML.ContarEtiquetas(ruta,"");
         for(int i=0;i<contHijo;i++ ){
             Leccion leccion=new Leccion();
-            leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, null, i,null).trim());
-            leccion.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.IMAGEN_ATRIBUTE, i,null).trim());
-            leccion.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.NIVEL_ATRIBUTE, i,null).trim()));
+            leccion.setNombre(Model.ConsultarXML.InformacionEtiqueta(ruta, "", i,"").trim());
+            leccion.setImagenURL(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.IMAGEN_ATRIBUTE, i,"").trim());
+            leccion.setNivel(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(ruta,Util.NIVEL_ATRIBUTE, i,"").trim()));
             leccion.setEjercicios(cargarEjercicio(leccion,ruta));
             lecciones.add(leccion);
         }
@@ -189,16 +218,17 @@ public class ControllerConsultar {
      * @return listado con los ejercicios relacionados a la lección consultada
      */
     private List<Ejercicio> cargarEjercicio(Leccion lc,String Ruta){
-        ejercicios=new ArrayList<Ejercicio>();
+        ejercicios=new ArrayList<>();
         try{
         int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,lc.getNombre());
         
         for(int i=0;i<contHijo;i++ ){
             Ejercicio ejercicio=new Ejercicio();
             ejercicio.setEjercicio(Model.ConsultarXML.InformacionEtiqueta(Ruta, Util.PREGUNTA_ATRIBUTE, i,lc.getNombre()).trim());
-            ejercicio.setRespuesta(Model.ConsultarXML.InformacionEtiqueta(Ruta,null, i,lc.getNombre()).trim());
+            ejercicio.setRespuesta(Model.ConsultarXML.InformacionEtiqueta(Ruta,"", i,lc.getNombre()).trim());
             ejercicio.setTipo(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.TIPO_ATRIBUTE, i,lc.getNombre()).trim());
             ejercicio.setPuntos(Integer.parseInt(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.PUNTOS_ATRIBUTE, i,lc.getNombre()).trim()));
+            ejercicio.setNombre(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.FECHA_ATRIBUTE, i,lc.getNombre()).trim());
             ejercicios.add(ejercicio);
         }
         return ejercicios;
@@ -243,19 +273,49 @@ public class ControllerConsultar {
      */
     public ComboBoxRecrea CargarComboBoxLeccion(ComboBoxRecrea cbRecrea,Materia mt){
         try{
-        List<Leccion> Leccion= mt.getAsignaturas();
+        lecciones= mt.getAsignaturas();
         cbRecrea.RemoveAllRecrea();
         
         egLEC.setNombre(Util.COMBOBOX_SELECCIONAR);//coloca la palabra principal al comboBox
         cbRecrea.AddItemRecrea(egLEC);
         
-        for(Leccion lc:Leccion)
+        for(Leccion lc:lecciones)
             cbRecrea.AddItemRecrea(lc);
         return cbRecrea;
         }
         catch(Exception e)
         {
             System.out.println("Error en cargarComboBoxMateria: "+e);
+            return null;
+        }
+    }
+      /**
+     * Método para cargar el comboBox con las fechas de creacion de los ejercicios 
+     * de una leccion en particular
+     * @param cbRecrea Componente ComboBoxRecrea al cual se cargará los ejercicios
+     * @param lc Leccion con la cual se filtrará solo los ejercicios asociadas a esta
+     * @return Componente ComboBoxRecrea con las fechas de los ejercicios correspondientes
+     */
+    public ComboBoxRecrea CargarComboBoxEjercicio(ComboBoxRecrea cbRecrea,Leccion lc){
+        try{
+        ejercicios= lc.getEjercicios();
+        cbRecrea.RemoveAllRecrea();
+        
+        egEJE.setNombre(Util.COMBOBOX_SELECCIONAR);//coloca la palabra principal al comboBox
+        cbRecrea.AddItemRecrea(egEJE);
+        
+        for(Ejercicio ejc:ejercicios)
+            cbRecrea.AddItemRecrea(ejc);
+        return cbRecrea;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error en cargarComboBoxMateria: "+e);
+            
+            System.out.println(e);
+            System.out.println("StackTrace: "+e.getStackTrace().toString());
+            System.out.println("Causa: "+e.getCause());
+            System.out.println("Thread: "+e.getSuppressed().toString());
             return null;
         }
     }
@@ -281,7 +341,7 @@ public class ControllerConsultar {
         {
             EntidadGeneral egEJE2=new EntidadGeneral();
             subRuta=Util.CONFIGURACION_TIPO_EJERCICIO;
-            egEJE2.setNombre(ConsultarXML.InformacionEtiqueta(rutaXML,null,Cont,subRuta));
+            egEJE2.setNombre(ConsultarXML.InformacionEtiqueta(rutaXML,"",Cont,subRuta));
             cbRecrea.AddItemRecrea(egEJE2);
         }
         return cbRecrea;
@@ -289,26 +349,22 @@ public class ControllerConsultar {
         catch(Exception e)
         {
             System.out.println("Error en cargarComboBoxMateria: "+e);
+            
+            System.out.println(e);
+            System.out.println("StackTrace: "+e.getStackTrace().toString());
+            System.out.println("Causa: "+e.getCause());
+            System.out.println("Thread: "+e.getSuppressed().toString());
+            
             return null;
         }
     }
-    /**
-     *ELIMINAR METODO
-     * @param Materia materia a consultar 
-     * @return 
-     */
-   /* private String EtiquetaXMLMateria(String Materia){
-        String doc=Util.RUTA_MATERIA_XML;
-        String etiqueta=Util.XML_ATRIBUTE;
-        return Model.ConsultarXML.InformacionEtiquetaRec(doc, etiqueta, Materia);
-    }*/
-    
+
     
     /**
      * Método para cargar las actividades asociadas a un usuario en particular
      * @return listado con las actividades realizadas por el usuario
      */
-    public List<Actividad> CargarActividades(){
+    private List<Actividad> CargarActividades(){
         actividades=new ArrayList<>();
         String Ruta=Util.RUTA_PERSONA_XML;
         String etiqueta=Util.PERSONA_ACTIVIDADES_TAG;
@@ -321,7 +377,7 @@ public class ControllerConsultar {
             actividad.SetDia(Model.ConsultarXML.InformacionEtiqueta(Ruta, Util.DIA_ATRIBUTE, i,etiqueta).trim());
             actividad.SetFecha(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.FECHA_ATRIBUTE, i,etiqueta).trim());
             actividad.SetHora(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.HORA_ATRIBUTE, i,etiqueta).trim());
-            actividad.SetNombre(Model.ConsultarXML.InformacionEtiqueta(Ruta,null, i,etiqueta).trim());
+            actividad.SetNombre(Model.ConsultarXML.InformacionEtiqueta(Ruta,"", i,etiqueta).trim());
             actividad.SetPtosObtenidos(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.NOTA_ATRIBUTE, i,etiqueta).trim());
             actividad.SetPuntosTotales(Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.NOTA_TOTAL_ATRIBUTE, i,etiqueta).trim());
             actividades.add(actividad);
@@ -347,8 +403,8 @@ public class ControllerConsultar {
         int contHijo= Model.ConsultarXML.ContarEtiquetas(Ruta,"");
         
         for(int i=0;i<contHijo;i++ ){
-            String resp=Model.ConsultarXML.InformacionEtiqueta(Ruta, null, i,null).trim();
-            String nombreEtiqueta=Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.ETIQUETA_NOMBRE, i,null).trim();
+            String resp=Model.ConsultarXML.InformacionEtiqueta(Ruta, "", i,"").trim();
+            String nombreEtiqueta=Model.ConsultarXML.InformacionEtiqueta(Ruta,Util.ETIQUETA_NOMBRE, i,"").trim();
             switch(nombreEtiqueta){
                 case Util.PERSONA_NOMBRE_TAG:persona.setNombre(resp);break;
                 case Util.PERSONA_APELLIDO_TAG:persona.setApellido(resp);break;
@@ -367,22 +423,20 @@ public class ControllerConsultar {
     }
     
     /**
-     * Método para validar si la ruta del archivo Matéria existe ya que es escencial 
-     * su existencia para el correcto funcionamiento de la aplicación
-     * si no existe se creará la ruta y el archivo.
+     * Metodo que retorna la fecha actual del sistema
+     * @return fecha actual del sistema
      */
-    public static boolean ExisteArchivoMateria(){
-        try{
-        File file=new File(Util.RUTA_MATERIA_XML);
-        if(!file.exists())
-            CrearXML.XMLBasic(Util.MATERIAS_TAG);
-        
-        return true;
-        }
-        catch(Exception ex){
-            System.out.println("Error encontrado en ControllerConsultar.ExisteArchivoMateria: "+ex);
-            return false;
-        }
+    public String fechaActual(){
+        DateFormat fechaActual = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");//formato que queremos para guardar en el xml
+        Date date=new Date(); //fecha actual
+        return fechaActual.format(date);
+    }
+   /**
+     * metodo para saber si hay un usuario creado en el sistema.
+     * @return True: hay un usuario en el sistema,False: no hay usuario
+     */
+    public static boolean consultarUsuario(){
+        return ConsultarXML.archivoCreado(Util.ARCHIVOS_XML_PATH+Util.PERSONA_XML+Util.ARCHIVO_XML);
     }
 }
 
