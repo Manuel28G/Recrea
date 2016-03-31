@@ -8,15 +8,11 @@ package Model;
 
 import Controller.Util;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 
 /**
@@ -30,8 +26,8 @@ public class ConsultarXML {
      * @param Documento ruta del documento que se leera, usar MateriasPath
      * @return cantidad de etiquetas hijo que tiene el documento
      */
-public static int ContarEtiquetas(String Documento,String nivel){
-      try{                                            
+public static int ContarEtiquetas(String Documento,String nivel) throws JDOMException, IOException, Exception{
+                                          
        
       SAXBuilder builder = new SAXBuilder();
       org.jdom2.Document doc = builder.build(Documento);
@@ -44,12 +40,9 @@ public static int ContarEtiquetas(String Documento,String nivel){
       return nodo.getChildren().size();
     
     }
-      catch(Exception ex){
-         System.out.println("Error en ConsultarXML.contarEtiquetas: "+ex);
-         return -1;
-      }
+
     
-}
+
 
 /***
  * Retorna un elemento de "elementos" que coincida con el nombre "texto"
@@ -58,7 +51,7 @@ public static int ContarEtiquetas(String Documento,String nivel){
  * @return si se coincide la información se retorna el elemento sinó se retorna Null
  * @throws Exception 
  */
-public static Element elementoNodo(String texto,List<Element> elementos) throws Exception{
+private static Element elementoNodo(String texto,List<Element> elementos) throws Exception{
          Element nodo=null;
          for(Element el: elementos){
             if(el.getName().trim().equals(texto.trim())||el.getText().trim().equals(texto.trim())){
@@ -81,18 +74,17 @@ public static Element elementoNodo(String texto,List<Element> elementos) throws 
  * @return
  * @throws JDOMException 
  */
-public static String InformacionEtiqueta(String Documento,String Variable,int indice,String Ruta) throws JDOMException{
+public static String InformacionEtiqueta(String Documento,String Variable,int indice,String Ruta) throws JDOMException, IOException, Exception{
      //Se crea un SAXBuilder para poder parsear el archivo
     String Respuesta="";
     String [] rut;
     SAXBuilder builder = new SAXBuilder();
-    if(Ruta!=null)
+    if( !Ruta.equals(""))
         rut=Ruta.split(Util.SEPARADOR_DIRECTORIO);
     else
         rut=new String[0];
-    org.jdom2.Element rootNode ;
-    File xmlFile = new File(Documento );
-   try{
+        org.jdom2.Element rootNode ;
+        File xmlFile = new File(Documento );
         //Se crea el documento a traves del archivo
         org.jdom2.Document document = (org.jdom2.Document) builder.build( xmlFile );
         //Se obtiene la raiz 'tables'
@@ -105,7 +97,7 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
         //Se obtiene el elemento 'tabla'
         org.jdom2.Element tabla = (org.jdom2.Element) list.get(indice);
 
-        if(Variable!=null){
+        if(!Variable.equals("")){
             if(Variable.equals(Util.ETIQUETA_NOMBRE))
                 Respuesta=tabla.getName();
             else
@@ -115,40 +107,8 @@ public static String InformacionEtiqueta(String Documento,String Variable,int in
 
         return Respuesta;
    }
-   catch(Exception ex){
-       return null;
-   }
     
-}
-/*
-ELIMINAR METODO
 
-public static String InformacionEtiquetaRec(String Documento,String Variable,String nombre){
-     //Se crea un SAXBuilder para poder parsear el archivo
-    String Respuesta="";
-    File xmlFile = new File(Documento );
-   try{
-        
-    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    DocumentBuilder db = dbf.newDocumentBuilder();
-    Document document = db.parse(xmlFile);  
-    org.w3c.dom.Element root=document.getDocumentElement();
-        NodeList lsNode=root.getElementsByTagName(Util.LECCION_TAG);//(Element)root.getElementsByTagName(Util.PERSONA_ACTIVIDAD_TAG);
-   for(int i=0;i<lsNode.getLength();i++){
-       Node elemtn=lsNode.item(i).getFirstChild();
-       System.out.println("prim:"+elemtn.getTextContent());
-       if(nombre.equals(elemtn.getTextContent())){
-            Respuesta = elemtn.getParentNode().getAttributes().getNamedItem(Variable).getTextContent();
-            System.out.println("Respuesta consultar: "+Respuesta);
-        break;}
-   }
-   return Respuesta;
-   }
-   catch(Exception ex){
-       return "";
-   }
-    
-}*/
 
 /**
  * Metodo para saber si un archivo existe 

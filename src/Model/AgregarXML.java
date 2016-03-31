@@ -9,15 +9,16 @@ package Model;
 import Controller.Util;
 import static Model.CrearXML.XMLBasic;
 import java.io.File;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * Clase que agrupa los métodos para agregar información a un archivo XML
@@ -38,14 +39,16 @@ public class AgregarXML {
  * @param calf calificacion optenida en la actividad
  * @param leccion leccion que realizó el usuario 
  * @param total total de puntos posibles en la lección
-     * @return true: Agrego la persona; false: no agrego la persona
+ * @return true: Agrego la persona; false: no agrego la persona
+     * @throws javax.xml.parsers.ParserConfigurationException
  * @since 1.0.0
  */
-public static boolean XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total){
-    try{
+public static boolean XMLPersonaActAdd(String fecha,String hora,String dia,String calf,String leccion,String total) throws ParserConfigurationException, SAXException, IOException, TransformerException{
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
-    Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+Util.PERSONA_XML+Util.ARCHIVO_XML));  
+    
+    File archivoFile=new File(Util.ARCHIVOS_XML_PATH+Util.PERSONA_XML+Util.ARCHIVO_XML);
+    Document document = db.parse(archivoFile);  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.PERSONA_ACTIVIDAD_CHILD);
     actAdd.setTextContent(leccion);
@@ -62,12 +65,7 @@ public static boolean XMLPersonaActAdd(String fecha,String hora,String dia,Strin
     CrearXML.CrearXML(document,Util.PERSONA_XML+Util.ARCHIVO_XML);
     return true;
 
-    }
-    catch(Exception e)
-    {
-        System.out.println(e.getMessage()+" "+e);
-        return false;
-    }
+    
     
 }
 
@@ -81,12 +79,13 @@ public static boolean XMLPersonaActAdd(String fecha,String hora,String dia,Strin
  * @return true: Agrego la materia; false: no agrego la materia
  * @since 1.0.0
  */
-public static boolean XMLMateriasAdd(String img,String nivl,String xml,String materia){
-   try{
+public static boolean XMLMateriasAdd(String img,String nivl,String xml,String materia) throws ParserConfigurationException, SAXException, IOException, TransformerException{
+
     String archivo=Util.MATERIAS_TAG+Util.ARCHIVO_XML;
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
-    Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+archivo));  
+    File archivoFile=new File(Util.ARCHIVOS_XML_PATH+archivo);
+    Document document = db.parse(archivoFile);  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.MATERIA_CHILD);
     actAdd.setTextContent(materia);
@@ -98,13 +97,7 @@ public static boolean XMLMateriasAdd(String img,String nivl,String xml,String ma
     CrearXML.CrearXML(document,archivo);
     XMLBasic(xml);
     return true;
-    }
-    catch(Exception e)
-    {
-        System.out.println(e.getMessage()+" "+e);
-        return false;
-
-    }
+    
 }
 
 /**
@@ -116,11 +109,12 @@ public static boolean XMLMateriasAdd(String img,String nivl,String xml,String ma
      * @return true: Agrego la lección; false: no agrego la lección
  * @since 1.0.0
  */
-public static boolean XMLLeccionAdd(String nivel,String imagen,String leccion,String archivoXML){
-     try{
+public static boolean XMLLeccionAdd(String nivel,String imagen,String leccion,String archivoXML) throws ParserConfigurationException, SAXException, IOException, TransformerException{
+  
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
-    Document document = db.parse(new File(Util.ARCHIVOS_XML_PATH+archivoXML));  
+    File archivoFile=new File(Util.ARCHIVOS_XML_PATH+archivoXML);
+    Document document = db.parse(archivoFile);  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.LECCION_TAG);
     actAdd.setTextContent(leccion);
@@ -131,12 +125,6 @@ public static boolean XMLLeccionAdd(String nivel,String imagen,String leccion,St
     CrearXML.CrearXML(document,archivoXML);
     
      return true;
-    }
-    catch(Exception e)
-    {
-        System.out.println(e.getMessage()+" "+e);
-        return false;
-    }
 }
 
 /**
@@ -147,25 +135,27 @@ public static boolean XMLLeccionAdd(String nivel,String imagen,String leccion,St
  * @param resp respuesta correcta del ejercicio
  * @param xmlFile Archivo XML donde se encuentra la materia y la leccion que se le agregará el ejercicio
  * @param nombreLeccion nombre de la leccion que se le agregará el ejercicio
+     * @param fechaAct
+     * @return 
  * @since 1.0.0
  * @author Manuel Goncalves L.
  */
-public static boolean XMLEjercicioAdd(String tipo,String pts,String pregunta,String resp,String xmlFile,String nombreLeccion){
-      try{
-    DateFormat fechaActual = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");//formato que queremos para guardar en el xml
-    Date date=new Date(); //fecha actual
+public static boolean XMLEjercicioAdd(String tipo,String pts,String pregunta,String resp,String xmlFile,String nombreLeccion,String fechaAct) throws SAXException, ParserConfigurationException, IOException, TransformerException{
+    
+   // DateFormat fechaActual = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");//formato que queremos para guardar en el xml
+   // Date date=new Date(); //fecha actual
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
     String archivoRuta=Util.ARCHIVOS_XML_PATH+xmlFile;
-    System.out.println(archivoRuta);
-    Document document = db.parse(new File(archivoRuta));  
+    File archivoFile=new File(archivoRuta);
+    Document document = db.parse(archivoFile);  
     Element root=document.getDocumentElement();
     Element actAdd=document.createElement(Util.EJERCICIO_TAG);
     actAdd.setTextContent(resp);
     actAdd.setAttribute(Util.TIPO_ATRIBUTE, tipo);
     actAdd.setAttribute(Util.PUNTOS_ATRIBUTE, pts);
     actAdd.setAttribute(Util.PREGUNTA_ATRIBUTE, pregunta);
-    actAdd.setAttribute(Util.FECHA_ATRIBUTE,fechaActual.format(date));
+    actAdd.setAttribute(Util.FECHA_ATRIBUTE,fechaAct);
     NodeList lsNode=root.getElementsByTagName(Util.LECCION_TAG);//(Element)root.getElementsByTagName(Util.PERSONA_ACTIVIDAD_TAG);
    for(int i=0;i<lsNode.getLength();i++){
        Node elemtn=lsNode.item(i).getFirstChild();
@@ -181,13 +171,7 @@ public static boolean XMLEjercicioAdd(String tipo,String pts,String pregunta,Str
     CrearXML.CrearXML(document,xmlFile);
     
     return true;
-    }
-    catch(Exception e)
-    {
-        System.out.println(e.getMessage()+" "+e);
-        return false;
-     
-    }
+    
     
 }
 }
