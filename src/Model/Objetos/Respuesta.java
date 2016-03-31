@@ -25,6 +25,7 @@ public class Respuesta {
     private int puntos;//los puntos que se obtienen al responder el ejercicio de manera correcta
     private int puntosObtenidos;
     private Validaciones valid;
+    private String tipoRespuesta;//"Número" o "Caracteres" que corresponde a letras y numeros
     
     
     public Respuesta(){
@@ -38,6 +39,7 @@ public class Respuesta {
         puntos=0;
         puntosObtenidos=0;
         valid=new Validaciones();
+        tipoRespuesta="";
     }
     
     //Get's
@@ -60,6 +62,8 @@ public class Respuesta {
         return tiempoComienzo;
     }
     public boolean EsCorrecta(){
+        
+        validarRespuesta();
         return respuesta;
     }
     public int GetPuntoTotal(){
@@ -68,10 +72,16 @@ public class Respuesta {
     public int GetPuntosObtenido(){
         return puntosObtenidos;
     }
+    public String GetTipoRespuesta(){
+        return tipoRespuesta;
+    }
         
     
     //Set's
-        
+    public void SetTipoRespuesta(String rsta){
+        tipoRespuesta=rsta;
+    }    
+    
     public void SetPregunta(String pta){
         pregunta=pta;
     }
@@ -81,7 +91,6 @@ public class Respuesta {
     }
     public void SetRespuestaRealizada(String rtaRzda){
         respuestaRealizada=rtaRzda;
-        validarRespuesta();
     }
     public void SetRespuestaAnterior(String rtaAnt){
         respuestaAnterior=rtaAnt;
@@ -101,6 +110,6 @@ public class Respuesta {
     }
     private void validarRespuesta(){
         if(this.respuestaRealizada!="" && this.respuestaCorrecta!="")
-            this.respuesta=valid.EsCorrecta(this.respuestaCorrecta,this.respuestaRealizada);
+            this.respuesta=valid.EsCorrecta(this.respuestaCorrecta,this.respuestaRealizada,this.tipoRespuesta);
     }
 }
