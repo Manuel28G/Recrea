@@ -13,6 +13,9 @@ package Controller;
  */
 public class Util {
     
+    public static final String RESPUESTA_TIPO_NUMERO="Número";
+    public static final String RESPUESTA_TIPO_STRING="Caracter";
+    
     public static final String COMPONENTE_TEXTBOX_RECREA="TextBoxRecrea";
     public static final String COMPONENTE_NUMBERBOX_RECREA="NumberBoxRecrea";
     public static final String COMPONENTE_BOTON_RECREA="BotonRecrea";
@@ -97,16 +100,19 @@ public class Util {
     public static final String ETIQUETA_NOMBRE="NombreEtiqueta";
     
     public static final String NULL_TAG="null";
+    public static final String RUTA_SRC="src";
     //Directorio de imagenes
-    public static final String IMAGE_PATH="src/Model/Image/";
+    public static final String IMAGE_PATH="/Model/Image/";
     public static final String IMAGEN_RESALTADO="Resaltar";
-    public static final String IMAGEN_SONIDO="sonido.png";
+    public static final String IMAGEN_SONIDO="Sonido.png";
     public static final String IMAGEN_CARITA_FELIZ="CaritaFeliz.png";
     public static final String IMAGEN_CARITA_TRISTE="CaritaTriste.png";
     public static final String IMAGEN_SEGUIR="Seguir.png";
     public static final String IMAGEN_SALIR="Salir.png";
     public static final String IMAGEN_REGRESAR="Regresar.png";
-    public static final String IMAGEN_DEFAULT="default.png";
+    public static final String IMAGEN_DEFAULT="Default.png";
+    public static final String IMAGEN_ICONO="RecreaIcono.png";
+    public static final String IMAGEN_AVATAR="AvatarM1.png";
     //Directorio de Archivos XML
     public static final String ARCHIVOS_XML_PATH = "src/Model/Archivos/";
     //Directorio donde se guardaran los archivos de recrea
@@ -186,24 +192,29 @@ public class Util {
     public static final String ERROR_XML_PROFESSOR_ID_NOT_EXIST = "Error loading XML file - The professor don't exist";  
     public static final String ERROR_PIECE_ID_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
     public static final String ERROR_PIECE_SUPVAL_TAG = "Error loading Piece from XML - Error in the attribute of the XML tag";
-    public static final String ERROR_PIECE_LOWVAL_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
-    public static final String ERROR_PIECE_IMAGEA_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
-    public static final String ERROR_PIECE_IMAGEB_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
-    public static final String ERROR_PIECE_IMAGEI_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
-    public static final String ERROR_PIECE_IMAGED_TAG = "Error loading Piece from XML - Error in the attribute  of the XML tag";
-    
+    public static final String ERROR_OPERACION_FALLIDA="ERROR- La operacion ha fallado,vuelva a intentarlo";
     //Dialogos
-    public static final String DIALOG_CONFIRMAR_SALIDA="¿Seguro que desea salir? si confirma se perdera el avance realizado.";
+    public static final String DIALOG_CONFIRMAR_SALIDA="¿Seguro que desea salir? si confirma se perderá el avance realizado.";
+    public static final String DIALOG_CONFIRMAR_ELIMINAR_USUARIO="¿Seguro desea eliminar el usuario? \n -si confirma se perderá el avance realizado y los datos asociados a la cuenta.";
     public static final String DIALOG_TITULO_SALIDA="Salir";
     public static final String DIALOG_TITULO_MENSAJE="Mensaje";
-    public static final String DIALOG_MENSAJE_NOHAYEJERCICIOS="Disculpe esta lección aún no tiene ejercicios asignados.";
-    
-    public static final String DIALOG_MENSAJE_NOHAYREGISTRO="Aún no se han realizado actividades en Recrea. \n ¡vuelva pronto!";
-    public static final String DIALOG_MENSAJE_NOHAYLECCION="Disculpe esta Materia aún no tiene lecciones asignadas.";
     public static final String DIALOG_CONFIRMAR_CONTINUAR="No ha respondido el ejercicio,se contara la respuesta como incorrecta directamente \n¿seguro que desea continuar?";
-    public static final String DIALOG_MENSAJE_APROBADA="¡Correcto,Felicitaciones!";
-    public static final String DIALOG_MENSAJE_FALLIDO="Lo siento, no es correcto";
-    public static final String DIALOG_MENSAJE_NOAPLICA="No aplica";
-    public static final String DIALOG_MENSAJE_COLOCAR_DATOS="Debes colocar tus datos para comenzar";
+
+    
+    //Mensajes
+    public static final String MENSAJE_PERSONA_BORRADA="¡El usuario fue borrado con exito! \n Gracias por usar recrea, vuelva pronto. ";
+    public static final String MENSAJE_APROBADA="¡Correcto,Felicitaciones!";
+    public static final String MENSAJE_FALLIDO="Lo siento, no es correcto";
+    public static final String MENSAJE_NOAPLICA="No aplica";
+    public static final String MENSAJE_COLOCAR_DATOS="Debes colocar tus datos para comenzar";
+    public static final String MENSAJE_NOHAYREGISTRO="Aún no se han realizado actividades en Recrea. \n ¡vuelva pronto!";
+    public static final String MENSAJE_NOHAYLECCION="Disculpe esta Materia aún no tiene lecciones asignadas.";
+    public static final String MENSAJE_NOHAYEJERCICIOS="Disculpe esta lección aún no tiene ejercicios asignados.";
+    public static final String MENSAJE_MATERIA_BORRADA="La materia ha sido borrada con exito.";
+    public static final String MENSAJE_LECCION_BORRADA="La lección ha sido borrada con exito.";
+    public static final String MENSAJE_EJERCICIO_BORRADO="El ejercicio ha sido borrado con exito.";
+    public static final String MENSAJE_MATERIA_AGREGADA="La materia ha sido agregada con exito."; 
+    public static final String MENSAJE_LECCION_AGREGADA="La lección ha sido agregada con exito.";
+    public static final String MENSAJE_EJERCICIO_AGREGADO="El ejercicio ha sido agregado con exito.";
     
 }
