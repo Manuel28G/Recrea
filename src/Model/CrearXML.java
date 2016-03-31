@@ -44,7 +44,7 @@ public static void XMLBasic(String archivoNombre) throws ParserConfigurationExce
         DOMImplementation implementation = docBuilder.getDOMImplementation();
         Document document = implementation.createDocument(null,archivoNombre, null);
         //Indicamos donde lo queremos almacenar
-        CrearXML(document,archivoNombre+".xml");
+        CrearXML(document,archivoNombre+Util.ARCHIVO_XML);
     
 }
 /**
@@ -75,8 +75,8 @@ protected static void CrearXML(Document docmt,String nombreArchivo) throws Parse
  * @param apellido apellido del usuario
  * @param Ident identificador del usuario 
  */
-public static void XMLPersona(String nombre,String apellido,String Ident){
-    try{
+public static void XMLPersona(String nombre,String apellido,String Ident) throws ParserConfigurationException, SAXException, IOException, TransformerException{
+   
     XMLBasic(Util.PERSONA_XML);
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     DocumentBuilder db = dbf.newDocumentBuilder();
@@ -99,8 +99,7 @@ public static void XMLPersona(String nombre,String apellido,String Ident){
     document.normalize();
     CrearXML(document,Util.PERSONA_XML+Util.ARCHIVO_XML);//creamos el documento con los nuevos valores
 
-    }
-    catch(Exception e){System.out.println("Excepcion "+e);}
+
 }
 
 
