@@ -23,13 +23,22 @@ public class Actividad {
     private List<Respuesta> respuestas;
     
     public Actividad(){
-        respuestas=new ArrayList<Respuesta>();
+        respuestas=new ArrayList<>();
         nombre="";
         puntosTotales="";
         puntosObtenidos="";
         dia="";
         fecha="";
         hora="";
+    }
+    public Actividad(List<Respuesta> rsp,String nmbre,String ptoTotal,String ptoObt,String day,String date,String hour){
+        respuestas=rsp;
+        nombre=nmbre;
+        puntosTotales=ptoTotal;
+        puntosObtenidos=ptoObt;
+        dia=day;
+        fecha=date;
+        hora=hour;
     }
     
     
